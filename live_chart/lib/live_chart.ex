@@ -6,4 +6,13 @@ defmodule LiveChart do
   Contexts are also responsible for managing your data, regardless
   if it comes from the database, an external API or others.
   """
+  @type color_name :: String.t()
+  @type dataset :: ColumnChart.Dataset.t()
+  @type gen_chart :: %{
+          title: String.t(),
+          colors: %{color_name() => String.t() | LiveChart.Gradient.t()},
+          dataset: dataset
+        }
+  @type chart ::
+          LiveChart.BaseChart.t() | gen_chart()
 end
