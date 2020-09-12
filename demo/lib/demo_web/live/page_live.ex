@@ -10,7 +10,7 @@ defmodule DemoWeb.PageLive do
     column_chart = %BaseChart{
       title: "Umbrellas per Neighborhood",
       colors: %{
-        blue: "#0000FF",
+        blue: "#36D1DC",
         rose_gradient: %Gradient{
           start_color: "#642B73",
           stop_color: "#C6426E"
@@ -32,12 +32,12 @@ defmodule DemoWeb.PageLive do
         data: [
           %BaseDatum{
             name: "Landen",
-            fill_color: :blue,
+            fill_color: :rose_gradient,
             values: [750.0]
           },
           %BaseDatum{
             name: "Oakley",
-            fill_color: :blue,
+            fill_color: :rose_gradient,
             values: [1500.0]
           },
           %BaseDatum{
@@ -52,7 +52,7 @@ defmodule DemoWeb.PageLive do
           },
           %BaseDatum{
             name: "Erlanger",
-            fill_color: :blue,
+            fill_color: :rose_gradient,
             values: [1750.0]
           }
         ]
