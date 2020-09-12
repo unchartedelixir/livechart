@@ -3,7 +3,6 @@ defmodule LiveChart.BaseChart do
   Base camp for all of your LiveChart needs.
   """
   alias __MODULE__
-  alias LiveChart.ColumnChart
 
   defstruct [:title, :colors, :dataset]
 
@@ -12,9 +11,8 @@ defmodule LiveChart.BaseChart do
   @type t() :: %__MODULE__{
           title: String.t(),
           colors: %{color_name() => String.t() | Gradient.t()},
-          dataset: dataset
+          dataset: LiveChart.dataset()
         }
-  @type dataset :: ColumnChart.Dataset.t()
 
   defimpl LiveChart.Chart, for: __MODULE__ do
     alias LiveChart.{BaseChart, Gradient}
