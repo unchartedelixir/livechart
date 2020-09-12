@@ -10,7 +10,7 @@
     <%= live_component @socket, LiveChartWeb.LiveColumnComponent, chart: @column_chart %>
   </div>
   <div class="card">
-    <%= live_component @socket, LiveChartWeb.LiveProgressComponent, chart: %{} %>
+    <%= live_component @socket, LiveChartWeb.LiveProgressComponent, chart: @progress_chart %>
   </div>
 </section>
 <section class="card__grid-2">
