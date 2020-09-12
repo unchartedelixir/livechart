@@ -3,7 +3,7 @@ defmodule LiveChartWeb.LivePieComponent do
 
   def render(assigns) do
     ~L"""
-    <div class="hero">HELLO WORLD</div>
+    <div data-testid="lc-live-pie-component" class="hero">HELLO WORLD</div>
     """
   end
 end
