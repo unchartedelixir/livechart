@@ -1,5 +1,14 @@
 defmodule LiveChart.BaseChartTest do
-  alias LiveChart.{Chart, ColumnChart, Gradient, BaseAxes, YAxis, BaseChart, BaseColumnDataset, BaseDatum}
+  alias LiveChart.{
+    Chart,
+    ColumnChart,
+    Gradient,
+    BaseChart,
+    BaseDatum
+  }
+
+  alias LiveChart.Axes.{BaseAxes, YAxis}
+  alias LiveChart.ColumnChart.Dataset
   use ExUnit.Case
 
   @y_axis %YAxis{min: 0, max: 2500}
@@ -11,7 +20,7 @@ defmodule LiveChart.BaseChartTest do
     %BaseDatum{name: "Bar Four", values: [750]},
     %BaseDatum{name: "Bar Five", values: [1750]}
   ]
-  @dataset %BaseColumnDataset{data: @data, axes: @axes}
+  @dataset %ColumnChart.Dataset{data: @data, axes: @axes}
   @chart %BaseChart{title: "title", dataset: @dataset}
 
   describe "title/1" do
@@ -82,6 +91,7 @@ defmodule LiveChart.BaseChartTest do
           stop_color: "#1100FF"
         }
       }
+
       colors = Map.put(expected_gradient_colors, :red, "#FF0000")
       chart = %BaseChart{title: "title", dataset: @dataset, colors: colors}
 
