@@ -1,5 +1,5 @@
 defmodule LiveChart.BaseChartTest do
-  alias LiveChart.{Chart, ColumnChart, BaseAxes, YAxis, BaseChart, BaseColumnDataset, BaseDatum}
+  alias LiveChart.{Chart, ColumnChart, Gradient, BaseAxes, YAxis, BaseChart, BaseColumnDataset, BaseDatum}
   use ExUnit.Case
 
   @y_axis %YAxis{min: 0, max: 2500}
@@ -71,6 +71,21 @@ defmodule LiveChart.BaseChartTest do
       expected_column_heights = [30.0, 60.0, 100.0, 30.0, 70.0]
 
       assert column_heights == expected_column_heights
+    end
+  end
+
+  describe "gradient_colors/1" do
+    test "returns only gradient colors" do
+      expected_gradient_colors = %{
+        blue_gradient: %Gradient{
+          start_color: "#0011FF",
+          stop_color: "#1100FF"
+        }
+      }
+      colors = Map.put(expected_gradient_colors, :red, "#FF0000")
+      chart = %BaseChart{title: "title", dataset: @dataset, colors: colors}
+
+      assert Chart.gradient_colors(chart) == expected_gradient_colors
     end
   end
 end

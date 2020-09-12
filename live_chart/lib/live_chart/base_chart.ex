@@ -4,16 +4,36 @@ defmodule LiveChart.BaseChart do
   """
   alias __MODULE__
 
-  defstruct [:title, :dataset]
+  defstruct [:title, :colors, :dataset]
+
+  @typep color_name() :: atom()
 
   @type t() :: %__MODULE__{
-          title: String.t()
+          title: String.t(),
+          colors: %{color_name() => String.t() | Gradient.t()},
+          dataset: BaseColumnDataset.t()
         }
 
   defimpl LiveChart.Chart, for: __MODULE__ do
-    alias LiveChart.BaseChart
+    alias LiveChart.{BaseChart, Gradient}
     def title(%BaseChart{title: nil}), do: ""
     def title(%BaseChart{title: title}), do: title
+
+    def colors(%BaseChart{colors: nil}), do: {}
+    def colors(%BaseChart{colors: colors}), do: colors
+
+    def gradient_colors(%BaseChart{colors: nil}), do: %{}
+
+    def gradient_colors(%BaseChart{colors: colors}) do
+      colors
+      |> Enum.filter(fn {_key, value} ->
+        case value do
+          %Gradient{} -> true
+          _ -> false
+        end
+      end)
+      |> Map.new()
+    end
   end
 
   defimpl LiveChart.ColumnChart, for: __MODULE__ do
@@ -38,7 +58,8 @@ defmodule LiveChart.BaseChart do
           offset: offset,
           bar_offset: offset + margin,
           bar_width: width / 2.0,
-          column_height: column_height
+          column_height: column_height,
+          fill_color: datum.fill_color
         }
       end)
     end
@@ -62,5 +83,5 @@ defmodule LiveChart.BaseAxes do
 end
 
 defmodule LiveChart.BaseDatum do
-  defstruct [:name, :color, :values]
+  defstruct [:name, :fill_color, :values]
 end

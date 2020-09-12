@@ -1,38 +1,45 @@
 defmodule DemoWeb.PageLive do
   use DemoWeb, :live_view
 
-  alias LiveChart.{BaseAxes, BaseChart, BaseColumnDataset, BaseDatum, YAxis}
+  alias LiveChart.{BaseAxes, BaseChart, BaseColumnDataset, BaseDatum, Gradient, YAxis}
 
   @impl true
   def mount(_params, _session, socket) do
     column_chart = %BaseChart{
       title: "Umbrellas per Neighborhood",
+      colors: %{
+        blue: "#0000FF",
+        rose_gradient: %Gradient{
+          start_color: "#642B73",
+          stop_color: "#C6426E"
+        }
+      },
       dataset: %BaseColumnDataset{
         axes: %BaseAxes{y: %YAxis{max: 2500, min: 0}},
         data: [
           %BaseDatum{
             name: "Landen",
-            color: "Blue",
+            fill_color: :blue,
             values: [750.0]
           },
           %BaseDatum{
             name: "Oakley",
-            color: "Blue",
+            fill_color: :blue,
             values: [1500.0]
           },
           %BaseDatum{
             name: "Downtown",
-            color: "Blue",
+            fill_color: :rose_gradient,
             values: [2500.0]
           },
           %BaseDatum{
             name: "Florence",
-            color: "Blue",
+            fill_color: :blue,
             values: [750.0]
           },
           %BaseDatum{
             name: "Erlanger",
-            color: "Red",
+            fill_color: :blue,
             values: [1750.0]
           }
         ]

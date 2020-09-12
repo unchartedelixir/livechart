@@ -17,7 +17,16 @@
           <line x1="0%" y1="80%" x2="100%" y2="80%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
           <line x1="0%" y1="0%" x2="100%" y2="0%" stroke="#efefef" stroke-width="4px" stroke-linecap="round" />
         </g>
-        <%= render "_column_chart_graph.html", columns: @columns %>
+        <%= render "_column_chart_graph.html", chart: @chart, columns: @columns %>
+      </svg>
+      <defs>
+        <%= for {name, %LiveChart.Gradient{start_color: start_color, stop_color: stop_color}} <- Chart.gradient_colors(@chart) do %>
+          <linearGradient id="<%= Atom.to_string(name) %>">
+            <stop stop-color="<%= start_color %>" offset="0%"/>
+            <stop stop-color="<%= stop_color %>" offset="100%"/>
+          </linearGradient>
+        <% end %>
+      </defs>
     </svg>
   </figure>
 </div>
