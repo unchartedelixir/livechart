@@ -3,6 +3,10 @@ defmodule LiveChartWeb.LiveColumnComponent do
 
   alias LiveChart.Chart
 
+  def update(assigns, socket) do
+    {:ok, assign(socket, chart: assigns.chart, columns: LiveChart.ColumnChart.columns(assigns.chart))}
+  end
+
   def render(assigns) do
     Phoenix.View.render(LiveChartWeb.ComponentView, "live_column.html", assigns)
   end

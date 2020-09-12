@@ -1,0 +1,9 @@
+<svg id="title-x-labels" class="columns__x-labels" width="92%" height="8%" y="92%" x="9.5%">
+  <%= for %Column{label: label, width: width, offset: offset} <- @columns do %>
+    <svg x="<%= offset %>%" y="0%" height="auto" width="<%= width %>%">
+      <svg width="100%" height="100%">
+        <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle"><%= label %></text>
+      </svg>
+    </svg>
+  <% end %>
+</svg>

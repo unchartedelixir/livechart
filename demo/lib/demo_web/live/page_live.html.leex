@@ -7,6 +7,6 @@
     <%= live_component @socket, LiveChartWeb.LivePieComponent, chart: %LiveChart.BaseChart{title: "My awesome chart"} %>
   </div>
   <div class="card">
-    <%= live_component @socket, LiveChartWeb.LiveColumnComponent, chart: %LiveChart.BaseChart{title: "My awesome chart"} %>
+    <%= live_component @socket, LiveChartWeb.LiveColumnComponent, chart: @column_chart %>
   </div>
 </div>
