@@ -2,7 +2,7 @@ defmodule LiveChartWeb.LivePieComponentTest do
   alias LiveChartWeb.LivePieComponent
   import Phoenix.LiveViewTest
   use ExUnit.Case
-  @endpoint LiveChart.Endpoint
+  @endpoint Endpoint
   @base_chart %LiveChart.BaseChart{title: "this title"}
 
   describe "LivePie" do

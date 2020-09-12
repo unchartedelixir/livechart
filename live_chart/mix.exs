@@ -7,7 +7,7 @@ defmodule LiveChart.MixProject do
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix] ++ Mix.compilers(),
+      compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -31,9 +31,7 @@ defmodule LiveChart.MixProject do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [
-      {:phoenix_live_view, "~> 0.14.4"}
-    ]
+    []
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
@@ -43,8 +41,6 @@ defmodule LiveChart.MixProject do
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
-    [
-      setup: ["deps.get", "cmd npm install --prefix assets"]
-    ]
+    []
   end
 end

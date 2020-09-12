@@ -1,13 +1,13 @@
-defmodule Demo.MixProject do
+defmodule LiveChartWeb.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :demo,
+      app: :live_chart_web,
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -19,8 +19,7 @@ defmodule Demo.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Demo.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger]
     ]
   end
 
@@ -33,18 +32,9 @@ defmodule Demo.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.4"},
-      {:phoenix_live_view, "~> 0.14.4"},
-      {:floki, ">= 0.0.0", only: :test},
-      {:phoenix_html, "~> 2.11"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_dashboard, "~> 0.2"},
-      {:telemetry_metrics, "~> 0.4"},
-      {:telemetry_poller, "~> 0.4"},
-      {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"},
-      {:live_chart_web, path: "../live_chart_web"}
+      {:live_chart, path: "../live_chart"},
+      {:phoenix_live_view, "~> 0.14.4"}
     ]
   end
 
@@ -55,8 +45,6 @@ defmodule Demo.MixProject do
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
-    [
-      setup: ["deps.get", "cmd npm install --prefix assets"]
-    ]
+    []
   end
 end

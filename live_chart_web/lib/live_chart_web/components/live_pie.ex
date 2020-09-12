@@ -1,5 +1,4 @@
 defmodule LiveChartWeb.LivePieComponent do
-  alias LiveChart.Chart
   use Phoenix.LiveComponent
 
   def render(assigns) do

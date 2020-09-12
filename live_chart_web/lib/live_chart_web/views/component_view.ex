@@ -6,6 +6,6 @@ defmodule LiveChartWeb.ComponentView do
 
   use Phoenix.HTML
 
-  alias LiveChart.{Chart, ColumnChart}
+  alias LiveChart.Chart
   alias LiveChart.ColumnChart.Column
 end
