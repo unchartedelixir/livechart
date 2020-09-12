@@ -4,21 +4,21 @@
       <title id="chartTitle"><%= Chart.title(@chart) %></title>
       <desc id="chartDeesc">watch my data come alive</desc>
 
-      
+
       <%= render "_y_axis.html" %>
       <%= render "_x_axis.html", columns: @columns %>
 
       <svg id="title-graph" class="columns__graph" width="90%" height="92%" x="10%" y="0">
         <g id="chart-lines" class="columns__lines">
-          <line x1="0%" y1="0%" x2="0%" y2="100%" stroke="#c0c0c0" stroke-width="2px" stroke-linecap="round" />
-          <line x1="0%" y1="100%" x2="100%" y2="100%" stroke="#c0c0c0" stroke-width="4px" stroke-linecap="round" />
-          <line x1="0%" y1="20%" x2="100%" y2="20%" stroke="#c0c0c0" stroke-width="2px" stroke-linecap="round" />
-          <line x1="0%" y1="40%" x2="100%" y2="40%" stroke="#c0c0c0" stroke-width="2px" stroke-linecap="round" />
-          <line x1="0%" y1="60%" x2="100%" y2="60%" stroke="#c0c0c0" stroke-width="2px" stroke-linecap="round" />
-          <line x1="0%" y1="80%" x2="100%" y2="80%" stroke="#c0c0c0" stroke-width="2px" stroke-linecap="round" />
-          <line x1="0%" y1="0%" x2="100%" y2="0%" stroke="#c0c0c0" stroke-width="4px" stroke-linecap="round" />
+          <line x1="0%" y1="0%" x2="0%" y2="100%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
+          <line x1="0%" y1="100%" x2="100%" y2="100%" stroke="#efefef" stroke-width="4px" stroke-linecap="round" />
+          <line x1="0%" y1="20%" x2="100%" y2="20%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
+          <line x1="0%" y1="40%" x2="100%" y2="40%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
+          <line x1="0%" y1="60%" x2="100%" y2="60%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
+          <line x1="0%" y1="80%" x2="100%" y2="80%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
+          <line x1="0%" y1="0%" x2="100%" y2="0%" stroke="#efefef" stroke-width="4px" stroke-linecap="round" />
         </g>
         <%= render "_column_chart_graph.html", columns: @columns %>
     </svg>
   </figure>
-</div
+</div>

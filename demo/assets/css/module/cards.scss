@@ -6,8 +6,15 @@
   background-color: $color-1;
   box-shadow: 0px 0px 75px rgba(0, 0, 0, 0.09);
 
-  &__grid {
+  &__grid-1 {
     display: grid;
     grid-template-columns: 1fr 1.7fr 1fr;
+    align-items: center;
+  }
+
+  &__grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
   }
 }
