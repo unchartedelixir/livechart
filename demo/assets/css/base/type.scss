@@ -9,6 +9,11 @@ h1 {
   background: -webkit-linear-gradient($color-5, $color-6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  span.ex {
+    @include fluid-type(0.3em, 0.4em);
+    vertical-align: middle;
+    font-weight: 500;
+  }
 }
 
 h2 {
