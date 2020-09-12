@@ -29,7 +29,13 @@ defmodule LiveChart.BaseChart do
       |> Enum.with_index()
       |> Enum.map(fn {datum, index} ->
         offset = index * width
-        %Column{label: datum.name, width: width, offset: offset}
+        %Column{
+          label: datum.name,
+          width: width,
+          offset: offset,
+          bar_offset: offset + margin,
+          bar_width: width / 2.0
+        }
       end)
     end
   end

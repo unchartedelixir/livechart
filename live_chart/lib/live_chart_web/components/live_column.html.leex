@@ -28,7 +28,7 @@
       </svg>
 
       <svg id="title-x-labels" class="columns__x-labels" width="92%" height="8%" y="92%" x="9.5%">
-        <%= for %Column{label: label, width: width, offset: offset} <- LiveChart.ColumnChart.columns(@chart) do %>
+        <%= for %Column{label: label, width: width, offset: offset} <- @columns do %>
           <svg x="<%= offset %>%" y="0%" height="auto" width="<%= width %>%">
             <svg width="100%" height="100%">
               <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle"><%= label %></text>
@@ -49,25 +49,11 @@
         </g>
         <svg id"title-results" class="columns__results" width="100%" height="96%" x="0%" y="2%">
           <g>
-            <rect id="column-one" class="column" width="10%" height="30%" x="5%" y="70%" rx="10" ry="10" fill="url(#roseGradient)">
-              <animate attributeName="height" values="0;30%" dur="1s" repeatCount="freeze" />
-              <animate attributeName="y" values="100%;70%" dur="1s" repeatCount="freeze" />
-            </rect>
-            <rect id="column-two" class="column" width="10%" height="60%" x="25%" y="40%" rx="10" ry="10" fill="url(#roseGradient)">
-              <animate attributeName="height" values="0;60%" dur="1s" repeatCount="freeze" />
-              <animate attributeName="y" values="100%;40%" dur="1s" repeatCount="freeze" />
-            </rect>
-            <rect id="column-three" class="column" width="10%" height="100%" x="45%" y="0%" rx="10" ry="10" fill="url(#roseGradient)">
-              <animate attributeName="height" values="0;100%" dur="1s" repeatCount="freeze" />
-              <animate attributeName="y" values="100%;0%" dur="1s" repeatCount="freeze" />
-            </rect>
-            <rect id="column-four" class="column" width="10%" height="35%" x="65%" y="65%" rx="10" ry="10" fill="url(#roseGradient)">
-              <animate attributeName="height" values="0;35%" dur="1s" repeatCount="freeze" />
-              <animate attributeName="y" values="100%;65%" dur="1s" repeatCount="freeze" />
-            </rect>
-            <rect id="column-five" class="column" width="10%" height="75%" x="85%" y="25%" rx="10" ry="10" fill="url(#roseGradient)">
-              <animate attributeName="height" values="0;75%" dur="1s" repeatCount="freeze" />
-              <animate attributeName="y" values="100%;25%" dur="1s" repeatCount="freeze" />
-            </rect>
+            <%= for %Column{label: label, bar_width: bar_width, bar_offset: bar_offset} <- @columns do %>
+              <rect id="<%= label %>>" class="column" width="<%= bar_width %>%" height="30%" x="<%= bar_offset %>%" y="70%" rx="10" ry="10" fill="url(#roseGradient)">
+                <animate attributeName="height" values="0;30%" dur="1s" repeatCount="freeze" />
+                <animate attributeName="y" values="100%;70%" dur="1s" repeatCount="freeze" />
+              </rect>
+            <% end %>
           </g>
         </svg>

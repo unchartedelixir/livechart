@@ -43,11 +43,25 @@ defmodule LiveChart.BaseChartTest do
       assert Enum.all?(column_widths, fn(column_width) -> column_width == expected_column_width end)
     end
 
+    test "returns bar widths as half of column widths" do
+      bar_widths = Enum.map(ColumnChart.columns(@chart), & &1.bar_width)
+      expected_bar_width = 10.0
+
+      assert Enum.all?(bar_widths, fn(bar_width) -> bar_width == expected_bar_width end)
+    end
+
     test "returns correct column offsets" do
       column_offsets = Enum.map(ColumnChart.columns(@chart), & &1.offset)
       expected_column_offsets = [0.0, 20.0, 40.0, 60.0, 80.0]
 
       assert column_offsets == expected_column_offsets
+    end
+
+    test "returns bar_offsets with margins taken into account" do
+      bar_offsets = Enum.map(ColumnChart.columns(@chart), & &1.bar_offset)
+      expected_bar_offsets = [5.0, 25.0, 45.0, 65.0, 85.0]
+
+      assert bar_offsets == expected_bar_offsets
     end
   end
 end
