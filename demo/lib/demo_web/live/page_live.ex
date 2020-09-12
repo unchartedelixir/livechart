@@ -1,7 +1,9 @@
 defmodule DemoWeb.PageLive do
   use DemoWeb, :live_view
 
-  alias LiveChart.{BaseAxes, BaseChart, BaseColumnDataset, BaseDatum, Gradient, YAxis}
+  alias LiveChart.{BaseChart, BaseDatum, Gradient}
+  alias LiveChart.Axes.{BaseAxes, YAxis}
+  alias LiveChart.ColumnChart
 
   @impl true
   def mount(_params, _session, socket) do
@@ -14,7 +16,7 @@ defmodule DemoWeb.PageLive do
           stop_color: "#C6426E"
         }
       },
-      dataset: %BaseColumnDataset{
+      dataset: %ColumnChart.Dataset{
         axes: %BaseAxes{
           y: %YAxis{
             max: 2500,
