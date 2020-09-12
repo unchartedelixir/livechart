@@ -6,6 +6,6 @@ defmodule LiveChart.ColumnChart.Dataset do
 
   @type t() :: %__MODULE__{
           axes: LiveChart.BaseAxes.t(),
-          data: LiveChart.ColumnChart.Dataset.t()
+          data: list(LiveChart.BaseDatum.t())
         }
 end
