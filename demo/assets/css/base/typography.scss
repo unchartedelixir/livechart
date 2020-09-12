@@ -1,0 +1,50 @@
+body {
+  font-size: 14px;
+  font-family: $font-prime;
+}
+
+h1, h2, h3, h4, p {
+  margin-bottom: $pad-xs;
+}
+
+h1, h2 {
+  font-weight: 200;
+}
+
+h1 {
+  @include fluid-type(3em, 3.5em);
+}
+
+h2 {
+  @include fluid-type(1.4em, 1.6em);
+  font-weight: 300;
+}
+
+h3 {
+  @include fluid-type(1em, 1.1em);
+  font-weight: 600;
+}
+
+b {
+  font-weight: 600;
+}
+
+strong {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: $color-11;
+}
+
+p {
+  @include fluid-type(0.8em, 1em);
+  line-height: 1.4;
+}
+
+.subtitle {
+  color: $color-10;
+}
+
+.caption {
+  font-size: 0.75rem;
+  font-weight: 300;
+}

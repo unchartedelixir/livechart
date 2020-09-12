@@ -1,0 +1,30 @@
+//SCREEN SIZES
+$screen-mobile: 48em;
+$screen-tablet: 62em;
+$screen-desktop: 75em;
+
+//SPACING
+$pad: 2rem;
+$pad-xxs: calc(#{$pad}/8);
+$pad-xs: calc(#{$pad}/4);
+$pad-sm: calc(#{$pad}/2);
+$pad-lg: calc(#{$pad} * 2);
+$pad-xlg: calc(#{$pad} * 2.5);
+
+
+//COLORS
+$color-1: #FFFFFF;
+$color-2: #fbfbfb;
+$color-3: #E6ECF0;
+$color-4: #1f2a35;
+$color-5: #ff948b;
+$color-6: #ff1379;
+$color-7: #642B73;
+$color-8: #C6426E;
+$color-9: #36D1DC;
+$color-10: #5B86E5;
+
+//FONTS
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+$font-prime: 'Inter', sans-serif;
