@@ -10,7 +10,9 @@ defmodule LiveChart.BaseChart do
           title: String.t()
         }
 
-  @spec title(t()) :: String.t()
-  def title(%BaseChart{title: nil}), do: ""
-  def title(%BaseChart{title: title}), do: title
+  defimpl LiveChart.Chart, for: __MODULE__ do
+    alias LiveChart.BaseChart
+    def title(%BaseChart{title: nil}), do: ""
+    def title(%BaseChart{title: title}), do: title
+  end
 end
