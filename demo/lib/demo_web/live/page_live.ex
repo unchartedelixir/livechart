@@ -1,9 +1,31 @@
 defmodule DemoWeb.PageLive do
   use DemoWeb, :live_view
 
+  alias LiveChart.{BaseAxes, BaseChart, BaseColumnDataset, BaseDatum}
+
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, query: "", results: %{})}
+    column_chart =
+      %BaseChart{
+        title: "Umbrellas per Neighborhood",
+        dataset: %BaseColumnDataset{
+          axes: %BaseAxes{},
+          data: [
+            %BaseDatum{
+              name: "Landen",
+              color: "Blue",
+              values: [5.0]
+            },
+            %BaseDatum{
+              name: "Erlanger",
+              color: "Red",
+              values: [500.6]
+            }
+          ]
+        }
+      }
+
+    {:ok, assign(socket, column_chart: column_chart, query: "", results: %{})}
   end
 
   @impl true
