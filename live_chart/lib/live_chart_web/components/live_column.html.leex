@@ -4,38 +4,9 @@
       <title id="chartTitle"><%= Chart.title(@chart) %></title>
       <desc id="chartDeesc">watch my data come alive</desc>
 
-      <svg id="title-y-labels" class="columns__y-labels" width="8%" height="100%" y="0" x="0">
-        <svg x="0" y="16%" height="20px" width="100%">
-          <svg width="100%" height="100%">
-            <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">2000</text>
-          </svg>
-        </svg>
-        <svg x="0" y="35%" height="20px" width="100%">
-          <svg width="100%" height="100%">
-            <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">1500</text>
-          </svg>
-        </svg>
-        <svg x="0" y="53%" height="20px" width="100%">
-          <svg width="100%" height="100%">
-            <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">1000</text>
-          </svg>
-        </svg>
-        <svg x="0" y="72%" height="20px" width="100%">
-          <svg width="100%" height="100%">
-            <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">500</text>
-          </svg>
-        </svg>
-      </svg>
-
-      <svg id="title-x-labels" class="columns__x-labels" width="92%" height="8%" y="92%" x="9.5%">
-        <%= for %Column{label: label, width: width, offset: offset} <- @columns do %>
-          <svg x="<%= offset %>%" y="0%" height="auto" width="<%= width %>%">
-            <svg width="100%" height="100%">
-              <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle"><%= label %></text>
-            </svg>
-          </svg>
-        <% end %>
-      </svg>
+      
+      <%= render "_y_axis.html" %>
+      <%= render "_x_axis.html", columns: @columns %>
 
       <svg id="title-graph" class="columns__graph" width="90%" height="92%" x="10%" y="0">
         <g id="chart-lines" class="columns__lines">
@@ -47,21 +18,7 @@
           <line x1="0%" y1="80%" x2="100%" y2="80%" stroke="#c0c0c0" stroke-width="2px" stroke-linecap="round" />
           <line x1="0%" y1="0%" x2="100%" y2="0%" stroke="#c0c0c0" stroke-width="4px" stroke-linecap="round" />
         </g>
-        <svg id"title-results" class="columns__results" width="100%" height="96%" x="0%" y="2%">
-          <g>
-            <%= for %Column{label: label, bar_width: bar_width, bar_offset: bar_offset, column_height: column_height} <- @columns do %>
-              <rect id="<%= label %>" 
-                    class="column" 
-                    width="<%= bar_width %>%" 
-                    height="<%= column_height %>%" 
-                    x="<%= bar_offset %>%" 
-                    y="<%= 100 - column_height %>%" 
-                    rx="10" 
-                    ry="10" 
-                    fill="url(#roseGradient)">
-                <animate attributeName="height" values="0;30%" dur="1s" repeatCount="freeze" />
-                <animate attributeName="y" values="100%;70%" dur="1s" repeatCount="freeze" />
-              </rect>
-            <% end %>
-          </g>
-        </svg>
+        <%= render "_column_chart_graph.html", columns: @columns %>
+    </svg>
+  </figure>
+</div
