@@ -1,8 +1,8 @@
 <div data-testid="lc-live-column-component">
   <figure>
-    <svg class="columns__chart" aria-labelledby="chartTitle chartDeesc" role="group" width="100%" height="100%" viewBox="0 0 700 400">
+    <svg class="columns__chart" aria-labelledby="chartTitle chartDesc" role="group" width="100%" height="100%" viewBox="0 0 700 400">
       <title id="chartTitle"><%= Chart.title(@chart) %></title>
-      <desc id="chartDeesc">watch my data come alive</desc>
+      <desc id="chartDesc">watch my data come alive</desc>
 
       <%= render "_y_axis.html", grid_lines: @grid_lines, offsetter: @grid_line_offsetter %>
       <%= render "_x_axis.html", columns: @columns %>
