@@ -19,10 +19,10 @@
         </circle>
         <circle class="counter__ring" cx="21" cy="21" r="16" fill="transparent" stroke="#e2e2e2" stroke-width="5"></circle>
       <svg class="counter__label" width="100%" height="100%" y="0" x="0">
-          <text x="50%" y="50%" fill="url(#blueGradient)" font-size="10px" font-weight="100" font-family="sans-serif" alignment-baseline="middle" text-anchor="middle">85%</text>
+        <text x="50%" y="50%" fill="url(#blueGradient)" font-size="10px" font-weight="100" font-family="sans-serif" alignment-baseline="middle" text-anchor="middle">85%</text>
         <text x="50%" y="62%" fill="url(#roseGradient)" font-size="3px" font-weight="300" font-family="sans-serif" alignment-baseline="middle" text-anchor="middle">of our data</text>
        </svg>
-        <circle class="counter__value" cx="21" cy="21" r="16" fill="transparent" stroke=" url(#roseGradient) " stroke-width="5" stroke-dasharray="85 15" stroke-dashoffset="25" stroke-linecap="round"></circle>
+        <circle class="counter__value" cx="21" cy="21" r="16" fill="transparent" stroke="url(#roseGradient)" style="transition: all 0.5s ease" stroke-width="5" stroke-dasharray="85 15" stroke-dashoffset="25" stroke-linecap="round"></circle>
       </g>
     </svg>
     </figure>
@@ -31,29 +31,29 @@
 <section class="card__grid-2">
   <div class="card">
     <figure>
-      <svg class="bar" aria-labelledby="chartTitle uniqueChartDeesc" role="group" width="100%" height="100%" viewBox="0 0 700 400">
-        <title id="uniqueChartTitle">A Bar Chart with LiveView</title>
-        <desc id="uniqueChartDeesc">watch my data come alive</desc>
+      <svg class="bar" aria-labelledby="chartTitle chartDesc" role="group" width="100%" height="100%" viewBox="0 0 700 400">
+        <title id="chartTitle">A Bar Chart with LiveView</title>
+        <desc id="chartDesc">watch my data come alive</desc>
 
         <svg id="title-y-labels" class="bar__y-labels" width="8%" height="100%" y="0" x="0">
           <svg x="0" y="16%" height="20px" width="100%">
              <svg width="100%" height="100%">
-              <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">2000</text>
+              <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">2000</text>
             </svg>
           </svg>
           <svg x="0" y="35%" height="20px" width="100%">
              <svg width="100%" height="100%">
-              <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">1500</text>
+              <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">1500</text>
             </svg>
           </svg>
           <svg x="0" y="53%" height="20px" width="100%">
              <svg width="100%" height="100%">
-              <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">1000</text>
+              <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">1000</text>
             </svg>
           </svg>
           <svg x="0" y="72%" height="20px" width="100%">
              <svg width="100%" height="100%">
-              <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">500</text>
+              <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">500</text>
             </svg>
           </svg>
          </svg>
@@ -61,22 +61,22 @@
          <svg id="title-x-labels" class="bar__x-labels" width="92%" height="8%" y="92%" x="9.5%">
           <svg x="0%" y="0%" height="auto" width="40%">
              <svg width="100%" height="100%">
-              <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">week one</text>
+              <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">week one</text>
             </svg>
           </svg>
            <svg x="20%" y="0%" height="auto" width="40%">
              <svg width="100%" height="100%">
-              <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">week two</text>
+              <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">week two</text>
             </svg>
           </svg>
            <svg x="40%" y="0%" height="auto" width="40%">
              <svg width="100%" height="100%">
-              <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">week three</text>
+              <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">week three</text>
             </svg>
           </svg>
            <svg x="60%" y="0%" height="auto" width="40%">
              <svg width="100%" height="100%">
-              <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">week four</text>
+              <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">week four</text>
             </svg>
           </svg>
          </svg>
@@ -98,7 +98,7 @@
           </g>
           <svg id"title-results" class="bar__results" width="100%" height="100%" x="0%" y="0%">
             <g>
-              <polyline fill="url(#grad)" stroke="url(#blueGradient)" stroke-width="0" points="
+              <polyline fill="url(#grad)" stroke="url(#blueGradient)" style="transition: all 1s ease;" stroke-width="0" points="
               0,300
               0,0
               150,100
@@ -109,7 +109,7 @@
               850,350
               "></polyline>
 
-              <polyline fill="none" stroke="url(#blueGradient)" stroke-width="2" points="
+              <polyline fill="none" stroke="url(#blueGradient)" style="transition: all 1s ease;" stroke-width="2" points="
               0,0
               150,100
               250,80
@@ -153,6 +153,8 @@
   <div class="card">
     <figure>
       <svg class="chart--hor-bar" aria-labelledby="title desc" role="img" width="100%" height="480px">
+        <title id="chartTitle">A Bar Chart with LiveView</title>
+        <desc id="chartDesc">watch my data come alive</desc>
 
         <defs>
           <linearGradient id="redGradient">
@@ -224,19 +226,19 @@
           </g>
           <svg class="" width="96%" height="auto" x="2%" y="0">
           <g class="bar">
-            <rect id="bar-one" width="30%" height="10%" x="0%" y="5%" rx="10" ry="10" fill="url(#roseGradient)"></rect>
+            <rect id="bar-one" width="30%" height="10%" x="0%" y="5%" rx="10" ry="10" fill="url(#roseGradient)" style="transition: all 1s ease;"><animate attributeName="width" values="0%;30%" dur="1s" repeatCount="freeze" /></rect>
           </g>
           <g class="bar">
-            <rect id="bar-two" width="75%" height="10%" x="0%" y="25%"  rx="10" ry="10" fill="url(#roseGradient)"></rect>
+            <rect id="bar-two" width="75%" height="10%" x="0%" y="25%"  rx="10" ry="10" fill="url(#roseGradient)" style="transition: all 1s ease;"><animate attributeName="width" values="0%;75%" dur="1s" repeatCount="freeze" /></rect>
           </g>
           <g class="bar">
-            <rect id="bar-three" width="52%" height="10%" x="0%" y="45%" rx="10" ry="10" fill="url(#roseGradient)"></rect>
+            <rect id="bar-three" width="52%" height="10%" x="0%" y="45%" rx="10" ry="10" fill="url(#roseGradient)" style="transition: all 1s ease;"><animate attributeName="width" values="0%;52%" dur="1s" repeatCount="freeze" /></rect>
           </g>
           <g class="bar">
-            <rect id="bar-four" width="80%" height="10%" x="0%" y="65%" rx="10" ry="10" fill="url(#roseGradient"></rect>
+            <rect id="bar-four" width="80%" height="10%" x="0%" y="65%" rx="10" ry="10" fill="url(#roseGradient" style="transition: all 1s ease;"><animate attributeName="width" values="0%;80%" dur="1s" repeatCount="freeze" /></rect>
           </g>
           <g class="bar">
-            <rect id="bar-five" width="100%" height="10%" x="0%" y="85%" rx="10" ry="10" fill="url(#roseGradient)"></rect>
+            <rect id="bar-five" width="100%" height="10%" x="0%" y="85%" rx="10" ry="10" fill="url(#roseGradient)" style="transition: all 1s ease;"><animate attributeName="width" values="0%;100%" dur="1s" repeatCount="freeze" /></rect>
           </g>
           </svg>
         </svg>

@@ -8,13 +8,21 @@
 
   &__grid-1 {
     display: grid;
-    grid-template-columns: 1fr 1.7fr 1fr;
+    grid-template-columns: 1fr;
     align-items: center;
+
+    @media (min-width: $screen-desktop) {
+      grid-template-columns: 1fr 1.7fr 1fr;
+    }
   }
 
   &__grid-2 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     align-items: center;
+
+    @media (min-width: $screen-desktop) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
