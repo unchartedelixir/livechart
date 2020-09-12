@@ -18,7 +18,12 @@ defmodule LiveChart.BaseChart do
 
   defimpl LiveChart.ColumnChart, for: __MODULE__ do
     alias LiveChart.BaseChart
-    def column_names(%BaseChart{dataset: %{data: data}}), do: Enum.map(data, fn(datum) -> datum.name end)
+    alias LiveChart.ColumnChart.Column
+
+    def columns(%BaseChart{dataset: nil}), do: []
+
+    def columns(%BaseChart{dataset: %{data: data}}),
+      do: Enum.map(data, fn datum -> %Column{label: datum.name} end)
   end
 end
 
@@ -27,7 +32,7 @@ defmodule LiveChart.BaseColumnDataset do
 end
 
 defmodule LiveChart.BaseAxes do
-  defstruct [show_gridlines: true]
+  defstruct show_gridlines: true
 end
 
 defmodule LiveChart.BaseDatum do

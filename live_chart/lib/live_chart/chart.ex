@@ -3,5 +3,5 @@ defprotocol LiveChart.Chart do
 end
 
 defprotocol LiveChart.ColumnChart do
-  def column_names(chart)
+  def columns(chart)
 end

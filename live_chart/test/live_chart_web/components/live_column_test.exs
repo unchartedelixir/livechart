@@ -1,9 +1,10 @@
 defmodule LiveChartWeb.LiveColumnComponentTest do
+  alias LiveChart.{Endpoint, BaseChart, BaseColumnDataset, BaseDatum}
   alias LiveChartWeb.LiveColumnComponent
   import Phoenix.LiveViewTest
   use ExUnit.Case
-  @endpoint LiveChart.Endpoint
-  @base_chart %LiveChart.BaseChart{title: "this title"}
+  @endpoint Endpoint
+  @base_chart %BaseChart{title: "this title"}
 
   describe "LiveColumnComponent" do
     test "renders" do
