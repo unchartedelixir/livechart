@@ -32,8 +32,22 @@ defmodule LiveChart.BaseChartTest do
       labels = Enum.map(@data, & &1.name)
 
       assert columns
-             |> Enum.zip(labels)
-             |> Enum.all?(fn {actual, expected} -> actual == expected end)
+      |> Enum.zip(labels)
+      |> Enum.all?(fn {actual, expected} -> actual == expected end)
+    end
+
+    test "returns evenly distributed column widths" do
+      column_widths = Enum.map(ColumnChart.columns(@chart), & &1.width)
+      expected_column_width = 20.0
+
+      assert Enum.all?(column_widths, fn(column_width) -> column_width == expected_column_width end)
+    end
+
+    test "returns correct column offsets" do
+      column_offsets = Enum.map(ColumnChart.columns(@chart), & &1.offset)
+      expected_column_offsets = [0.0, 20.0, 40.0, 60.0, 80.0]
+
+      assert column_offsets == expected_column_offsets
     end
   end
 end

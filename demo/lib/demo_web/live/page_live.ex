@@ -17,6 +17,21 @@ defmodule DemoWeb.PageLive do
               values: [5.0]
             },
             %BaseDatum{
+              name: "Oakley",
+              color: "Blue",
+              values: [5.0]
+            },
+            %BaseDatum{
+              name: "Downtown",
+              color: "Blue",
+              values: [5.0]
+            },
+            %BaseDatum{
+              name: "Florence",
+              color: "Blue",
+              values: [5.0]
+            },
+            %BaseDatum{
               name: "Erlanger",
               color: "Red",
               values: [500.6]
@@ -24,6 +39,8 @@ defmodule DemoWeb.PageLive do
           ]
         }
       }
+
+    IO.inspect LiveChart.ColumnChart.columns(column_chart)
 
     {:ok, assign(socket, column_chart: column_chart, query: "", results: %{})}
   end

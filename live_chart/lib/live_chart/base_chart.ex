@@ -22,8 +22,16 @@ defmodule LiveChart.BaseChart do
 
     def columns(%BaseChart{dataset: nil}), do: []
 
-    def columns(%BaseChart{dataset: %{data: data}}),
-      do: Enum.map(data, fn datum -> %Column{label: datum.name} end)
+    def columns(%BaseChart{dataset: %{data: data}}) do
+      width = 100.0 / Enum.count(data)
+      margin = width / 4.0
+      data
+      |> Enum.with_index()
+      |> Enum.map(fn {datum, index} ->
+        offset = index * width
+        %Column{label: datum.name, width: width, offset: offset}
+      end)
+    end
   end
 end
 
