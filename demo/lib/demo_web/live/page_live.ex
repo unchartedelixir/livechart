@@ -15,7 +15,18 @@ defmodule DemoWeb.PageLive do
         }
       },
       dataset: %BaseColumnDataset{
-        axes: %BaseAxes{y: %YAxis{max: 2500, min: 0}},
+        axes: %BaseAxes{
+          y: %YAxis{
+            max: 2500,
+            min: 0,
+            grid_lines: fn {min, max}, step ->
+              min..max
+              |> Enum.take_every(div(max - min, step))
+              |> Enum.sort_by(& &1, &>=/2)
+              |> Enum.drop(1)
+            end
+          }
+        },
         data: [
           %BaseDatum{
             name: "Landen",

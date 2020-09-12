@@ -4,7 +4,7 @@
       <title id="chartTitle"><%= Chart.title(@chart) %></title>
       <desc id="chartDeesc">watch my data come alive</desc>
 
-      <%= render "_y_axis.html" %>
+      <%= render "_y_axis.html", axis: @chart.dataset.axes.y %>
       <%= render "_x_axis.html", columns: @columns %>
 
       <svg id="title-graph" class="columns__graph" width="90%" height="92%" x="10%" y="0">

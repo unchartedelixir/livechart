@@ -75,7 +75,7 @@ defmodule LiveChart.ColumnChart.Styles do
 end
 
 defmodule LiveChart.YAxis do
-  defstruct [:min, :max, :step, :label]
+  defstruct [:min, :max, :step, :label, :grid_lines]
 end
 
 defmodule LiveChart.BaseAxes do
