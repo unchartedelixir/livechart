@@ -1,10 +1,13 @@
 .card {
-  display: inline-block;
-  background-color: $color-1;
   box-sizing: border-box;
-  width: 100%;
-  max-width: 400px;
-  padding: $pad;
   margin: $pad;
+  padding: $pad;
   border-radius: 25px;
+  background-color: $color-1;
+  box-shadow: 0px 0px 75px rgba(0, 0, 0, 0.09);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.7fr 1fr;
+  }
 }

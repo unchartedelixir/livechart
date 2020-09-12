@@ -9,7 +9,32 @@
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
-  <body>
+  <body class="body">
+    <div class="body__background">
+      <svg version="1.1" id="background_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 1200 1443.6" style="enable-background:new 0 0 1200 1443.6;" xml:space="preserve">
+       <linearGradient id="redGradient">
+         <stop stop-color="#ff948b" offset="0%"/>
+         <stop stop-color="#ff1379" offset="100%"/>
+       </linearGradient>
+        <style type="text/css">
+        	.st0{fill:none;}
+        	.st1{fill:#99faff;}
+        	.st2{fill:url(#SVGID_1_);stroke:url(#SVGID_2_);stroke-width:0.9975;stroke-miterlimit:10;}
+        </style>
+        <pattern  width="167.9" height="168.6" patternUnits="userSpaceOnUse" id="New_Pattern" viewBox="0 -168.6 167.9 168.6" style="overflow:visible;">
+        	<g>
+        		<rect y="-168.6" class="st0" width="167.9" height="168.6"/>
+        		<polygon class="st1" points="92.9,-85.8 85.4,-85.8 85.3,-93.6 82.3,-93.6 82.4,-85.8 75,-85.8 75,-82.8 82.5,-82.8 82.7,-75
+        			85.7,-75.1 85.5,-82.8 92.9,-82.8 		"/>
+        	</g>
+        </pattern>
+        <pattern  id="SVGID_1_" xlink:href="#New_Pattern" patternTransform="matrix(0.9907 0 0 1.0045 0 182.338)"></pattern>
+        <rect y="0" class="st2" width="1188.8" height="1487.2"/>
+      </svg>
+
+
+    </div>
     <%= @inner_content %>
   </body>
 </html>

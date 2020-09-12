@@ -1,0 +1,18 @@
+body {
+  font-size: 14px;
+  font-family: $font-prime;
+}
+
+h1 {
+  font-size: 9rem;
+  font-weight: 100;
+  background: -webkit-linear-gradient($color-5, $color-6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  font-size: 1.2rem;
+  letter-spacing: 10px;
+  font-weight: 200;
+}

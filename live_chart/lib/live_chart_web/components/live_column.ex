@@ -63,29 +63,29 @@ defmodule LiveChartWeb.LiveColumnComponent do
 
       <svg id="title-graph" class="bar__graph" width="90%" height="92%" x="10%" y="0">
         <g id="chart-lines" class="bar__lines">
-          <line x1="0%" y1="0%" x2="0%" y2="100%" stroke="#0c0c0c" stroke-width="2px" stroke-linecap="round" />
-          <line x1="0%" y1="100%" x2="100%" y2="100%" stroke="#0c0c0c" stroke-width="4px" stroke-linecap="round" />
-          <line x1="0%" y1="20%" x2="100%" y2="20%" stroke="#0c0c0c" stroke-width="2px" stroke-linecap="round" />
-          <line x1="0%" y1="40%" x2="100%" y2="40%" stroke="#0c0c0c" stroke-width="2px" stroke-linecap="round" />
-          <line x1="0%" y1="60%" x2="100%" y2="60%" stroke="#0c0c0c" stroke-width="2px" stroke-linecap="round" />
-          <line x1="0%" y1="80%" x2="100%" y2="80%" stroke="#0c0c0c" stroke-width="2px" stroke-linecap="round" />
-          <line x1="0%" y1="0%" x2="100%" y2="0%" stroke="#0c0c0c" stroke-width="4px" stroke-linecap="round" />
+          <line x1="0%" y1="0%" x2="0%" y2="100%" stroke="#c0c0c0" stroke-width="2px" stroke-linecap="round" />
+          <line x1="0%" y1="100%" x2="100%" y2="100%" stroke="#c0c0c0" stroke-width="4px" stroke-linecap="round" />
+          <line x1="0%" y1="20%" x2="100%" y2="20%" stroke="#c0c0c0" stroke-width="2px" stroke-linecap="round" />
+          <line x1="0%" y1="40%" x2="100%" y2="40%" stroke="#c0c0c0" stroke-width="2px" stroke-linecap="round" />
+          <line x1="0%" y1="60%" x2="100%" y2="60%" stroke="#c0c0c0" stroke-width="2px" stroke-linecap="round" />
+          <line x1="0%" y1="80%" x2="100%" y2="80%" stroke="#c0c0c0" stroke-width="2px" stroke-linecap="round" />
+          <line x1="0%" y1="0%" x2="100%" y2="0%" stroke="#c0c0c0" stroke-width="4px" stroke-linecap="round" />
         </g>
         <svg id"title-results" class="bar__results" width="100%" height="96%" x="0%" y="2%">
           <g>
-          <rect id="bar-one" width="10%" height="30%" x="5%" y="70%" rx="10" ry="10" fill="url(#redGradient)"></rect>
-          <rect id="bar-two" width="10%" height="60%" x="25%" y="40%" rx="10" ry="10" fill="url(#redGradient)"></rect>
-          <rect id="bar-three" width="10%" height="100%" x="45%" y="0%" rx="10" ry="10" fill="url(#redGradient)"></rect>
-          <rect id="bar-four" width="10%" height="35%" x="65%" y="65%" rx="10" ry="10" fill="url(#redGradient)"></rect>
-          <rect id="bar-five" width="10%" height="75%" x="85%" y="25%" rx="10" ry="10" fill="url(#redGradient)"></rect>
+          <rect id="bar-one" width="10%" height="30%" x="5%" y="70%" rx="10" ry="10" fill="url(#roseGradient)"></rect>
+          <rect id="bar-two" width="10%" height="60%" x="25%" y="40%" rx="10" ry="10" fill="url(#roseGradient)"></rect>
+          <rect id="bar-three" width="10%" height="100%" x="45%" y="0%" rx="10" ry="10" fill="url(#roseGradient)"></rect>
+          <rect id="bar-four" width="10%" height="35%" x="65%" y="65%" rx="10" ry="10" fill="url(#roseGradient)"></rect>
+          <rect id="bar-five" width="10%" height="75%" x="85%" y="25%" rx="10" ry="10" fill="url(#roseGradient)"></rect>
           </g>
       </svg>
 
       <defs>
-        <linearGradient id="redGradient">
-          <stop stop-color="#ff948b" offset="0%"/>
-          <stop stop-color="#ff1379" offset="100%"/>
-        </linearGradient>
+      <linearGradient id="roseGradient">
+        <stop stop-color="#642B73" offset="0%"/>
+        <stop stop-color="#C6426E" offset="100%"/>
+      </linearGradient>
       </defs>
     </svg>
     </figure>
