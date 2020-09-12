@@ -1,7 +1,9 @@
 defmodule LiveChart.BaseChartTest do
-  alias LiveChart.{Chart, ColumnChart, BaseChart, BaseColumnDataset, BaseDatum}
+  alias LiveChart.{Chart, ColumnChart, BaseAxes, YAxis, BaseChart, BaseColumnDataset, BaseDatum}
   use ExUnit.Case
 
+  @y_axis %YAxis{min: 0, max: 2500}
+  @axes %BaseAxes{y: @y_axis}
   @data [
     %BaseDatum{name: "Bar One", values: [750]},
     %BaseDatum{name: "Bar Two", values: [1500]},
@@ -9,7 +11,7 @@ defmodule LiveChart.BaseChartTest do
     %BaseDatum{name: "Bar Four", values: [750]},
     %BaseDatum{name: "Bar Five", values: [1750]}
   ]
-  @dataset %BaseColumnDataset{data: @data}
+  @dataset %BaseColumnDataset{data: @data, axes: @axes}
   @chart %BaseChart{title: "title", dataset: @dataset}
 
   describe "title/1" do
@@ -32,22 +34,22 @@ defmodule LiveChart.BaseChartTest do
       labels = Enum.map(@data, & &1.name)
 
       assert columns
-      |> Enum.zip(labels)
-      |> Enum.all?(fn {actual, expected} -> actual == expected end)
+             |> Enum.zip(labels)
+             |> Enum.all?(fn {actual, expected} -> actual == expected end)
     end
 
     test "returns evenly distributed column widths" do
       column_widths = Enum.map(ColumnChart.columns(@chart), & &1.width)
       expected_column_width = 20.0
 
-      assert Enum.all?(column_widths, fn(column_width) -> column_width == expected_column_width end)
+      assert Enum.all?(column_widths, fn column_width -> column_width == expected_column_width end)
     end
 
     test "returns bar widths as half of column widths" do
       bar_widths = Enum.map(ColumnChart.columns(@chart), & &1.bar_width)
       expected_bar_width = 10.0
 
-      assert Enum.all?(bar_widths, fn(bar_width) -> bar_width == expected_bar_width end)
+      assert Enum.all?(bar_widths, fn bar_width -> bar_width == expected_bar_width end)
     end
 
     test "returns correct column offsets" do
@@ -62,6 +64,13 @@ defmodule LiveChart.BaseChartTest do
       expected_bar_offsets = [5.0, 25.0, 45.0, 65.0, 85.0]
 
       assert bar_offsets == expected_bar_offsets
+    end
+
+    test "calculates column height as a percent of y-axis max value" do
+      column_heights = Enum.map(ColumnChart.columns(@chart), & &1.column_height)
+      expected_column_heights = [30.0, 60.0, 100.0, 30.0, 70.0]
+
+      assert column_heights == expected_column_heights
     end
   end
 end

@@ -1,46 +1,43 @@
 defmodule DemoWeb.PageLive do
   use DemoWeb, :live_view
 
-  alias LiveChart.{BaseAxes, BaseChart, BaseColumnDataset, BaseDatum}
+  alias LiveChart.{BaseAxes, BaseChart, BaseColumnDataset, BaseDatum, YAxis}
 
   @impl true
   def mount(_params, _session, socket) do
-    column_chart =
-      %BaseChart{
-        title: "Umbrellas per Neighborhood",
-        dataset: %BaseColumnDataset{
-          axes: %BaseAxes{},
-          data: [
-            %BaseDatum{
-              name: "Landen",
-              color: "Blue",
-              values: [5.0]
-            },
-            %BaseDatum{
-              name: "Oakley",
-              color: "Blue",
-              values: [5.0]
-            },
-            %BaseDatum{
-              name: "Downtown",
-              color: "Blue",
-              values: [5.0]
-            },
-            %BaseDatum{
-              name: "Florence",
-              color: "Blue",
-              values: [5.0]
-            },
-            %BaseDatum{
-              name: "Erlanger",
-              color: "Red",
-              values: [500.6]
-            }
-          ]
-        }
+    column_chart = %BaseChart{
+      title: "Umbrellas per Neighborhood",
+      dataset: %BaseColumnDataset{
+        axes: %BaseAxes{y: %YAxis{max: 2500, min: 0}},
+        data: [
+          %BaseDatum{
+            name: "Landen",
+            color: "Blue",
+            values: [750.0]
+          },
+          %BaseDatum{
+            name: "Oakley",
+            color: "Blue",
+            values: [1500.0]
+          },
+          %BaseDatum{
+            name: "Downtown",
+            color: "Blue",
+            values: [2500.0]
+          },
+          %BaseDatum{
+            name: "Florence",
+            color: "Blue",
+            values: [750.0]
+          },
+          %BaseDatum{
+            name: "Erlanger",
+            color: "Red",
+            values: [1750.0]
+          }
+        ]
       }
-
-    IO.inspect LiveChart.ColumnChart.columns(column_chart)
+    }
 
     {:ok, assign(socket, column_chart: column_chart, query: "", results: %{})}
   end
