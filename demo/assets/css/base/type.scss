@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-  font-size: 9rem;
+  @include fluid-type(3em, 9em);
   font-weight: 100;
   background: -webkit-linear-gradient($color-5, $color-6);
   -webkit-background-clip: text;
@@ -12,7 +12,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2rem;
+  @include fluid-type(1em, 1.2em);
   letter-spacing: 5px;
   font-weight: 200;
 }

@@ -19,4 +19,9 @@
 .header {
   margin: 10rem $pad -1rem;
   text-align: center;
+  background: linear-gradient(rgba($color-1, 0%), rgba($color-1, 100%), rgba($color-1, 0%));
+
+  h2 {
+    background: linear-gradient(rgba($color-1, 0%), rgba($color-1, 100%), rgba($color-1, 100%), rgba($color-1, 0%));
+  }
 }
