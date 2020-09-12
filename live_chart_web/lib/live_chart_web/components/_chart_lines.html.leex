@@ -1,0 +1,9 @@
+<g id="chart-lines" class="columns__lines">
+  <line x1="0%" y1="0%" x2="0%" y2="100%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
+  <line x1="0%" y1="100%" x2="100%" y2="100%" stroke="#efefef" stroke-width="4px" stroke-linecap="round" />
+  <%= for line <- @grid_lines do %>
+    <% offset = @offsetter.(line) %>
+    <line x1="0%" y1="<%= offset %>%" x2="100%" y2="<%= offset %>%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
+  <% end %>  
+  <line x1="0%" y1="0%" x2="100%" y2="0%" stroke="#efefef" stroke-width="4px" stroke-linecap="round" />
+</g>

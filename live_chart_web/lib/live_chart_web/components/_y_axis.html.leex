@@ -1,6 +1,6 @@
 <svg id="title-y-labels" class="columns__y-labels" width="8%" height="100%" y="0" x="0">
-  <%= for grid_line <- @axis.grid_lines.({@axis.min, @axis.max}, 5) do %>
-    <svg x="0" y="<%= 100 * (@axis.max - grid_line) / @axis.max %>%" height="20px" width="100%">
+  <%= for grid_line <- @grid_lines do %>
+    <svg x="0" y="<%= @offsetter.(grid_line) %>%" height="20px" width="100%">
     <svg width="100%" height="100%">
       <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle"><%= grid_line %></text>
     </svg>
