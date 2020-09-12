@@ -1,0 +1,10 @@
+.card {
+  display: inline-block;
+  background-color: $color-1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px;
+  padding: $pad;
+  margin: $pad;
+  border-radius: 25px;
+}
