@@ -8,6 +8,7 @@ defmodule LiveChartWeb.ComponentView do
 
   alias LiveChart.{Chart, Gradient}
   alias LiveChart.ColumnChart.Column
+  alias LiveChart.ProgressChart
 
   def color_to_fill(colors, name) do
     case Map.get(colors, name) do
@@ -24,8 +25,9 @@ defmodule LiveChartWeb.ComponentView do
 
     pie_slices
     |> Enum.with_index()
-    |> Enum.reduce([], fn ({pie_slice, index}, acc) ->
-      remaining_percentage = 100 - Enum.reduce(acc, 0, fn (slice, sum) -> sum + slice.percentage end)
+    |> Enum.reduce([], fn {pie_slice, index}, acc ->
+      remaining_percentage =
+        100 - Enum.reduce(acc, 0, fn slice, sum -> sum + slice.percentage end)
 
       svg_slice =
         pie_slice

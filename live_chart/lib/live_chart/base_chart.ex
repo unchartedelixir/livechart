@@ -40,7 +40,3 @@ end
 defmodule LiveChart.ColumnChart.Styles do
   defstruct [:radius, :color]
 end
-
-defmodule LiveChart.BaseDatum do
-  defstruct [:name, :fill_color, :values]
-end
