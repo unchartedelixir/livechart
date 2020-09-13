@@ -49,7 +49,7 @@ defmodule DemoWeb.PageLive do
     }
 
     pie_chart = %BaseChart{
-      title: "Best kind of pie",
+      title: "Best Kind of Pie",
       colors: %{
         rose_gradient: %Gradient{
           start_color: "#642B73",
