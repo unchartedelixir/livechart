@@ -1,11 +1,7 @@
 defmodule LiveChart.BarChartTest do
-  alias LiveChart.{
-    BaseChart,
-    BaseDatum,
-    BarChart
-  }
-
+  alias LiveChart.{BarChart, BaseChart, BaseDatum}
   alias LiveChart.Axes.{BaseAxes, MagnitudeAxis}
+
   use ExUnit.Case
 
   @x_axis %MagnitudeAxis{min: 0, max: 2500}
