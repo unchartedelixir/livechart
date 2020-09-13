@@ -48,19 +48,19 @@ jobs:
       # live_chart_web
       - restore_cache:
           keys:
-            - v1-mix-compile-{{ checksum "otp_version.lock" }}-{{ checksum "elixir_version.lock" }}-{{ checksum "live_chart_web/mix.lock" }}
-            - v1-mix-compile-{{ checksum "otp_version.lock" }}-{{ checksum "elixir_version.lock" }}
+            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "live_chart_web/mix.lock" }}
+            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
       - run:
           name: compile live_chart_web
           command: mix do deps.get, compile
           working_directory: ~/project/live_chart_web
       - save_cache:
-          key: v1-mix-compile-{{ checksum "otp_version.lock" }}-{{ checksum "elixir_version.lock" }}-{{ checksum "live_chart_web/mix.lock" }}
+          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "live_chart_web/mix.lock" }}
           paths:
             - live_chart_web/deps
             - live_chart_web/_build
       - save_cache:
-          key: v1-mix-compile-{{ checksum "otp_version.lock" }}-{{ checksum "elixir_version.lock" }}
+          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
           paths:
             - live_chart_web/deps
             - live_chart_web/_build
@@ -68,19 +68,19 @@ jobs:
       # demo
       - restore_cache:
           keys:
-            - v1-mix-compile-{{ checksum "otp_version.lock" }}-{{ checksum "elixir_version.lock" }}-{{ checksum "demo/mix.lock" }}
-            - v1-mix-compile-{{ checksum "otp_version.lock" }}-{{ checksum "elixir_version.lock" }}
+            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "demo/mix.lock" }}
+            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
       - run:
           name: compile demo
           command: mix do deps.get, compile
           working_directory: ~/project/demo
       - save_cache:
-          key: v1-mix-compile-{{ checksum "otp_version.lock" }}-{{ checksum "elixir_version.lock" }}-{{ checksum "demo/mix.lock" }}
+          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "demo/mix.lock" }}
           paths:
             - demo/deps
             - demo/_build
       - save_cache:
-          key: v1-mix-compile-{{ checksum "otp_version.lock" }}-{{ checksum "elixir_version.lock" }}
+          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
           paths:
             - demo/deps
             - demo/_build
