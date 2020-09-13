@@ -1,6 +1,8 @@
 defmodule Uncharted.BaseChart do
   @moduledoc """
-  Base camp for all of your charting needs.
+  This is the base chart implementation of the Chart protocol, and should be sufficient for most simple charting needs.
+  Specific charts implement further protocols in the respective `base_chart_impl.ex` file within the chart type's
+  folder.
   """
   alias __MODULE__
 
