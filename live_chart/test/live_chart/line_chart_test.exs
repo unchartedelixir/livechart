@@ -1,11 +1,6 @@
 defmodule LiveChart.LineChartTest do
-  alias LiveChart.{
-    BaseChart,
-    BaseDatum,
-    LineChart
-  }
-
-  alias LiveChart.Axes.{XYAxes, MagnitudeAxis}
+  alias LiveChart.{BaseChart, BaseDatum, LineChart}
+  alias LiveChart.Axes.{MagnitudeAxis, XYAxes}
   alias LiveChart.ColumnChart.Dataset
   use ExUnit.Case
 
