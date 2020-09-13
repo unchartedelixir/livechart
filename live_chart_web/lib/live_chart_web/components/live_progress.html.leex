@@ -13,7 +13,7 @@
       </svg>
       <circle
           class="counter__value"
-          cx="21" 
+          cx="21"
           cy="21"
           r="16"
           fill="transparent"
@@ -23,6 +23,7 @@
           stroke-dasharray="<%= @progress %> <%= 100 - @progress %>"
           stroke-dashoffset="25"
           stroke-linecap="round">
+          <animate attributeName="stroke-dasharray" values=" 0 100;<%= @progress %> <%= 100 - @progress %>" dur="1s" repeatCount="freeze" />
         </circle>
     </g>
     <%= render "_color_defs.html", chart: @chart %>

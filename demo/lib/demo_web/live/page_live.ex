@@ -137,7 +137,7 @@ defmodule DemoWeb.PageLive do
           background_stroke_color: :gray,
           label: "Unchartedness",
           to_value: 100,
-          current_value: 45,
+          current_value: 65,
           percentage_text_fill_color: :blue_gradient,
           percentage_fill_color: :rose_gradient,
           label_fill_color: :rose_gradient
