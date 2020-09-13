@@ -4,7 +4,7 @@
 </header>
 <section class="card__grid-1">
   <div class="card">
-    <%= live_component @socket, LiveChartWeb.LivePieComponent, chart: %LiveChart.BaseChart{title: "My awesome chart"} %>
+    <%= live_component @socket, LiveChartWeb.LivePieComponent, chart: @pie_chart %>
   </div>
   <div class="card">
     <%= live_component @socket, LiveChartWeb.LiveColumnComponent, chart: @column_chart %>

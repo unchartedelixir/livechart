@@ -7,7 +7,7 @@ defmodule LiveChart do
   if it comes from the database, an external API or others.
   """
   @type color_name :: String.t()
-  @type dataset :: ColumnChart.Dataset.t()
+  @type dataset :: LiveChart.ColumnChart.Dataset.t() | LiveChart.PieChart.Dataset.t()
   @type gen_chart :: %{
           title: String.t(),
           colors: %{color_name() => String.t() | LiveChart.Gradient.t()},

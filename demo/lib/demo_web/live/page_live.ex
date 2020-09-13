@@ -4,6 +4,7 @@ defmodule DemoWeb.PageLive do
   alias LiveChart.{BaseChart, BaseDatum, Gradient}
   alias LiveChart.Axes.{BaseAxes, YAxis}
   alias LiveChart.ColumnChart
+  alias LiveChart.PieChart
 
   @impl true
   def mount(_params, _session, socket) do
@@ -11,7 +12,7 @@ defmodule DemoWeb.PageLive do
       title: "Umbrellas per Neighborhood",
       colors: %{
         blue: "#36D1DC",
-        rose_gradient: %Gradient{
+        rosy_gradient: %Gradient{
           start_color: "#642B73",
           stop_color: "#C6426E"
         }
@@ -32,17 +33,17 @@ defmodule DemoWeb.PageLive do
         data: [
           %BaseDatum{
             name: "Landen",
-            fill_color: :rose_gradient,
+            fill_color: :rosy_gradient,
             values: [750.0]
           },
           %BaseDatum{
             name: "Oakley",
-            fill_color: :rose_gradient,
+            fill_color: :rosy_gradient,
             values: [1500.0]
           },
           %BaseDatum{
             name: "Downtown",
-            fill_color: :rose_gradient,
+            fill_color: :rosy_gradient,
             values: [2500.0]
           },
           %BaseDatum{
@@ -52,14 +53,57 @@ defmodule DemoWeb.PageLive do
           },
           %BaseDatum{
             name: "Erlanger",
-            fill_color: :rose_gradient,
+            fill_color: :rosy_gradient,
             values: [1750.0]
           }
         ]
       }
     }
 
-    {:ok, assign(socket, column_chart: column_chart, query: "", results: %{})}
+    pie_chart = %BaseChart{
+      title: "Best kind of pie",
+      colors: %{
+        blue: "#0000FF",
+        rose_gradient: %Gradient{
+          start_color: "#642B73",
+          stop_color: "#C6426E"
+        },
+        blue_gradient: %Gradient{
+          start_color: "#36D1DC",
+          stop_color: "#5B86E5"
+        },
+        red_gradient: %Gradient{
+          start_color: "#FF9486",
+          stop_color: "#FF1379"
+        }
+      },
+      dataset: %PieChart.Dataset{
+        data: [
+          %BaseDatum{
+            name: "Pecan",
+            fill_color: :red_gradient,
+            values: [20.0]
+          },
+          %BaseDatum{
+            name: "Blueberry",
+            fill_color: :blue_gradient,
+            values: [28.0]
+          },
+          %BaseDatum{
+            name: "Pumpkin",
+            fill_color: :rose_gradient,
+            values: [35.0]
+          },
+          %BaseDatum{
+            name: "Chocolate",
+            fill_color: :blue_gradient,
+            values: [17.0]
+          }
+        ]
+      }
+    }
+
+    {:ok, assign(socket, column_chart: column_chart, pie_chart: pie_chart, query: "", results: %{})}
   end
 
   @impl true
