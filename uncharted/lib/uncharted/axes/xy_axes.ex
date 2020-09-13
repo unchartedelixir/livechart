@@ -1,6 +1,6 @@
 defmodule Uncharted.Axes.XYAxes do
   @moduledoc """
-  A struct for representing a cartesian plane
+  A struct for representing a cartesian plane's axes
   """
 
   defstruct [:x, :y, show_gridlines: true]
