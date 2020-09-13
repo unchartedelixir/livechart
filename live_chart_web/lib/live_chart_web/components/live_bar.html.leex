@@ -1,17 +1,14 @@
 <figure>
-  <svg class="chart--hor-bar" aria-labelledby="title desc" role="img" width="100%" height="100%" viewBox="0 0 700 400">
+  <svg class="chart--hor-bar" aria-labelledby="title desc" role="group" width="100%" height="100%" viewBox="0 0 600 400" style="overflow: visible;">
     <title id="chartTitle"><%= Chart.title(@chart) %></title>
     <desc id="chartDesc">watch my data come alive</desc>
 
     <%= render "_color_defs.html", chart: @chart %>
     <%= render "_bar_labels.html", chart: @chart %>
-
-    <svg height="100%" width="92%" y="0" x="8%">
-      <%= render "_bar_grid_line_labels.html", chart: @chart, grid_lines: @grid_lines, offsetter: @offsetter %>
-      <svg class="" width="100%" height="92%" x="0" y="0">
-        <%= render "_bar_grid_lines.html", chart: @chart, grid_lines: @grid_lines, offsetter: @offsetter %>
-        <%= render "_bars.html", chart: @chart, bars: @bars %>
-      </svg>
+    <%= render "_bar_grid_line_labels.html", chart: @chart, grid_lines: @grid_lines, offsetter: @offsetter %>
+    <svg class="" width="92%" height="92%" x="8%" y="0">
+      <%= render "_bar_grid_lines.html", chart: @chart, grid_lines: @grid_lines, offsetter: @offsetter %>
+      <%= render "_bars.html", chart: @chart, bars: @bars %>
     </svg>
   </svg>
 </figure>
