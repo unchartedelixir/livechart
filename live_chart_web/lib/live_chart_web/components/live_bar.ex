@@ -7,7 +7,7 @@ defmodule LiveChartWeb.LiveBarComponent do
 
   def update(assigns, socket) do
     x_axis = assigns.chart.dataset.axes.magnitude_axis
-    # Hardcode the number of steps to take as 5 for now
+    # Hardcode the number of steps to take as 10 for now
     grid_lines = x_axis.grid_lines.({x_axis.min, x_axis.max}, 10)
 
     grid_line_offsetter = fn grid_line ->
