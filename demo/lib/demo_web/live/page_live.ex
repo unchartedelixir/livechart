@@ -3,6 +3,7 @@ defmodule DemoWeb.PageLive do
 
   use DemoWeb, :live_view
 
+  alias Demo.SystemData.{AllocatedAreas, Memory}
   alias LiveChart.{BaseChart, BaseDatum, Gradient}
   alias LiveChart.Axes.{BaseAxes, MagnitudeAxis}
   alias LiveChart.BarChart
@@ -163,7 +164,7 @@ defmodule DemoWeb.PageLive do
   end
 
   defp progress_chart(from: %BaseChart{} = chart) do
-    memory = Demo.SystemData.Memory.get()
+    memory = Memory.get()
 
     %BaseChart{
       chart
@@ -196,7 +197,7 @@ defmodule DemoWeb.PageLive do
   end
 
   defp bar_chart do
-    vm_allocated_areas = Demo.SystemData.AllocatedAreas.get()
+    vm_allocated_areas = AllocatedAreas.get()
 
     datum =
       Enum.map(vm_allocated_areas, fn {name, kilobytes} ->
@@ -219,7 +220,7 @@ defmodule DemoWeb.PageLive do
       dataset: %BarChart.Dataset{
         axes: %BaseAxes{
           magnitude_axis: %MagnitudeAxis{
-            max: Demo.SystemData.AllocatedAreas.chart_max(vm_allocated_areas),
+            max: AllocatedAreas.chart_max(vm_allocated_areas),
             min: 0
           }
         },
