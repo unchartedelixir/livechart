@@ -23,7 +23,6 @@
   </div>
   <div class="card">
     <h3 class="u-center u-push-bottom"><%= Uncharted.Chart.title(@bar_chart) %><br /><span class="caption">the bar chart</span></h3>
-    <h4>the bar chart</h4>
     <%= live_component @socket, UnchartedPhoenix.LiveBarComponent, chart: @bar_chart  %>
   </div>
 </section>
