@@ -1,6 +1,6 @@
 defmodule LiveChartWeb.ComponentView do
   use Phoenix.View,
-    root: "lib/live_chart_web/components",
+    root: "lib/uncharted_phoenix/components",
     namespace: LiveChartWeb,
     path: ""
 

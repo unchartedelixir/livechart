@@ -14,7 +14,7 @@ config :demo, DemoWeb.Endpoint,
   render_errors: [view: DemoWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Demo.PubSub,
   live_view: [signing_salt: "wPpdIkS0"],
-  reloadable_apps: [:demo, :live_chart, :live_chart_web]
+  reloadable_apps: [:demo, :uncharted, :uncharted_phoenix]
 
 # Configures Elixir's Logger
 config :logger, :console,
