@@ -11,14 +11,7 @@
         <%= render "_chart_lines.html", grid_lines: @grid_lines, offsetter: @grid_line_offsetter %>
         <%= render "_column_chart_graph.html", chart: @chart, columns: @columns %>
       </svg>
-      <defs>
-        <%= for {name, %LiveChart.Gradient{start_color: start_color, stop_color: stop_color}} <- Chart.gradient_colors(@chart) do %>
-          <linearGradient id="<%= Atom.to_string(name) %>">
-            <stop stop-color="<%= start_color %>" offset="0%"/>
-            <stop stop-color="<%= stop_color %>" offset="100%"/>
-          </linearGradient>
-        <% end %>
-      </defs>
+      <%= render "_color_defs.html", chart: @chart %>
     </svg>
   </figure>
 </div>
