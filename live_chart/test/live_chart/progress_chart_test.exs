@@ -13,6 +13,10 @@ defmodule LiveChart.ProgressChartTest do
     test "takes a progress dataset and passes it through unchanged" do
       assert ProgressChart.data(@chart.dataset) == @chart.dataset
     end
+
+    test "returns an empty map if a chart's dataset is nil" do
+      assert ProgressChart.data(%BaseChart{dataset: nil}) == %{}
+    end
   end
 
   describe "progress/1" do
