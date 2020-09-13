@@ -22,8 +22,14 @@ h2 {
   font-weight: 200;
 }
 
-h2 {
+h3 {
   @include fluid-type(0.9em, 1em);
-  letter-spacing: 2px;
   font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.caption {
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  line-height: 1;
 }

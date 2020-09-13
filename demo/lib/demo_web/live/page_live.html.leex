@@ -4,15 +4,15 @@
 </header>
 <section class="card__grid-1">
   <div class="card">
-    <h3 class="u-center u-push-bottom"><%= Uncharted.Chart.title(@pie_chart) %></h3>
+    <h3 class="u-center u-push-bottom"><%= Uncharted.Chart.title(@pie_chart) %><br /><span class="caption">the pie chart</span></h3>
     <%= live_component @socket, UnchartedPhoenix.LivePieComponent, chart: @pie_chart %>
   </div>
   <div class="card">
-    <h3 class="u-center u-push-bottom"><%= Uncharted.Chart.title(@column_chart)  %></h3>
+    <h3 class="u-center u-push-bottom"><%= Uncharted.Chart.title(@column_chart)  %><br /><span class="caption">the column chart</span></h3>
     <%= live_component @socket, UnchartedPhoenix.LiveColumnComponent, chart: @column_chart %>
   </div>
   <div class="card">
-    <h3 class="u-center u-push-bottom"><%= Uncharted.Chart.title(@progress_chart) %></h3>
+    <h3 class="u-center u-push-bottom"><%= Uncharted.Chart.title(@progress_chart) %><br /><span class="caption">the progress chart</span></h3>
     <%= live_component @socket, UnchartedPhoenix.LiveProgressComponent, chart: @progress_chart %>
   </div>
 </section>
@@ -22,7 +22,8 @@
     <%= live_component @socket, UnchartedPhoenix.LiveLineComponent, chart: @line_chart %>
   </div>
   <div class="card">
-    <h3 class="u-center u-push-bottom"><%= Uncharted.Chart.title(@bar_chart) %></h3>
+    <h3 class="u-center u-push-bottom"><%= Uncharted.Chart.title(@bar_chart) %><br /><span class="caption">the bar chart</span></h3>
+    <h4>the bar chart</h4>
     <%= live_component @socket, UnchartedPhoenix.LiveBarComponent, chart: @bar_chart  %>
   </div>
 </section>

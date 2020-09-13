@@ -91,7 +91,7 @@ defmodule DemoWeb.PageLive do
     }
 
     line_chart = %BaseChart{
-      title: "Line Chart",
+      title: "Live Line Chart",
       colors: colors,
       dataset: %ColumnChart.Dataset{
         axes: %XYAxes{
