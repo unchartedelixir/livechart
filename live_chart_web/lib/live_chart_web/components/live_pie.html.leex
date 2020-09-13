@@ -1,9 +1,9 @@
 <div data-testid="lc-live-pie-component" class="hero">
   <figure>
-    <svg id="title-chart" class="pie" aria-labelledby="chartTitle uniqueChartDeesc" role="group" height="100%" width="100%" viewBox="0 0 20 24">
+    <svg id="<%= svg_id(@chart, "chart") %>" class="pie" aria-labelledby="chartTitle uniqueChartDeesc" role="group" height="100%" width="100%" viewBox="0 0 20 24">
       <title id="uniqueChartTitle"><%= Chart.title(@chart) %></title>
-      <desc id="uniqueChartDeesc">watch my data come alive</desc>
-      <svg id="title-pie" class="pie__data" y="0" x="0" width="100%" height="90%">
+      <desc id="uniqueChartDeesc">a most delicious pie chart</desc>
+      <svg id="<%= svg_id(@chart, "title") %>" class="pie__data" y="0" x="0" width="100%" height="90%">
         <circle r="10" cx="10" cy="10" fill="#e2e2e2" />
         <%= for %{remaining_percentage: remaining_percentage, fill_color: fill_color} <- svg_pie_slices(@pie_slices) do %>
           <circle class="pie__seg" r="5" cx="10" cy="10" fill="transparent"
@@ -14,7 +14,7 @@
             transform="rotate(-90) translate(-20)" />
         <% end %>
       </svg>
-      <svg id="title-key" class="pie__key" height="10%" width="100%" y="90%" x="0%">
+      <svg id="<%= svg_id(@chart, "key") %>" class="pie__key" height="10%" width="100%" y="90%" x="0%">
         <%= for %{label: label, fill_color: fill_color, label_width: label_width, label_position: label_position} <- svg_pie_slices(@pie_slices) do %>
           <svg id="<%= label %>" width="<%= label_width %>%" height="100%" y="0" x="<%= label_position %>%">
             <rect width="90%" x="5%" height="0.5px" rx="0.3" ry="0.3" fill="<%= color_to_fill(Chart.colors(@chart), fill_color) %>" />

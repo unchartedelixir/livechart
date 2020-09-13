@@ -21,3 +21,9 @@ h2 {
   letter-spacing: 5px;
   font-weight: 200;
 }
+
+h2 {
+  @include fluid-type(0.9em, 1em);
+  letter-spacing: 2px;
+  font-weight: 400;
+}

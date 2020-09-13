@@ -17,6 +17,14 @@ defmodule LiveChartWeb.ComponentView do
     end
   end
 
+  def svg_id(chart, suffix) do
+    base = chart
+    |> Chart.title()
+    |> String.downcase()
+    |> String.replace(~r(\s+), "-")
+    base <> "-" <> suffix
+  end
+
   def svg_pie_slices(nil), do: []
   def svg_pie_slices([]), do: []
 

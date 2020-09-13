@@ -1,20 +1,24 @@
 <header class="header">
   <h2>a simple elixir charting library</h2>
-  <h1>uncharted<span class="ex">ex</span></h1>
+  <h1>uncharted</h1>
 </header>
 <section class="card__grid-1">
   <div class="card">
+    <h3 class="u-center u-push-bottom">the pie chart</h3>
     <%= live_component @socket, LiveChartWeb.LivePieComponent, chart: @pie_chart %>
   </div>
   <div class="card">
+    <h3 class="u-center u-push-bottom">the column chart</h3>
     <%= live_component @socket, LiveChartWeb.LiveColumnComponent, chart: @column_chart %>
   </div>
   <div class="card">
+    <h3 class="u-center u-push-bottom">the progress chart</h3>
     <%= live_component @socket, LiveChartWeb.LiveProgressComponent, chart: @progress_chart %>
   </div>
 </section>
 <section class="card__grid-2">
   <div class="card">
+    <h3 class="u-center u-push-bottom">the live line chart</h3>
     <figure>
       <svg class="bar" aria-labelledby="chartTitle chartDesc" role="group" width="100%" height="100%" viewBox="0 0 700 400">
         <title id="chartTitle">A Bar Chart with LiveView</title>
@@ -136,6 +140,7 @@
     </figure>
   </div>
   <div class="card">
+  <h3 class="u-center u-push-bottom">the bar chart</h3>
     <figure>
       <svg class="chart--hor-bar" aria-labelledby="title desc" role="img" width="100%" height="480px">
         <title id="chartTitle">A Bar Chart with LiveView</title>
