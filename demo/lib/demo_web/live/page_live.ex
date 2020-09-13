@@ -171,6 +171,7 @@ defmodule DemoWeb.PageLive do
      )}
   end
 
+  @impl true
   def handle_info({[:vm, :memory], memory}, socket) do
     {:noreply,
      assign(socket, :progress_chart, Memory.update_chart(socket.assigns.progress_chart, memory))}
