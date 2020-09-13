@@ -123,29 +123,29 @@ defmodule DemoWeb.PageLive do
         },
         data: [
           %BaseDatum{
-            name: "Landen",
-            fill_color: :rose_gradient,
-            values: [750.0]
+            name: "Point 1",
+            fill_color: :blue_gradient,
+            values: [0, 0]
           },
           %BaseDatum{
-            name: "Oakley",
-            fill_color: :rose_gradient,
-            values: [1500.0]
+            name: "Point 2",
+            fill_color: :blue_gradient,
+            values: [150, 100]
           },
           %BaseDatum{
-            name: "Downtown",
-            fill_color: :rose_gradient,
-            values: [2500.0]
+            name: "Point 3",
+            fill_color: :blue_gradient,
+            values: [350, 160]
           },
           %BaseDatum{
-            name: "Florence",
-            fill_color: :blue,
-            values: [750.0]
+            name: "Point 4",
+            fill_color: :blue_gradient,
+            values: [450, 100]
           },
           %BaseDatum{
-            name: "Erlanger",
-            fill_color: :rose_gradient,
-            values: [1750.0]
+            name: "Point 5",
+            fill_color: :blue_gradient,
+            values: [550, 100]
           }
         ]
       }
