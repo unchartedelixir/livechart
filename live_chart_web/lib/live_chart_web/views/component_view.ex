@@ -8,6 +8,7 @@ defmodule LiveChartWeb.ComponentView do
 
   alias LiveChart.{Chart, Gradient}
   alias LiveChart.ColumnChart.Column
+  alias LiveChart.LineChart.Point
 
   def color_to_fill(colors, name) do
     case Map.get(colors, name) do

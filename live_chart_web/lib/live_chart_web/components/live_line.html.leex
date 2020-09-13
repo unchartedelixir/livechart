@@ -86,12 +86,19 @@
                           550,100
                           "></polyline>
           <g>
-            <circle fill="url(#blue_gradient)" cx="0" cy="0" r="6"></circle>
-            <circle fill="url(#blue_gradient)" cx="150" cy="100" r="6"></circle>
-            <circle fill="url(#blue_gradient)" cx="250" cy="80" r="6"></circle>
-            <circle fill="url(#blue_gradient)" cx="350" cy="160" r="6"></circle>
-            <circle fill="url(#blue_gradient)" cx="450" cy="100" r="6"></circle>
-            <circle fill="url(#blue_gradient)" cx="550" cy="100" r="6"></circle>
+            <%= for %Point{y_offset: y_offset, fill_color: fill_color} <- @points do %>
+              <circle
+                fill="<%= color_to_fill(@chart.colors(), fill_color) %>"
+                cx="0"
+                cy="<%= 100 - y_offset %>%"
+                r="6">
+              </circle>
+            <% end %>
+            <!-- <circle fill="url(#blue_gradient)" cx="150" cy="100" r="6"></circle>
+                 <circle fill="url(#blue_gradient)" cx="250" cy="80" r="6"></circle>
+                 <circle fill="url(#blue_gradient)" cx="350" cy="160" r="6"></circle>
+                 <circle fill="url(#blue_gradient)" cx="450" cy="100" r="6"></circle>
+                 <circle fill="url(#blue_gradient)" cx="550" cy="100" r="6"></circle> -->
           </g>
         </g>
       </svg>

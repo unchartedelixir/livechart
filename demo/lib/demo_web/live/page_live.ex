@@ -125,27 +125,27 @@ defmodule DemoWeb.PageLive do
           %BaseDatum{
             name: "Point 1",
             fill_color: :blue_gradient,
-            values: [0, 0]
+            values: [0, 50]
           },
           %BaseDatum{
             name: "Point 2",
             fill_color: :blue_gradient,
-            values: [150, 100]
+            values: [150, 1000]
           },
           %BaseDatum{
             name: "Point 3",
             fill_color: :blue_gradient,
-            values: [350, 160]
+            values: [350, 1600]
           },
           %BaseDatum{
             name: "Point 4",
             fill_color: :blue_gradient,
-            values: [450, 100]
+            values: [450, 1500]
           },
           %BaseDatum{
             name: "Point 5",
             fill_color: :blue_gradient,
-            values: [550, 100]
+            values: [550, 2000]
           }
         ]
       }
