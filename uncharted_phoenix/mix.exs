@@ -65,7 +65,7 @@ defmodule LiveChartWeb.MixProject do
       {:ex_doc, "~> 0.22", only: :docs, runtime: false},
       {:excoveralls, "~> 0.11", only: :test},
       {:jason, "~> 1.0"},
-      {:uncharted, path: "../live_chart"},
+      {:uncharted, path: "../uncharted"},
       {:phoenix_live_view, "~> 0.14.4"}
     ]
   end
