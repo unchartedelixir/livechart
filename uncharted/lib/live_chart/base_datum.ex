@@ -1,7 +1,6 @@
 defmodule Uncharted.BaseDatum do
   @moduledoc """
   Exposes a struct representing a basic data point
-  for a LiveChart.
   """
   defstruct [:name, :fill_color, :values]
 

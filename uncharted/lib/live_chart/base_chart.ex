@@ -1,6 +1,6 @@
 defmodule Uncharted.BaseChart do
   @moduledoc """
-  Base camp for all of your LiveChart needs.
+  Base camp for all of your charting needs.
   """
   alias __MODULE__
 

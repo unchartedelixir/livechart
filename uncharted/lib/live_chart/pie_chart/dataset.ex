@@ -1,6 +1,6 @@
 defmodule Uncharted.PieChart.Dataset do
   @moduledoc """
-  Struct representing a dataset for a LiveChart basic pie chart.
+  Struct representing a dataset for a basic pie chart.
   """
   defstruct [:data]
 

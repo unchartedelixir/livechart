@@ -1,7 +1,7 @@
 defmodule Uncharted.Axes.MagnitudeAxis do
   @moduledoc """
   Exposes a struct representing configuration for the y axis
-  of a LiveChart.
+  of a chart.
   """
   defstruct [:min, :max, :step, :label, grid_lines: &__MODULE__.default_grid_lines_fun/2]
   @type min :: number()

@@ -1,6 +1,6 @@
 defmodule Uncharted.Axes.BaseAxes do
   @moduledoc """
-  Exposes a struct representing configuration for axes on LiveCharts.
+  Exposes a struct representing configuration for axes.
   """
   defstruct [:magnitude_axis, :x, :y, show_gridlines: true]
 

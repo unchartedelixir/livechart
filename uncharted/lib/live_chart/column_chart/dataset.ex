@@ -1,6 +1,6 @@
 defmodule Uncharted.ColumnChart.Dataset do
   @moduledoc """
-  Struct representing a dataset for a LiveChart basic column chart.
+  Struct representing a dataset for a basic column chart.
   """
   defstruct [:axes, :data]
 
