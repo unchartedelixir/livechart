@@ -1,3 +1,3 @@
-defmodule LiveChartWeb do
+defmodule UnchartedPhoenix do
   @moduledoc false
 end

@@ -1,8 +1,8 @@
-defmodule LiveChartWeb.LiveColumnComponentTest do
+defmodule UnchartedPhoenix.LiveColumnComponentTest do
   alias Uncharted.BaseChart
   alias Uncharted.Axes.{BaseAxes, MagnitudeAxis}
   alias Uncharted.ColumnChart.Dataset
-  alias LiveChartWeb.LiveColumnComponent
+  alias UnchartedPhoenix.LiveColumnComponent
   import Phoenix.LiveViewTest
   use ExUnit.Case
   @endpoint Endpoint

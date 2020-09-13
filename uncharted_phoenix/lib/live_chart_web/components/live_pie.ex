@@ -1,4 +1,4 @@
-defmodule LiveChartWeb.LivePieComponent do
+defmodule UnchartedPhoenix.LivePieComponent do
   @moduledoc """
   Pie Chart Component
   """
@@ -15,6 +15,6 @@ defmodule LiveChartWeb.LivePieComponent do
   end
 
   def render(assigns) do
-    Phoenix.View.render(LiveChartWeb.ComponentView, "live_pie.html", assigns)
+    Phoenix.View.render(UnchartedPhoenix.ComponentView, "live_pie.html", assigns)
   end
 end

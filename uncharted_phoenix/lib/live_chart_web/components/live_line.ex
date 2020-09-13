@@ -1,4 +1,4 @@
-defmodule LiveChartWeb.LiveLineComponent do
+defmodule UnchartedPhoenix.LiveLineComponent do
   @moduledoc """
   Line Chart Component
   """
@@ -29,6 +29,6 @@ defmodule LiveChartWeb.LiveLineComponent do
   end
 
   def render(assigns) do
-    Phoenix.View.render(LiveChartWeb.ComponentView, "live_line.html", assigns)
+    Phoenix.View.render(UnchartedPhoenix.ComponentView, "live_line.html", assigns)
   end
 end

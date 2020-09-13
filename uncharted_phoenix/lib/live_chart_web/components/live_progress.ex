@@ -1,4 +1,4 @@
-defmodule LiveChartWeb.LiveProgressComponent do
+defmodule UnchartedPhoenix.LiveProgressComponent do
   @moduledoc """
   Bar Progress Component
   """
@@ -17,6 +17,6 @@ defmodule LiveChartWeb.LiveProgressComponent do
   end
 
   def render(assigns) do
-    Phoenix.View.render(LiveChartWeb.ComponentView, "live_progress.html", assigns)
+    Phoenix.View.render(UnchartedPhoenix.ComponentView, "live_progress.html", assigns)
   end
 end

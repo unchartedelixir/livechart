@@ -1,5 +1,5 @@
-defmodule LiveChartWeb.LivePieComponentTest do
-  alias LiveChartWeb.LivePieComponent
+defmodule UnchartedPhoenix.LivePieComponentTest do
+  alias UnchartedPhoenix.LivePieComponent
   import Phoenix.LiveViewTest
   use ExUnit.Case
   @endpoint Endpoint

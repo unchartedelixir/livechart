@@ -1,7 +1,7 @@
-defmodule LiveChartWeb.ComponentView do
+defmodule UnchartedPhoenix.ComponentView do
   use Phoenix.View,
     root: "lib/uncharted_phoenix/components",
-    namespace: LiveChartWeb,
+    namespace: UnchartedPhoenix,
     path: ""
 
   use Phoenix.HTML
