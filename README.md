@@ -17,7 +17,7 @@ basic chart package Uncharted and adapts Uncharted charts for display as compone
 - The Pie Chart
 - The Column Chart
 - The Progress Chart
-- The Live Line Chart
+- The Line Chart
 - The Bar Chart
 
 ### Demo Application
