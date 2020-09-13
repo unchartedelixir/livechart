@@ -18,10 +18,12 @@ defmodule LiveChartWeb.ComponentView do
   end
 
   def svg_id(chart, suffix) do
-    base = chart
-    |> Chart.title()
-    |> String.downcase()
-    |> String.replace(~r(\s+), "-")
+    base =
+      chart
+      |> Chart.title()
+      |> String.downcase()
+      |> String.replace(~r(\s+), "-")
+
     base <> "-" <> suffix
   end
 
