@@ -8,14 +8,14 @@ defmodule LiveChart.LineChartTest do
   alias LiveChart.ColumnChart.Dataset
   use ExUnit.Case
 
-  @y_axis %YAxis{min: 0, max: 2500}
+  @y_axis %YAxis{min: -500, max: 2500}
   @axes %BaseAxes{y: @y_axis}
   @data [
     %BaseDatum{name: "Point One", values: [1, 750]},
     %BaseDatum{name: "Point Two", values: [5, 1500]},
-    %BaseDatum{name: "Point Three", values: [6, 2500]},
-    %BaseDatum{name: "Point Four", values: [8, 750]},
-    %BaseDatum{name: "Point Five", values: [10, 1750]}
+    %BaseDatum{name: "Point Three", values: [6, 2250]},
+    %BaseDatum{name: "Point Four", values: [8, 600]},
+    %BaseDatum{name: "Point Five", values: [10, 1200]}
   ]
   @dataset %Dataset{data: @data, axes: @axes}
   @chart %BaseChart{title: "title", dataset: @dataset}
@@ -43,7 +43,7 @@ defmodule LiveChart.LineChartTest do
 
     test "calculates point y value as a percent of y-axis min and max value" do
       y_offsets = Enum.map(LineChart.points(@chart), & &1.y_offset)
-      expected_y_offsets = [30.0, 60.0, 100.0, 30.0, 70.0]
+      expected_y_offsets = [25.0, 50.0, 75.0, 20.0, 40.0]
 
       assert y_offsets == expected_y_offsets
     end
