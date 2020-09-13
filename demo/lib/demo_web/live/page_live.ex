@@ -193,6 +193,17 @@ defmodule DemoWeb.PageLive do
   end
 
   defp bar_chart do
+    vm_allocated_areas = Demo.SystemData.allocated_areas()
+
+    datum =
+      Enum.map(vm_allocated_areas, fn {name, kilobytes} ->
+        %BaseDatum{
+          name: name,
+          fill_color: :rosy_gradient,
+          values: [kilobytes]
+        }
+      end)
+
     %BaseChart{
       title: "Coolness Units Per Language",
       colors: %{
@@ -205,37 +216,11 @@ defmodule DemoWeb.PageLive do
       dataset: %BarChart.Dataset{
         axes: %BaseAxes{
           magnitude_axis: %MagnitudeAxis{
-            max: 2500,
+            max: Demo.SystemData.chart_max(vm_allocated_areas),
             min: 0
           }
         },
-        data: [
-          %BaseDatum{
-            name: "C++",
-            fill_color: :rosy_gradient,
-            values: [750.0]
-          },
-          %BaseDatum{
-            name: "Ruby",
-            fill_color: :rosy_gradient,
-            values: [1500.0]
-          },
-          %BaseDatum{
-            name: "Erlang",
-            fill_color: :rosy_gradient,
-            values: [2500.0]
-          },
-          %BaseDatum{
-            name: "Java",
-            fill_color: :blue,
-            values: [750.0]
-          },
-          %BaseDatum{
-            name: "Elixir",
-            fill_color: :rosy_gradient,
-            values: [2500.0]
-          }
-        ]
+        data: datum
       }
     }
   end
