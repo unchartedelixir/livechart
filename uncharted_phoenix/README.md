@@ -111,7 +111,7 @@ pie_chart = %BaseChart{
 }
 ```
 
-### The Live Line Chart
+### The Line Chart
 ![Live Line Chart](assets/images/line-chart.jpg "Live Line Chart")
 
 ```elixir
