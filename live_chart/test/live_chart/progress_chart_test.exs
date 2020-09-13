@@ -27,5 +27,9 @@ defmodule LiveChart.ProgressChartTest do
     test "takes a progress chart dataset and returns the percentage of progress" do
       assert ProgressChart.progress(@chart.dataset) == 25
     end
+
+    test "returns zero if given a chart with an empty dataset" do
+      assert ProgressChart.progress(%BaseChart{dataset: nil}) == 0
+    end
   end
 end
