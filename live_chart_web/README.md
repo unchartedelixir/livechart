@@ -1,19 +1,78 @@
-# LiveChart
+# Uncharted Phoenix
+A simple ***Elixir*** charting library that generates easy to customize charts for ***Phoenix*** and ***LiveView***.
 
-To start your Phoenix server:
+## Features
+Easily generate pie charts, column charts, bar charts, progress counters, and line charts
+Generates repsonsive and accessible SVGs as LiveView components
+Provides adavanced styling like gradients and rounded corners
+Smooth animations for updating live data to the UI
 
-  * Install dependencies with `mix deps.get`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
-  * Start Phoenix endpoint with `mix phx.server`
+## HEX Installation
+Add this to your mix.exs deps:
+``` {:uncharted_phoenix, "~> 0.1.0"} ```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## How To Use
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+### Base Chart Colors 
+Base chart configuration allows you to define a set solid colors and gradients for any chart you will use within the applciation.
 
-## Learn more
+#### Set a Base Color
+```
+colors = %{
+  blue: "#6bdee4",
+}
+```
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+#### Set a Base Gradient Color
+```
+colors = %{
+  rose_gradient: %Gradient{
+    start_color: "#642B73",
+    stop_color: "#C6426E"
+  }
+}
+```
+
+### The Column Chart
+![Column Chart](demo/assets/static/images/column-chart.jpg?raw=true "Column Chart")
+
+  #### Initialize
+  
+  #### Configure Chart
+  
+  #### Connecting to Live Data
+
+### The Bar Chart
+![Bar Chart](demo/assets/static/images/bar-chart.jpg?raw=true "Bar Chart")
+  #### Initialize
+  
+  #### Configure Chart
+  
+  #### Connecting to Live Data
+
+### The Pie Chart
+![Pie Chart](demo/assets/static/images/pie-chart.jpg?raw=true "Pie Chart")
+
+  #### Initialize
+  
+  #### Configure Chart
+  
+  #### Connecting to Live Data
+
+### The Live Line Chart
+![Live Line Chart](demo/assets/static/images/line-chart.jpg?raw=true "Live Line Chart")
+
+  #### Initialize
+  
+  #### Configure Chart
+  
+  #### Connecting to Live Data
+
+### The Progress Chart
+![Progress Chart](demo/assets/static/images/progress-chart.jpg?raw=true "Progress Chart")
+  #### Initialize
+  
+  #### Configure Chart
+  
+  #### Connecting to Live Data
+
