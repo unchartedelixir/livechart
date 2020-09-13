@@ -1,6 +1,8 @@
 # Uncharted
 A simple ***Elixir*** charting library that generates easy to customize charts.
 
+Build status: [![CircleCI](https://circleci.com/gh/spawnfest/livechart/tree/master.svg?style=svg)](https://circleci.com/gh/spawnfest/livechart/tree/master)
+
 ![Bar Chart](/demo/assets/static/images/uncharted.jpg?raw=true "Bar Chart")
 
 ## Features
