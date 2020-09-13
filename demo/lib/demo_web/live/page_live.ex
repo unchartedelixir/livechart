@@ -115,7 +115,7 @@ defmodule DemoWeb.PageLive do
       colors: colors,
       dataset: %ColumnChart.Dataset{
         axes: %BaseAxes{
-          y: %YAxis{
+          magnitude_axis: %MagnitudeAxis{
             max: 2500,
             min: 0
           }
