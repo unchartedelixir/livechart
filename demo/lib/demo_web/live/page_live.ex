@@ -64,7 +64,6 @@ defmodule DemoWeb.PageLive do
     pie_chart = %BaseChart{
       title: "Best kind of pie",
       colors: %{
-        blue: "#0000FF",
         rose_gradient: %Gradient{
           start_color: "#642B73",
           stop_color: "#C6426E"
@@ -117,15 +116,29 @@ defmodule DemoWeb.PageLive do
   defp progress_chart(from: %BaseChart{} = chart) do
     %BaseChart{
       chart
-      | colors: Map.put(chart.colors, :gray, "#e2e2e2"),
+      | colors: %{
+          rose_gradient: %Gradient{
+            start_color: "#642B73",
+            stop_color: "#C6426E"
+          },
+          blue_gradient: %Gradient{
+            start_color: "#36D1DC",
+            stop_color: "#5B86E5"
+          },
+          red_gradient: %Gradient{
+            start_color: "#FF9486",
+            stop_color: "#FF1379"
+          },
+          gray: "#e2e2e2"
+        },
         dataset: %ProgressChart.Dataset{
           background_stroke_color: :gray,
           label: "Unchartedness",
           to_value: 100,
           current_value: 45,
-          percentage_text_fill_color: :red_gradient,
-          percentage_fill_color: :rosy_gradient,
-          label_fill_color: :rosy_gradient
+          percentage_text_fill_color: :blue_gradient,
+          percentage_fill_color: :rose_gradient,
+          label_fill_color: :rose_gradient
         }
     }
   end
