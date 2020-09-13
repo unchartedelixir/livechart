@@ -1,13 +1,13 @@
 <figure data-testid="lc-live-line-component">
-  <svg class="bar" aria-labelledby="chartTitle chartDesc" role="group" width="100%" height="100%" viewBox="0 0 700 400">
+  <svg id="<%= svg_id(@chart, "chart") %>" class="line__chart" aria-labelledby="chartTitle chartDesc" role="group" width="100%" height="100%" viewBox="0 0 700 400" style="overflow: visible;">
     <title id="chartTitle"><%= Chart.title(@chart) %></title>
     <desc id="chartDesc">watch my data come alive</desc>
 
     <%= render "_y_axis.html", chart: @chart, grid_lines: @y_grid_lines, offsetter: @y_grid_line_offsetter %>
     <%= render "_bar_grid_line_labels.html", chart: @chart, grid_lines: @x_grid_lines, offsetter: @x_grid_line_offsetter %>
 
-    <svg id="title-graph" class="bar__graph" width="90%" height="92%" x="10%" y="0">
-      <g id="chart-lines" class="bar__lines">
+    <svg id="<%= svg_id(@chart, "graph") %>" class="line__graph" width="90%" height="92%" x="10%" y="0">
+      <g id="chart-lines" class="line__lines">
         <%= render "_bar_grid_lines.html", chart: @chart, grid_lines: @x_grid_lines, offsetter: @x_grid_line_offsetter %>
         <%= render "_chart_lines.html", chart: @chart, grid_lines: @x_grid_lines, offsetter: @x_grid_line_offsetter %>
         <%= for %Line{start: %{x_offset: x1, y_offset: y1}, end: %{x_offset: x2, y_offset: y2}} <- @lines do %>
@@ -22,19 +22,21 @@
           />
         <% end %>
       </g>
-      <svg id"title-results" class="bar__results" width="100%" height="100%" x="0%" y="0%">
+      <svg id="<%= svg_id(@chart, "results") %>" class="line__results" width="100%" height="100%" x="0%" y="0%">
         <svg width='100%' height='100%' viewBox="0 0 1000 1000" preserveAspectRatio="none">
-          <g>
-            <polyline fill="url(#grad)" stroke="url(#blue_gradient)" style="transition: all 1s ease;" stroke-width="0" points="<%= svg_polyline_points(@points) %>"></polyline>
+          <g id="<%= svg_id(@chart, "lines") %>">
+            <polyline fill="url(#grad)" stroke="url(#blue_gradient)" style="transition: all 1s ease;" stroke-width="0" points="<%= svg_polyline_points(@points) %>">
+            </polyline>
           </g>
         </svg>
-        <g>
+        <g id="<%= svg_id(@chart, "dots") %>" class="line_dots">
           <%= for %Point{x_offset: x_offset, y_offset: y_offset, fill_color: fill_color} <- @points do %>
             <circle
               fill="<%= color_to_fill(@chart.colors(), fill_color) %>"
               cx="<%= x_offset %>%"
               cy="<%= 100 - y_offset %>%"
               r="6">
+              <animate attributeName="cx" values="0;<%= x_offset %>" dur="0.5s" repeatCount="freeze" />
             </circle>
           <% end %>
         </g>

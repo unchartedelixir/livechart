@@ -1,8 +1,8 @@
-<svg id="<%= svg_id(@chart, "ylabels") %>" class="columns__y-labels" width="8%" height="90%" y="0" x="0">
+<svg id="<%= svg_id(@chart, "ylabels") %>" class="columns__y-labels" width="8%" height="90%" y="0" x="0" style="overflow: visable">
   <%= for grid_line <- @grid_lines do %>
     <svg x="0" y="<%= @offsetter.(grid_line) %>%" height="20px" width="100%">
       <svg width="100%" height="100%">
-        <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle"><%= grid_line %></text>
+        <text x="50%" y="50%" font-size="9px" alignment-baseline="middle" text-anchor="middle"><%= grid_line %></text>
       </svg>
     </svg>
   <% end %>
