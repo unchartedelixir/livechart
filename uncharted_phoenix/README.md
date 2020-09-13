@@ -34,7 +34,7 @@ colors = %{
 ```
 
 ### The Column Chart
-![Column Chart](https://raw.githubusercontent.com/spawnfest/livechart/master/demo/assets/static/images/column-chart.jpg "Column Chart")
+![Column Chart](/assets/images/column-chart.jpg "Column Chart")
 
   #### Initialize
   
@@ -43,7 +43,7 @@ colors = %{
   #### Connecting to Live Data
 
 ### The Bar Chart
-![Bar Chart](https://raw.githubusercontent.com/spawnfest/livechart/master/demo/assets/static/images/bar-chart.jpg "Bar Chart")
+![Bar Chart](/assets/images/bar-chart.jpg "Bar Chart")
   #### Initialize
   
   #### Configure Chart
@@ -51,7 +51,7 @@ colors = %{
   #### Connecting to Live Data
 
 ### The Pie Chart
-![Pie Chart](https://raw.githubusercontent.com/spawnfest/livechart/master/demo/assets/static/images/pie-chart.jpg "Pie Chart")
+![Pie Chart](/assets/images/pie-chart.jpg "Pie Chart")
 
   #### Initialize
   
@@ -60,7 +60,7 @@ colors = %{
   #### Connecting to Live Data
 
 ### The Live Line Chart
-![Live Line Chart](https://raw.githubusercontent.com/spawnfest/livechart/master/demo/assets/static/images/line-chart.jpg "Live Line Chart")
+![Live Line Chart](/assets/images/line-chart.jpg "Live Line Chart")
 
   #### Initialize
   
@@ -69,7 +69,7 @@ colors = %{
   #### Connecting to Live Data
 
 ### The Progress Chart
-![Progress Chart](https://raw.githubusercontent.com/spawnfest/livechart/master/demo/assets/static/images/progress-chart.jpg "Progress Chart")
+![Progress Chart](/assets/images/progress-chart.jpg "Progress Chart")
   #### Initialize
   
   #### Configure Chart
