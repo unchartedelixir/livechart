@@ -8,6 +8,7 @@ defmodule LiveChartWeb.ComponentView do
 
   alias LiveChart.{Chart, Gradient}
   alias LiveChart.ColumnChart.Column
+  alias LiveChart.LineChart.{Line, Point}
 
   def color_to_fill(colors, name) do
     case Map.get(colors, name) do
@@ -48,5 +49,15 @@ defmodule LiveChartWeb.ComponentView do
       [svg_slice | acc]
     end)
     |> Enum.reverse()
+  end
+
+  def svg_polyline_points([]), do: ""
+
+  def svg_polyline_points(points) do
+    points
+    |> Enum.map(fn %Point{x_offset: x, y_offset: y} -> "#{10 * x},#{1000 - 10 * y}" end)
+    |> List.insert_at(0, "#{hd(points).x_offset * 10},1000")
+    |> List.insert_at(-1, "#{List.last(points).x_offset * 10},1000")
+    |> Enum.join(" ")
   end
 end

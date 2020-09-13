@@ -5,7 +5,7 @@ defmodule DemoWeb.PageLive do
 
   alias Demo.SystemData.{AllocatedAreas, Memory}
   alias LiveChart.{BaseChart, BaseDatum, Gradient}
-  alias LiveChart.Axes.{BaseAxes, MagnitudeAxis}
+  alias LiveChart.Axes.{BaseAxes, MagnitudeAxis, XYAxes}
   alias LiveChart.BarChart
   alias LiveChart.ColumnChart
   alias LiveChart.PieChart
@@ -115,37 +115,41 @@ defmodule DemoWeb.PageLive do
       title: "Umbrellas per Neighborhood",
       colors: colors,
       dataset: %ColumnChart.Dataset{
-        axes: %BaseAxes{
-          magnitude_axis: %MagnitudeAxis{
+        axes: %XYAxes{
+          x: %MagnitudeAxis{
+            max: 700,
+            min: 0
+          },
+          y: %MagnitudeAxis{
             max: 2500,
             min: 0
           }
         },
         data: [
           %BaseDatum{
-            name: "Landen",
-            fill_color: :rose_gradient,
-            values: [750.0]
+            name: "Point 1",
+            fill_color: :blue_gradient,
+            values: [70, 500]
           },
           %BaseDatum{
-            name: "Oakley",
-            fill_color: :rose_gradient,
-            values: [1500.0]
+            name: "Point 2",
+            fill_color: :blue_gradient,
+            values: [150, 1000]
           },
           %BaseDatum{
-            name: "Downtown",
-            fill_color: :rose_gradient,
-            values: [2500.0]
+            name: "Point 3",
+            fill_color: :blue_gradient,
+            values: [350, 1600]
           },
           %BaseDatum{
-            name: "Florence",
-            fill_color: :blue,
-            values: [750.0]
+            name: "Point 4",
+            fill_color: :blue_gradient,
+            values: [450, 1500]
           },
           %BaseDatum{
-            name: "Erlanger",
-            fill_color: :rose_gradient,
-            values: [1750.0]
+            name: "Point 5",
+            fill_color: :blue_gradient,
+            values: [550, 2000]
           }
         ]
       }

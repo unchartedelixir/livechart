@@ -1,98 +1,42 @@
-<figure>
+<figure data-testid="lc-live-line-component">
   <svg class="bar" aria-labelledby="chartTitle chartDesc" role="group" width="100%" height="100%" viewBox="0 0 700 400">
     <title id="chartTitle"><%= Chart.title(@chart) %></title>
     <desc id="chartDesc">watch my data come alive</desc>
 
-    <svg id="title-y-labels" class="bar__y-labels" width="8%" height="100%" y="0" x="0">
-      <svg x="0" y="16%" height="20px" width="100%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">2000</text>
-        </svg>
-      </svg>
-      <svg x="0" y="35%" height="20px" width="100%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">1500</text>
-        </svg>
-      </svg>
-      <svg x="0" y="53%" height="20px" width="100%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">1000</text>
-        </svg>
-      </svg>
-      <svg x="0" y="72%" height="20px" width="100%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">500</text>
-        </svg>
-      </svg>
-    </svg>
-
-    <svg id="title-x-labels" class="bar__x-labels" width="92%" height="8%" y="92%" x="9.5%">
-      <svg x="0%" y="0%" height="100%" width="40%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">week one</text>
-        </svg>
-      </svg>
-      <svg x="20%" y="0%" height="100%" width="40%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">week two</text>
-        </svg>
-      </svg>
-      <svg x="40%" y="0%" height="100%" width="40%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">week three</text>
-        </svg>
-      </svg>
-      <svg x="60%" y="0%" height="100%" width="40%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">week four</text>
-        </svg>
-      </svg>
-    </svg>
+    <%= render "_y_axis.html", chart: @chart, grid_lines: @y_grid_lines, offsetter: @y_grid_line_offsetter %>
+    <%= render "_bar_grid_line_labels.html", chart: @chart, grid_lines: @x_grid_lines, offsetter: @x_grid_line_offsetter %>
 
     <svg id="title-graph" class="bar__graph" width="90%" height="92%" x="10%" y="0">
       <g id="chart-lines" class="bar__lines">
-        <line x1="0%" y1="0%" x2="0%" y2="100%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
-        <line x1="0%" y1="100%" x2="100%" y2="100%" stroke="#efefef" stroke-width="4px" stroke-linecap="round" />
-        <line x1="0%" y1="20%" x2="100%" y2="20%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
-        <line x1="0%" y1="40%" x2="100%" y2="40%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
-        <line x1="0%" y1="60%" x2="100%" y2="60%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
-        <line x1="0%" y1="80%" x2="100%" y2="80%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
-        <line x1="0%" y1="0%" x2="100%" y2="0%" stroke="#efefef" stroke-width="4px" stroke-linecap="round" />
-        <line x1="20%" y1="0%" x2="20%" y2="100%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
-        <line x1="40%" y1="0%" x2="40%" y2="100%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
-        <line x1="60%" y1="0%" x2="60%" y2="100%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
-        <line x1="80%" y1="0%" x2="80%" y2="100%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
-        <line x1="100%" y1="0%" x2="100%" y2="100%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
+        <%= render "_bar_grid_lines.html", chart: @chart, grid_lines: @x_grid_lines, offsetter: @x_grid_line_offsetter %>
+        <%= render "_chart_lines.html", chart: @chart, grid_lines: @x_grid_lines, offsetter: @x_grid_line_offsetter %>
+        <%= for %Line{start: %{x_offset: x1, y_offset: y1}, end: %{x_offset: x2, y_offset: y2}} <- @lines do %>
+          <line
+            x1="<%= x1 %>%"
+            y1="<%= 100 - y1 %>%"
+            x2="<%= x2 %>%"
+            y2="<%= 100 - y2 %>%"
+            stroke="#efefef"
+            stroke-width="2px"
+            stroke-linecap="round"
+          />
+        <% end %>
       </g>
       <svg id"title-results" class="bar__results" width="100%" height="100%" x="0%" y="0%">
-        <g>
-          <polyline fill="url(#grad)" stroke="url(#blue_gradient)" style="transition: all 1s ease;" stroke-width="0" points="
-                          0,300
-                          0,0
-                          150,100
-                          250,80
-                          350,160
-                          450,100
-                          550,100
-                          850,350
-                          "></polyline>
-
-          <polyline fill="none" stroke="url(#blue_gradient)" style="transition: all 1s ease;" stroke-width="2" points="
-                          0,0
-                          150,100
-                          250,80
-                          350,160
-                          450,100
-                          550,100
-                          "></polyline>
+        <svg width='100%' height='100%' viewBox="0 0 1000 1000" preserveAspectRatio="none">
           <g>
-            <circle fill="url(#blue_gradient)" cx="0" cy="0" data-value="7.2" r="6"></circle>
-            <circle fill="url(#blue_gradient)" cx="150" cy="100" data-value="8.1" r="6" q-title="Q1" answer-count="200" percent-value="66%"></circle>
-            <circle fill="url(#blue_gradient)" cx="250" cy="80" data-value="7.7" r="6" q-title="Q2" answer-count="220" percent-value="73%"></circle>
-            <circle fill="url(#blue_gradient)" cx="350" cy="160" data-value="6.8" r="6" q-title="Q3" answer-count="140" percent-value="46%"></circle>
-            <circle fill="url(#blue_gradient)"" cx="450" cy="100" data-value="6.7" r="6" q-title="Q4" answer-count="200" percent-value="66%"></circle>
-            <circle fill="url(#blue_gradient)" cx="550" cy="100" data-value="6.7" r="6" q-title="Q5" answer-count="200" percent-value="66%"></circle>
+            <polyline fill="url(#grad)" stroke="url(#blue_gradient)" style="transition: all 1s ease;" stroke-width="0" points="<%= svg_polyline_points(@points) %>"></polyline>
           </g>
+        </svg>
+        <g>
+          <%= for %Point{x_offset: x_offset, y_offset: y_offset, fill_color: fill_color} <- @points do %>
+            <circle
+              fill="<%= color_to_fill(@chart.colors(), fill_color) %>"
+              cx="<%= x_offset %>%"
+              cy="<%= 100 - y_offset %>%"
+              r="6">
+            </circle>
+          <% end %>
         </g>
       </svg>
       <defs>
