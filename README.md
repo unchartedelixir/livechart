@@ -75,3 +75,18 @@ colors = %{
   #### Configure Chart
   
   #### Connecting to Live Data
+  
+  ## Contributing
+  We appreciate any contribution to LiveView.
+  
+  Running the Elixir tests:
+  ```
+  $ mix deps.get
+  $ mix test
+  $ mix format
+  $ mix credo--strict
+  ```
+
+
+
+
