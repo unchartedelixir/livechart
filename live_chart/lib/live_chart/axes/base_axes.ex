@@ -2,10 +2,10 @@ defmodule LiveChart.Axes.BaseAxes do
   @moduledoc """
   Exposes a struct representing configuration for axes on LiveCharts.
   """
-  defstruct [:y, show_gridlines: true]
+  defstruct [:magnitude_axis, show_gridlines: true]
 
   @type t() :: %__MODULE__{
-          y: LiveChart.Axes.YAxis.t(),
+          magnitude_axis: LiveChart.Axes.MagnitudeAxis.t(),
           show_gridlines: boolean()
         }
 end

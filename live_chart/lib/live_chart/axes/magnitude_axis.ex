@@ -1,4 +1,4 @@
-defmodule LiveChart.Axes.YAxis do
+defmodule LiveChart.Axes.MagnitudeAxis do
   @moduledoc """
   Exposes a struct representing configuration for the y axis
   of a LiveChart.
