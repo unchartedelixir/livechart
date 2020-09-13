@@ -1,10 +1,10 @@
 defmodule LiveChart.BaseChartTest do
   alias LiveChart.{
+    BaseChart,
+    BaseDatum,
     Chart,
     ColumnChart,
-    Gradient,
-    BaseChart,
-    BaseDatum
+    Gradient
   }
 
   alias LiveChart.Axes.{BaseAxes, YAxis}

@@ -1,0 +1,280 @@
+version: 2.1
+
+install_hex_rebar: &install_hex_rebar
+  run:
+    name: Install hex and rebar
+    command: |
+      mix local.hex --force
+      mix local.rebar --force
+
+jobs:
+  build:
+    docker:
+      - image: circleci/elixir:1.10.4-node-browsers
+        environment:
+          MIX_ENV: test
+
+    steps:
+      - checkout
+      - <<: *install_hex_rebar
+
+      - run:
+          name: "ELIXIR_VERSION.lock"
+          command: echo "${ELIXIR_VERSION}" > ELIXIR_VERSION.lock
+      - run:
+          name: "OTP_VERSION.lock"
+          command: echo "${OTP_VERSION}" > OTP_VERSION.lock
+
+      # live_chart
+      - restore_cache:
+          keys:
+            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "live_chart/mix.lock" }}
+            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+      - run:
+          name: Compile live_chart
+          command: mix do deps.get, compile
+          working_directory: ~/project/live_chart
+      - save_cache:
+          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "live_chart/mix.lock" }}
+          paths:
+            - live_chart/deps
+            - live_chart/_build
+      - save_cache:
+          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+          paths:
+            - live_chart/deps
+            - live_chart/_build
+
+      # live_chart_web
+      - restore_cache:
+          keys:
+            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "live_chart_web/mix.lock" }}
+            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+      - run:
+          name: compile live_chart_web
+          command: mix do deps.get, compile
+          working_directory: ~/project/live_chart_web
+      - save_cache:
+          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "live_chart_web/mix.lock" }}
+          paths:
+            - live_chart_web/deps
+            - live_chart_web/_build
+      - save_cache:
+          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+          paths:
+            - live_chart_web/deps
+            - live_chart_web/_build
+
+      # demo
+      - restore_cache:
+          keys:
+            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "demo/mix.lock" }}
+            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+      - run:
+          name: compile demo
+          command: mix do deps.get, compile
+          working_directory: ~/project/demo
+      - save_cache:
+          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "demo/mix.lock" }}
+          paths:
+            - demo/deps
+            - demo/_build
+      - save_cache:
+          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+          paths:
+            - demo/deps
+            - demo/_build
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .circleci
+            - .dialyzer-ignore.exs
+            - .git
+            - .gitignore
+            - ELIXIR_VERSION.lock
+            - OTP_VERSION.lock
+            - live_chart
+            - live_chart_web
+            - demo
+            - VERSION
+
+  test:
+    parameters:
+      project_name:
+        description: "project name"
+        type: string
+    docker:
+      - image: circleci/elixir:1.10.4-node-browsers
+        environment:
+          MIX_ENV: test
+
+    steps:
+      - attach_workspace:
+          at: .
+      - <<: *install_hex_rebar
+
+      # - run:
+      #    name: Start Chrome Driver
+      #    command: /usr/local/bin/chromedriver
+      #    background: true
+      # - run:
+      #     name: Create Test Database
+      #     command: mix do ecto.create, ecto.migrate
+      #     working_directory: ~/project/demo
+      - run:
+          name: mix test
+          command: mix coveralls.html
+          working_directory: ~/project/<< parameters.project_name >>
+
+      - store_artifacts:
+          path: << parameters.project_name >>/cover/excoveralls.html
+      - store_test_results:
+          path: << parameters.project_name >>/_build/test/junit
+
+  dialyzer:
+    parameters:
+      project_name:
+        description: "project name"
+        type: string
+    docker:
+      - image: circleci/elixir:1.10.4-node-browsers
+        environment:
+          MIX_ENV: test
+    steps:
+      - attach_workspace:
+          at: .
+      - <<: *install_hex_rebar
+
+      - restore_cache:
+          keys:
+            - v1-<< parameters.project_name >>-mix-dialyzer-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "<< parameters.project_name >>/mix.lock" }}
+            - v1-<< parameters.project_name >>-mix-dialyzer-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+
+      - run:
+          command: mix dialyzer --plt
+          working_directory: ~/project/<< parameters.project_name >>
+          no_output_timeout: 20m
+
+      - save_cache:
+          key: v1-<< parameters.project_name >>-mix-dialyzer-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "<< parameters.project_name >>/mix.lock" }}
+          paths:
+            - << parameters.project_name >>/priv/plts
+      - save_cache:
+          key: v1-<< parameters.project_name >>-mix-dialyzer-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+          paths:
+            - << parameters.project_name >>/priv/plts
+
+      - run:
+          command: mix dialyzer --halt-exit-status
+          working_directory: ~/project/<< parameters.project_name >>
+          no_output_timeout: 20m
+
+  credo:
+    parameters:
+      project_name:
+        description: "project name"
+        type: string
+    docker:
+      - image: circleci/elixir:1.10.4-node-browsers
+        environment:
+          MIX_ENV: test
+    steps:
+      - attach_workspace:
+          at: .
+      - <<: *install_hex_rebar
+      - run:
+          command: mix credo --strict
+          working_directory: ~/project/<< parameters.project_name >>
+
+  check-formatted:
+    parameters:
+      project_name:
+        description: "project name"
+        type: string
+    docker:
+      - image: circleci/elixir:1.10.4-node-browsers
+        environment:
+          MIX_ENV: test
+    steps:
+      - attach_workspace:
+          at: .
+      - <<: *install_hex_rebar
+      - run:
+          command: mix format --check-formatted
+          working_directory: ~/project/<< parameters.project_name >>
+
+
+workflows:
+  version: 2
+  primary:
+    jobs:
+      - build
+      - check-formatted:
+          project_name: live_chart
+          name: live_chart_check_formatted
+          requires:
+            - build
+      - test:
+          project_name: live_chart
+          name: live_chart_test
+          requires:
+            - build
+      - credo:
+          project_name: live_chart
+          name: live_chart_credo
+          requires:
+            - build
+      # - dialyzer:
+      #     project_name: live_chart
+      #     name: live_chart_dialyzer
+      #     requires:
+      #       - live_chart_credo
+      #       - live_chart_test
+      #       - live_chart_check_formatted
+
+      - check-formatted:
+          project_name: live_chart_web
+          name: live_chart_web_check_formatted
+          requires:
+            - build
+      - test:
+          project_name: live_chart_web
+          name: live_chart_web_test
+          requires:
+            - build
+      - credo:
+          project_name: live_chart_web
+          name: live_chart_web_credo
+          requires:
+            - build
+      # - dialyzer:
+      #     project_name: live_chart_web
+      #     name: live_chart_web_dialyzer
+      #     requires:
+      #       - live_chart_web_credo
+      #       - live_chart_web_test
+      #       - live_chart_web_check_formatted
+
+      - check-formatted:
+          project_name: demo
+          name: demo_check_formatted
+          requires:
+            - build
+      - test:
+          project_name: demo
+          name: demo_test
+          requires:
+            - build
+      - credo:
+          project_name: demo
+          name: demo_credo
+          requires:
+            - build
+      # - dialyzer:
+      #     project_name: demo
+      #     name: demo_dialyzer
+      #     requires:
+      #       - demo_credo
+      #       - demo_test
+      #       - demo_check_formatted

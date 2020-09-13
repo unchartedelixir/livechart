@@ -1,8 +1,8 @@
 defmodule LiveChart.ColumnChartTest do
   alias LiveChart.{
-    ColumnChart,
     BaseChart,
-    BaseDatum
+    BaseDatum,
+    ColumnChart
   }
 
   alias LiveChart.Axes.{BaseAxes, YAxis}

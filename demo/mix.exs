@@ -8,6 +8,21 @@ defmodule Demo.MixProject do
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      dialyzer: [
+        plt_add_apps: ~w(ex_unit mix)a,
+        plt_add_deps: :transitive,
+        plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+        # ignore_warnings: "../.dialyzer-ignore.exs"
+      ],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test,
+        credo: :test,
+        dialyzer: :test
+      ],
+      test_coverage: [tool: ExCoveralls],
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -33,6 +48,9 @@ defmodule Demo.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.11", only: :test},
       {:phoenix, "~> 1.5.4"},
       {:phoenix_live_view, "~> 0.14.4"},
       {:floki, ">= 0.0.0", only: :test},

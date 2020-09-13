@@ -36,7 +36,3 @@ defmodule LiveChart.BaseChart do
     end
   end
 end
-
-defmodule LiveChart.ColumnChart.Styles do
-  defstruct [:radius, :color]
-end

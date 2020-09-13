@@ -8,8 +8,7 @@ defimpl LiveChart.PieChart, for: LiveChart.BaseChart do
 
   def pie_slices(%BaseChart{dataset: %{data: data}}) do
     data
-    |> Enum.with_index()
-    |> Enum.map(fn {datum, index} ->
+    |> Enum.map(fn datum ->
       %PieSlice{
         label: datum.name,
         percentage: hd(datum.values),

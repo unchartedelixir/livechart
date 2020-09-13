@@ -1,4 +1,8 @@
 defmodule LiveChartWeb.LiveProgressComponent do
+  @moduledoc """
+  Bar Progress Component
+  """
+
   alias LiveChart.ProgressChart
   use Phoenix.LiveComponent
 
