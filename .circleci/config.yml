@@ -187,12 +187,34 @@ jobs:
           command: mix credo --strict
           working_directory: ~/project/<< parameters.project_name >>
 
+  check-formatted:
+    parameters:
+      project_name:
+        description: "project name"
+        type: string
+    docker:
+      - image: circleci/elixir:1.10.4-node-browsers
+        environment:
+          MIX_ENV: test
+    steps:
+      - attach_workspace:
+          at: .
+      - <<: *install_hex_rebar
+      - run:
+          command: mix format --check-formatted
+          working_directory: ~/project/<< parameters.project_name >>
+
 
 workflows:
   version: 2
   primary:
     jobs:
       - build
+      - check-formatted:
+          project_name: live_chart
+          name: live_chart_check_formatted
+          requires:
+            - build
       - test:
           project_name: live_chart
           name: live_chart_test
@@ -209,7 +231,13 @@ workflows:
       #     requires:
       #       - live_chart_credo
       #       - live_chart_test
+      #       - live_chart_check_formatted
 
+      - check-formatted:
+          project_name: live_chart_web
+          name: live_chart_web_check_formatted
+          requires:
+            - build
       - test:
           project_name: live_chart_web
           name: live_chart_web_test
@@ -226,7 +254,13 @@ workflows:
       #     requires:
       #       - live_chart_web_credo
       #       - live_chart_web_test
+      #       - live_chart_web_check_formatted
 
+      - check-formatted:
+          project_name: demo
+          name: demo_check_formatted
+          requires:
+            - build
       - test:
           project_name: demo
           name: demo_test
@@ -243,3 +277,4 @@ workflows:
       #     requires:
       #       - demo_credo
       #       - demo_test
+      #       - demo_check_formatted
