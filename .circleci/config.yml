@@ -32,62 +32,62 @@ jobs:
           name: "OTP_VERSION.lock"
           command: echo "${OTP_VERSION}" > OTP_VERSION.lock
 
-      # live_chart
+      # uncharted
       - restore_cache:
           keys:
-            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "live_chart/mix.lock" }}
-            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+            - v2-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "uncharted/mix.lock" }}
+            - v2-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
       - run:
-          name: Compile live_chart
+          name: Compile uncharted
           command: mix do deps.get, compile
-          working_directory: ~/project/live_chart
+          working_directory: ~/project/uncharted
       - save_cache:
-          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "live_chart/mix.lock" }}
+          key: v2-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "uncharted/mix.lock" }}
           paths:
-            - live_chart/deps
-            - live_chart/_build
+            - uncharted/deps
+            - uncharted/_build
       - save_cache:
-          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+          key: v2-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
           paths:
-            - live_chart/deps
-            - live_chart/_build
+            - uncharted/deps
+            - uncharted/_build
 
-      # live_chart_web
+      # uncharted_phoenix
       - restore_cache:
           keys:
-            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "live_chart_web/mix.lock" }}
-            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+            - v2-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "uncharted_phoenix/mix.lock" }}
+            - v2-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
       - run:
-          name: compile live_chart_web
+          name: compile uncharted_phoenix
           command: mix do deps.get, compile
-          working_directory: ~/project/live_chart_web
+          working_directory: ~/project/uncharted_phoenix
       - save_cache:
-          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "live_chart_web/mix.lock" }}
+          key: v2-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "uncharted_phoenix/mix.lock" }}
           paths:
-            - live_chart_web/deps
-            - live_chart_web/_build
+            - uncharted_phoenix/deps
+            - uncharted_phoenix/_build
       - save_cache:
-          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+          key: v2-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
           paths:
-            - live_chart_web/deps
-            - live_chart_web/_build
+            - uncharted_phoenix/deps
+            - uncharted_phoenix/_build
 
       # demo
       - restore_cache:
           keys:
-            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "demo/mix.lock" }}
-            - v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+            - v2-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "demo/mix.lock" }}
+            - v2-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
       - run:
           name: compile demo
           command: mix do deps.get, compile
           working_directory: ~/project/demo
       - save_cache:
-          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "demo/mix.lock" }}
+          key: v2-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "demo/mix.lock" }}
           paths:
             - demo/deps
             - demo/_build
       - save_cache:
-          key: v1-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+          key: v2-mix-compile-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
           paths:
             - demo/deps
             - demo/_build
@@ -101,8 +101,8 @@ jobs:
             - .gitignore
             - ELIXIR_VERSION.lock
             - OTP_VERSION.lock
-            - live_chart
-            - live_chart_web
+            - uncharted
+            - uncharted_phoenix
             - demo
             - VERSION
 
@@ -155,8 +155,8 @@ jobs:
 
       - restore_cache:
           keys:
-            - v1-<< parameters.project_name >>-mix-dialyzer-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "<< parameters.project_name >>/mix.lock" }}
-            - v1-<< parameters.project_name >>-mix-dialyzer-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+            - v2-<< parameters.project_name >>-mix-dialyzer-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "<< parameters.project_name >>/mix.lock" }}
+            - v2-<< parameters.project_name >>-mix-dialyzer-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
 
       - run:
           command: mix dialyzer --plt
@@ -164,11 +164,11 @@ jobs:
           no_output_timeout: 20m
 
       - save_cache:
-          key: v1-<< parameters.project_name >>-mix-dialyzer-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "<< parameters.project_name >>/mix.lock" }}
+          key: v2-<< parameters.project_name >>-mix-dialyzer-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}-{{ checksum "<< parameters.project_name >>/mix.lock" }}
           paths:
             - << parameters.project_name >>/priv/plts
       - save_cache:
-          key: v1-<< parameters.project_name >>-mix-dialyzer-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
+          key: v2-<< parameters.project_name >>-mix-dialyzer-{{ checksum "OTP_VERSION.lock" }}-{{ checksum "ELIXIR_VERSION.lock" }}
           paths:
             - << parameters.project_name >>/priv/plts
 
@@ -222,7 +222,7 @@ jobs:
       - <<: *install_ghr
       - run:
           name: Build release notes
-          command: grep -Pazo "(?s)(?<=## ${CIRCLE_TAG})[^#]+" ~/project/live_chart/CHANGELOG.md | sed '/./,$!d' > ~/project/RELEASE_NOTES
+          command: grep -Pazo "(?s)(?<=## ${CIRCLE_TAG})[^#]+" ~/project/uncharted/CHANGELOG.md | sed '/./,$!d' > ~/project/RELEASE_NOTES
       - run:
           name: Deploy artifacts to GitHub
           command: ./ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME -b "$(cat ~/project/RELEASE_NOTES)" -replace $CIRCLE_TAG deploy
@@ -237,68 +237,68 @@ workflows:
               only: /v.*/
 
       - check-formatted:
-          project_name: live_chart
-          name: live_chart_check_formatted
+          project_name: uncharted
+          name: uncharted_check_formatted
           requires:
             - build
           filters:
             tags:
               only: /v.*/
       - test:
-          project_name: live_chart
-          name: live_chart_test
+          project_name: uncharted
+          name: uncharted_test
           requires:
             - build
           filters:
             tags:
               only: /v.*/
       - credo:
-          project_name: live_chart
-          name: live_chart_credo
+          project_name: uncharted
+          name: uncharted_credo
           requires:
             - build
           filters:
             tags:
               only: /v.*/
       # - dialyzer:
-      #     project_name: live_chart
-      #     name: live_chart_dialyzer
+      #     project_name: uncharted
+      #     name: uncharted_dialyzer
       #     requires:
-      #       - live_chart_credo
-      #       - live_chart_test
-      #       - live_chart_check_formatted
+      #       - uncharted_credo
+      #       - uncharted_test
+      #       - uncharted_check_formatted
 
       - check-formatted:
-          project_name: live_chart_web
-          name: live_chart_web_check_formatted
+          project_name: uncharted_phoenix
+          name: uncharted_phoenix_check_formatted
           requires:
             - build
           filters:
             tags:
               only: /v.*/
       - test:
-          project_name: live_chart_web
-          name: live_chart_web_test
+          project_name: uncharted_phoenix
+          name: uncharted_phoenix_test
           requires:
             - build
           filters:
             tags:
               only: /v.*/
       - credo:
-          project_name: live_chart_web
-          name: live_chart_web_credo
+          project_name: uncharted_phoenix
+          name: uncharted_phoenix_credo
           requires:
             - build
           filters:
             tags:
               only: /v.*/
       # - dialyzer:
-      #     project_name: live_chart_web
-      #     name: live_chart_web_dialyzer
+      #     project_name: uncharted_phoenix
+      #     name: uncharted_phoenix_dialyzer
       #     requires:
-      #       - live_chart_web_credo
-      #       - live_chart_web_test
-      #       - live_chart_web_check_formatted
+      #       - uncharted_phoenix_credo
+      #       - uncharted_phoenix_test
+      #       - uncharted_phoenix_check_formatted
 
       - check-formatted:
           project_name: demo
@@ -338,9 +338,9 @@ workflows:
             tags:
               only: /v.*/
           requires:
-            - live_chart_check_formatted
-            - live_chart_test
-            - live_chart_credo
-            - live_chart_web_check_formatted
-            - live_chart_web_test
-            - live_chart_web_credo
+            - uncharted_check_formatted
+            - uncharted_test
+            - uncharted_credo
+            - uncharted_phoenix_check_formatted
+            - uncharted_phoenix_test
+            - uncharted_phoenix_credo
