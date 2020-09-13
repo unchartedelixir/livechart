@@ -1,7 +1,6 @@
 defmodule Uncharted.Axes.MagnitudeAxis do
   @moduledoc """
-  Exposes a struct representing configuration for the y axis
-  of a chart.
+  Exposes a struct representing configuration for an axis that has values that increase in a particular direction
   """
   defstruct [:min, :max, :step, :label, grid_lines: &__MODULE__.default_grid_lines_fun/2]
   @type min :: number()
