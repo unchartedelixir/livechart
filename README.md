@@ -20,7 +20,7 @@ A simple ***Elixir*** charting library that generates easy to customize charts.
 - The Bar Chart
 
 ## Uncharted Demo
-The[Uncharted Demo](/demo) is a working example of each of Uncarted apps.
+The[Uncharted Demo](/demo) is a working example of each of Uncarted chart components.
 
 To start your Phoenix server:
 
