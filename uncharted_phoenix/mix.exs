@@ -77,7 +77,9 @@ defmodule UnchartedPhoenix.MixProject do
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
-    []
+    [
+      docs: ["docs", &copy_assets/1]
+    ]
   end
 
   defp description do
@@ -106,5 +108,9 @@ defmodule UnchartedPhoenix.MixProject do
 
   defp package_files do
     ~w(lib priv .formatter.exs mix.exs README.md LICENSE CHANGELOG.md VERSION)
+  end
+
+  defp copy_assets(_) do
+    File.cp_r("assets", "doc/assets")
   end
 end
