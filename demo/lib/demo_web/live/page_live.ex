@@ -5,6 +5,7 @@ defmodule DemoWeb.PageLive do
 
   alias LiveChart.{BaseChart, BaseDatum, Gradient}
   alias LiveChart.Axes.{BaseAxes, MagnitudeAxis}
+  alias LiveChart.BarChart
   alias LiveChart.ColumnChart
   alias LiveChart.PieChart
   alias LiveChart.ProgressChart
@@ -165,6 +166,7 @@ defmodule DemoWeb.PageLive do
 
     {:ok,
      assign(socket,
+       bar_chart: bar_chart(),
        column_chart: column_chart,
        pie_chart: pie_chart,
        progress_chart: progress_chart,
@@ -199,6 +201,60 @@ defmodule DemoWeb.PageLive do
           percentage_fill_color: :rose_gradient,
           label_fill_color: :rose_gradient
         }
+    }
+  end
+
+  defp bar_chart do
+    %BaseChart{
+      title: "Coolness Units Per Language",
+      colors: %{
+        blue: "#36D1DC",
+        rosy_gradient: %Gradient{
+          start_color: "#642B73",
+          stop_color: "#C6426E"
+        }
+      },
+      dataset: %BarChart.Dataset{
+        axes: %BaseAxes{
+          magnitude_axis: %MagnitudeAxis{
+            max: 2500,
+            min: 0,
+            grid_lines: fn {min, max}, step ->
+              min..max
+              |> Enum.take_every(div(max - min, step))
+              |> Enum.sort_by(& &1, &>=/2)
+              |> Enum.drop(1)
+            end
+          }
+        },
+        data: [
+          %BaseDatum{
+            name: "Erlang",
+            fill_color: :rosy_gradient,
+            values: [750.0]
+          },
+          %BaseDatum{
+            name: "Ruby",
+            fill_color: :rosy_gradient,
+            values: [1500.0]
+          },
+          %BaseDatum{
+            name: "Erlang",
+            fill_color: :rosy_gradient,
+            values: [2500.0]
+          },
+          %BaseDatum{
+            name: "Java",
+            fill_color: :blue,
+            values: [750.0]
+          },
+          %BaseDatum{
+            name: "Elixir",
+            fill_color: :rosy_gradient,
+            values: [2500.0]
+          }
+        ]
+      }
     }
   end
 end
