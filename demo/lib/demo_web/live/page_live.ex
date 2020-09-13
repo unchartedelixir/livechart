@@ -127,7 +127,6 @@ defmodule DemoWeb.PageLive do
             grid_lines: fn {min, max}, step ->
               min..max
               |> Enum.take_every(div(max - min, step))
-              |> Enum.sort_by(& &1, &>=/2)
               |> Enum.drop(1)
             end
           }

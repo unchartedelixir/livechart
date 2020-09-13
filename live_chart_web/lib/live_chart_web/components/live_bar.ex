@@ -6,15 +6,22 @@ defmodule LiveChartWeb.LiveBarComponent do
   use Phoenix.LiveComponent
 
   def update(assigns, socket) do
-    # x_axis = assigns.chart.dataset.axes.magnitude_axis
+    x_axis = assigns.chart.dataset.axes.magnitude_axis
     # Hardcode the number of steps to take as 5 for now
-    # grid_lines = y_axis.grid_lines.({y_axis.min, y_axis.max}, 5)
-    # grid_line_offsetter = fn grid_line -> 100 * (y_axis.max - grid_line) / y_axis.max end
+    grid_lines = x_axis.grid_lines.({x_axis.min, x_axis.max}, 5)
+
+    grid_line_offsetter = fn grid_line ->
+      result = 100 * grid_line / x_axis.max
+      IO.inspect(result, label: "Result for #{grid_line}")
+      result
+    end
 
     socket =
       socket
       |> assign(:chart, assigns.chart)
       |> assign(:columns, LiveChart.BarChart.bars(assigns.chart))
+      |> assign(:grid_lines, grid_lines)
+      |> assign(:offsetter, grid_line_offsetter)
 
     {:ok, socket}
   end
