@@ -16,7 +16,7 @@ Add this to your mix.exs deps:
 ### The Column Chart
 ![Column Chart](assets/images/column-chart.jpg "Column Chart")
 
-  ```
+```elixir
   column_chart = %BaseChart{
       title: "Cheese Coney Consumption by Neighborhood",
       colors: colors,
@@ -30,11 +30,11 @@ Add this to your mix.exs deps:
         data: Cincy.get()
       }
     }
-  ```
+```
 
 ### The Bar Chart
 ![Bar Chart](assets/images/bar-chart.jpg "Bar Chart")
-  ```
+```elixir
   defp bar_chart do
     memory_data = MemoryChart.get()
 
@@ -60,13 +60,12 @@ Add this to your mix.exs deps:
       }
     }
   end
-end
-  ```
+```
 
 ### The Pie Chart
 ![Pie Chart](assets/images/pie-chart.jpg "Pie Chart")
 
- ```
+```elixir
  pie_chart = %BaseChart{
       title: "Best kind of pie",
       colors: %{
@@ -108,12 +107,12 @@ end
         ]
       }
     }
- ```
+```
 
 ### The Live Line Chart
 ![Live Line Chart](assets/images/line-chart.jpg "Live Line Chart")
 
- ```
+```elixir
  line_chart = %BaseChart{
       title: "Live Line Chart",
       colors: colors,
@@ -157,11 +156,11 @@ end
         ]
       }
     }
- ```
+```
 
 ### The Progress Chart
 ![Progress Chart](assets/images/progress-chart.jpg "Progress Chart")
-```
+```elixir
 defp progress_chart(from: %BaseChart{} = chart) do
     memory = Memory.get()
 
@@ -201,14 +200,15 @@ defp progress_chart(from: %BaseChart{} = chart) do
 Base chart configuration allows you to define set solid colors and gradients for any chart you will use within the application.
 
 #### Set a Base Color
-```
+
+```elixir
 colors = %{
-  blue: "#6bdee4",
+  blue: "#6bdee4"
 }
 ```
 
 #### Set a Base Gradient Color
-```
+```elixir
 colors = %{
   rose_gradient: %Gradient{
     start_color: "#642B73",
