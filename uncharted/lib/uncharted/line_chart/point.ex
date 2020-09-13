@@ -5,7 +5,7 @@ defmodule Uncharted.LineChart.Point do
 
   defstruct [:label, :fill_color, :x_offset, :y_offset]
 
-  @type t() :: %__MODULE__{
+  @type t :: %__MODULE__{
           label: String.t(),
           fill_color: atom(),
           x_offset: Float.t(),
