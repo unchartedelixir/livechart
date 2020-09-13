@@ -12,6 +12,7 @@ defmodule DemoWeb.PageLive do
   @impl true
   def mount(_params, _session, socket) do
     colors = %{
+      blue: "#6bdee4",
       rose_gradient: %Gradient{
         start_color: "#642B73",
         stop_color: "#C6426E"
