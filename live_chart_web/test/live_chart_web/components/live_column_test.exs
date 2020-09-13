@@ -1,13 +1,13 @@
 defmodule LiveChartWeb.LiveColumnComponentTest do
   alias LiveChart.BaseChart
-  alias LiveChart.Axes.{BaseAxes, YAxis}
+  alias LiveChart.Axes.{BaseAxes, MagnitudeAxis}
   alias LiveChart.ColumnChart.Dataset
   alias LiveChartWeb.LiveColumnComponent
   import Phoenix.LiveViewTest
   use ExUnit.Case
   @endpoint Endpoint
   @axes %BaseAxes{
-    y: %YAxis{
+    magnitude_axis: %MagnitudeAxis{
       min: 0,
       max: 2500,
       grid_lines: &__MODULE__.grid_line_fun/2

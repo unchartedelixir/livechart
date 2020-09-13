@@ -3,8 +3,10 @@ defmodule DemoWeb.PageLive do
 
   use DemoWeb, :live_view
 
+  alias Demo.SystemData.{AllocatedAreas, Memory}
   alias LiveChart.{BaseChart, BaseDatum, Gradient}
-  alias LiveChart.Axes.{BaseAxes, YAxis}
+  alias LiveChart.Axes.{BaseAxes, MagnitudeAxis}
+  alias LiveChart.BarChart
   alias LiveChart.ColumnChart
   alias LiveChart.PieChart
   alias LiveChart.ProgressChart
@@ -32,15 +34,9 @@ defmodule DemoWeb.PageLive do
       colors: colors,
       dataset: %ColumnChart.Dataset{
         axes: %BaseAxes{
-          y: %YAxis{
+          magnitude_axis: %MagnitudeAxis{
             max: 2500,
-            min: 0,
-            grid_lines: fn {min, max}, step ->
-              min..max
-              |> Enum.take_every(div(max - min, step))
-              |> Enum.sort_by(& &1, &>=/2)
-              |> Enum.drop(1)
-            end
+            min: 0
           }
         },
         data: [
@@ -120,15 +116,9 @@ defmodule DemoWeb.PageLive do
       colors: colors,
       dataset: %ColumnChart.Dataset{
         axes: %BaseAxes{
-          y: %YAxis{
+          magnitude_axis: %MagnitudeAxis{
             max: 2500,
-            min: 0,
-            grid_lines: fn {min, max}, step ->
-              min..max
-              |> Enum.take_every(div(max - min, step))
-              |> Enum.sort_by(& &1, &>=/2)
-              |> Enum.drop(1)
-            end
+            min: 0
           }
         },
         data: [
@@ -165,6 +155,7 @@ defmodule DemoWeb.PageLive do
 
     {:ok,
      assign(socket,
+       bar_chart: bar_chart(),
        column_chart: column_chart,
        pie_chart: pie_chart,
        progress_chart: progress_chart,
@@ -173,6 +164,8 @@ defmodule DemoWeb.PageLive do
   end
 
   defp progress_chart(from: %BaseChart{} = chart) do
+    memory = Memory.get()
+
     %BaseChart{
       chart
       | colors: %{
@@ -192,13 +185,47 @@ defmodule DemoWeb.PageLive do
         },
         dataset: %ProgressChart.Dataset{
           background_stroke_color: :gray,
-          label: "unchartedness",
-          to_value: 100,
-          current_value: 65,
+          label: "Proc Memory",
+          secondary_label: "(% Of Total)",
+          to_value: memory.total,
+          current_value: memory.process,
           percentage_text_fill_color: :blue_gradient,
           percentage_fill_color: :rose_gradient,
           label_fill_color: :rose_gradient
         }
+    }
+  end
+
+  defp bar_chart do
+    vm_allocated_areas = AllocatedAreas.get()
+
+    datum =
+      Enum.map(vm_allocated_areas, fn {name, kilobytes} ->
+        %BaseDatum{
+          name: name,
+          fill_color: :rosy_gradient,
+          values: [kilobytes]
+        }
+      end)
+
+    %BaseChart{
+      title: "Coolness Units Per Language",
+      colors: %{
+        blue: "#36D1DC",
+        rosy_gradient: %Gradient{
+          start_color: "#642B73",
+          stop_color: "#C6426E"
+        }
+      },
+      dataset: %BarChart.Dataset{
+        axes: %BaseAxes{
+          magnitude_axis: %MagnitudeAxis{
+            max: AllocatedAreas.chart_max(vm_allocated_areas),
+            min: 0
+          }
+        },
+        data: datum
+      }
     }
   end
 end

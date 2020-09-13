@@ -1,0 +1,8 @@
+<g class="y-line">
+  <line x1="0%" y1="0%" x2="0%" y2="100%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
+  <line x1="0%" y1="100%" x2="100%" y2="100%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
+  <%= for grid_line <- @grid_lines do %>
+    <% offset = @offsetter.(grid_line) %>
+    <line x1="<%= offset %>%" y1="0%" x2="<%= offset %>%" y2="100%" stroke="#efefef" stroke-width="2px" stroke-linecap="round" />
+  <% end %>
+</g>

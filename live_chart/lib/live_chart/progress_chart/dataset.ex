@@ -6,6 +6,7 @@ defmodule LiveChart.ProgressChart.Dataset do
   defstruct [
     :background_stroke_color,
     :label,
+    :secondary_label,
     :to_value,
     :current_value,
     :percentage_text_fill_color,
@@ -17,6 +18,7 @@ defmodule LiveChart.ProgressChart.Dataset do
   @type t() :: %__MODULE__{
           background_stroke_color: color(),
           label: String.t() | nil,
+          secondary_label: String.t() | nil,
           to_value: number(),
           current_value: number(),
           percentage_text_fill_color: color(),

@@ -6,7 +6,7 @@ defimpl LiveChart.ColumnChart, for: LiveChart.BaseChart do
   def columns(%BaseChart{dataset: dataset}), do: columns(dataset)
   def columns(%Dataset{data: []}), do: []
 
-  def columns(%Dataset{data: data, axes: %{y: %{max: max}}}) do
+  def columns(%Dataset{data: data, axes: %{magnitude_axis: %{max: max}}}) do
     width = 100.0 / Enum.count(data)
     margin = width / 4.0
 

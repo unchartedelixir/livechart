@@ -10,6 +10,10 @@
         <%= if @data.label do %>
           <text x="50%" y="62%" fill="<%= color_to_fill(Chart.colors(@chart), @data.label_fill_color)%>" font-size="3px" font-weight="300" font-family="sans-serif" alignment-baseline="middle" text-anchor="middle"><%= @data.label %></text>
         <% end %>
+        <%= if @data.secondary_label do %>
+          <text x="50%" y="70%" fill="<%= color_to_fill(Chart.colors(@chart), @data.label_fill_color)%>" font-size="2px" font-weight="300" font-family="sans-serif" alignment-baseline="middle" text-anchor="middle"><%= @data.secondary_label %></text>
+        <% end %>
+
       </svg>
       <circle
           class="counter__value"
