@@ -3,7 +3,7 @@ defmodule DemoWeb.PageLive do
 
   use DemoWeb, :live_view
 
-  alias Demo.SystemData.{AllocatedAreas, Memory}
+  alias Demo.SystemData.{Memory, MemoryChart, VMEvents}
   alias LiveChart.{BaseChart, BaseDatum, Gradient}
   alias LiveChart.Axes.{BaseAxes, MagnitudeAxis, XYAxes}
   alias LiveChart.BarChart
@@ -13,6 +13,10 @@ defmodule DemoWeb.PageLive do
 
   @impl true
   def mount(_params, _session, socket) do
+    if connected?(socket) do
+      VMEvents.subscribe()
+    end
+
     colors = %{
       blue: "#6bdee4",
       rose_gradient: %Gradient{
@@ -167,6 +171,18 @@ defmodule DemoWeb.PageLive do
      )}
   end
 
+  def handle_info({[:vm, :memory], memory}, socket) do
+    {:noreply,
+     assign(socket, :progress_chart, Memory.update_chart(socket.assigns.progress_chart, memory))}
+  end
+
+  def handle_info({[:vm, :system_counts], counts}, socket) do
+    {:noreply,
+     assign(socket, :bar_chart, MemoryChart.update_chart(socket.assigns.bar_chart, counts))}
+  end
+
+  def handle_info(_, socket), do: {:noreply, socket}
+
   defp progress_chart(from: %BaseChart{} = chart) do
     memory = Memory.get()
 
@@ -201,16 +217,9 @@ defmodule DemoWeb.PageLive do
   end
 
   defp bar_chart do
-    vm_allocated_areas = AllocatedAreas.get()
+    memory_data = MemoryChart.get()
 
-    datum =
-      Enum.map(vm_allocated_areas, fn {name, kilobytes} ->
-        %BaseDatum{
-          name: name,
-          fill_color: :rosy_gradient,
-          values: [kilobytes]
-        }
-      end)
+    data = MemoryChart.convert_to_datum(memory_data)
 
     %BaseChart{
       title: "Coolness Units Per Language",
@@ -224,11 +233,11 @@ defmodule DemoWeb.PageLive do
       dataset: %BarChart.Dataset{
         axes: %BaseAxes{
           magnitude_axis: %MagnitudeAxis{
-            max: AllocatedAreas.chart_max(vm_allocated_areas),
+            max: MemoryChart.chart_max(memory_data),
             min: 0
           }
         },
-        data: datum
+        data: data
       }
     }
   end
