@@ -7,6 +7,11 @@ defmodule LiveChartWeb.LiveLineComponentTest do
   use ExUnit.Case
   @endpoint Endpoint
   @axes %XYAxes{
+    x: %MagnitudeAxis{
+      min: 0,
+      max: 2500,
+      grid_lines: &__MODULE__.grid_line_fun/2
+    },
     y: %MagnitudeAxis{
       min: 0,
       max: 2500,

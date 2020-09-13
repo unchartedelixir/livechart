@@ -116,6 +116,16 @@ defmodule DemoWeb.PageLive do
       colors: colors,
       dataset: %ColumnChart.Dataset{
         axes: %XYAxes{
+          x: %MagnitudeAxis{
+            max: 700,
+            min: 0,
+            grid_lines: fn {min, max}, step ->
+              min..max
+              |> Enum.take_every(div(max - min, step))
+              |> Enum.sort_by(& &1, &>=/2)
+              |> Enum.drop(1)
+            end
+          },
           y: %MagnitudeAxis{
             max: 2500,
             min: 0
@@ -125,7 +135,7 @@ defmodule DemoWeb.PageLive do
           %BaseDatum{
             name: "Point 1",
             fill_color: :blue_gradient,
-            values: [0, 50]
+            values: [70, 500]
           },
           %BaseDatum{
             name: "Point 2",
