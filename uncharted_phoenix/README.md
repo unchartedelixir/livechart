@@ -2,10 +2,12 @@
 A simple ***Elixir*** charting library that generates easy to customize charts for ***Phoenix*** and ***LiveView***.
 
 ## Features
-Easily generate pie charts, column charts, bar charts, progress counters, and line charts
-Generates responsive and accessible SVGs as LiveView components
-Provides advanced styling like gradients and rounded corners
-Smooth animations for updating live data to the UI
+- Easily generate pie charts, column charts, bar charts, progress counters, and line charts
+- Generates responsive and accessible SVGs as LiveView components
+- Provides advanced styling like gradients and rounded corners
+- Smooth animations for updating live data to the UI
+
+[API Documentation](https://hexdocs.pm/uncharted_phoenix/)
 
 ## HEX Installation
 Add this to your mix.exs deps:
