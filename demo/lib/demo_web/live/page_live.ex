@@ -3,6 +3,7 @@ defmodule DemoWeb.PageLive do
 
   use DemoWeb, :live_view
 
+  alias Demo.Examples.Cincy
   alias Demo.SystemData.{Memory, MemoryChart, VMEvents}
   alias Uncharted.{BaseChart, BaseDatum, Gradient}
   alias Uncharted.Axes.{BaseAxes, MagnitudeAxis, XYAxes}
@@ -34,42 +35,16 @@ defmodule DemoWeb.PageLive do
     }
 
     column_chart = %BaseChart{
-      title: "Umbrellas per Neighborhood",
+      title: "Cheese Coney Consumption by Neighborhood",
       colors: colors,
       dataset: %ColumnChart.Dataset{
         axes: %BaseAxes{
           magnitude_axis: %MagnitudeAxis{
-            max: 2500,
+            max: 10_000,
             min: 0
           }
         },
-        data: [
-          %BaseDatum{
-            name: "Landen",
-            fill_color: :rose_gradient,
-            values: [750.0]
-          },
-          %BaseDatum{
-            name: "Oakley",
-            fill_color: :rose_gradient,
-            values: [1500.0]
-          },
-          %BaseDatum{
-            name: "Downtown",
-            fill_color: :rose_gradient,
-            values: [2500.0]
-          },
-          %BaseDatum{
-            name: "Florence",
-            fill_color: :blue,
-            values: [750.0]
-          },
-          %BaseDatum{
-            name: "Erlanger",
-            fill_color: :rose_gradient,
-            values: [1750.0]
-          }
-        ]
+        data: Cincy.get()
       }
     }
 
@@ -180,6 +155,11 @@ defmodule DemoWeb.PageLive do
   def handle_info({[:vm, :system_counts], counts}, socket) do
     {:noreply,
      assign(socket, :bar_chart, MemoryChart.update_chart(socket.assigns.bar_chart, counts))}
+  end
+
+  def handle_info(:update_coney_consumption, socket) do
+    {:noreply,
+     assign(socket, :column_chart, Cincy.update_chart(socket.assigns.column_chart, nil))}
   end
 
   def handle_info(_, socket), do: {:noreply, socket}
