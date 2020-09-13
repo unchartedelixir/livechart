@@ -115,6 +115,18 @@ defmodule DemoWeb.PageLive do
   end
 
   defp progress_chart(from: %BaseChart{} = chart) do
-    %BaseChart{chart | dataset: %ProgressChart.Dataset{}}
+    %BaseChart{
+      chart
+      | colors: Map.put(chart.colors, :gray, "#e2e2e2"),
+        dataset: %ProgressChart.Dataset{
+          background_stroke_color: :gray,
+          label: "Unchartedness",
+          to_value: 100,
+          current_value: 45,
+          percentage_text_fill_color: :red_gradient,
+          percentage_fill_color: :rosy_gradient,
+          label_fill_color: :rosy_gradient
+        }
+    }
   end
 end
