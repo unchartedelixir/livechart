@@ -4,7 +4,7 @@ defmodule DemoWeb.PageLive do
   use DemoWeb, :live_view
 
   alias LiveChart.{BaseChart, BaseDatum, Gradient}
-  alias LiveChart.Axes.{BaseAxes, YAxis}
+  alias LiveChart.Axes.{BaseAxes, MagnitudeAxis}
   alias LiveChart.ColumnChart
   alias LiveChart.PieChart
   alias LiveChart.ProgressChart
@@ -32,7 +32,7 @@ defmodule DemoWeb.PageLive do
       colors: colors,
       dataset: %ColumnChart.Dataset{
         axes: %BaseAxes{
-          y: %YAxis{
+          magnitude_axis: %MagnitudeAxis{
             max: 2500,
             min: 0,
             grid_lines: fn {min, max}, step ->
