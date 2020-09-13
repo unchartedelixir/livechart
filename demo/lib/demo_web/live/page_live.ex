@@ -228,7 +228,7 @@ defmodule DemoWeb.PageLive do
         },
         data: [
           %BaseDatum{
-            name: "Erlang",
+            name: "C++",
             fill_color: :rosy_gradient,
             values: [750.0]
           },

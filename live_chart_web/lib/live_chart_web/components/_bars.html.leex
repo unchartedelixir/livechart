@@ -1,0 +1,18 @@
+<svg class="" width="96%" height="100%" x="2%" y="0">
+  <%= for {bar, index} <- Enum.with_index(@bars) do %>
+    <g class="bar">
+      <rect 
+        id="bar-<%= index %>" 
+        width="<%= bar.bar_width %>%" 
+        height="<%= bar.bar_height %>%" 
+        x="0%" 
+        y="<%= bar.bar_offset %>%" 
+        rx="10" 
+        ry="10" 
+        fill="<%= color_to_fill(Chart.colors(@chart), bar.fill_color)  %>" 
+        style="transition: all 1s ease;">
+          <animate attributeName="width" values="0%;30%" dur="1s" repeatCount="freeze" />
+      </rect>
+    </g>
+  <% end %>
+</svg>
