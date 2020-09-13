@@ -1,4 +1,7 @@
-# Demo
+# Uncharted Demo
+This demois a working example of each of Uncarted charts.
+
+![Bar Chart](/demo/assets/static/images/uncharted.jpg?raw=true "Bar Chart")
 
 To start your Phoenix server:
 
