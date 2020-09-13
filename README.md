@@ -21,7 +21,7 @@ basic chart package Uncharted and adapts Uncharted charts for display as compone
 - The Bar Chart
 
 ## Uncharted Demo
-The[Uncharted Demo](/demo) is a working example of each of the Uncharted chart components.
+The [Uncharted Demo](/demo) is a working example of each of the Uncharted chart components.
 
 To start the demo Phoenix server:
 
