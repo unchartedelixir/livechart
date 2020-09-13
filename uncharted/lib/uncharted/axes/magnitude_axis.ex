@@ -7,6 +7,13 @@ defmodule Uncharted.Axes.MagnitudeAxis do
   @type min :: number()
   @type max :: number()
   @type step :: integer()
+
+  @typedoc """
+  A function that takes a tuple with a minimum and maximum value that
+  represents the min and max of a grid axis and a step value. This function
+  is used to determine the spacial offsets of the labels on the axis and the
+  gridlines of the chart.
+  """
   @type grid_lines_func :: ({min, max}, step -> list(Float.t()))
   @type t() :: %__MODULE__{
           min: number(),
