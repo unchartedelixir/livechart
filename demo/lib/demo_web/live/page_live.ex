@@ -11,15 +11,24 @@ defmodule DemoWeb.PageLive do
 
   @impl true
   def mount(_params, _session, socket) do
+    colors = %{
+      rose_gradient: %Gradient{
+        start_color: "#642B73",
+        stop_color: "#C6426E"
+      },
+      blue_gradient: %Gradient{
+        start_color: "#36D1DC",
+        stop_color: "#5B86E5"
+      },
+      red_gradient: %Gradient{
+        start_color: "#FF9486",
+        stop_color: "#FF1379"
+      }
+    }
+
     column_chart = %BaseChart{
       title: "Umbrellas per Neighborhood",
-      colors: %{
-        blue: "#36D1DC",
-        rosy_gradient: %Gradient{
-          start_color: "#642B73",
-          stop_color: "#C6426E"
-        }
-      },
+      colors: colors,
       dataset: %ColumnChart.Dataset{
         axes: %BaseAxes{
           y: %YAxis{
@@ -36,17 +45,17 @@ defmodule DemoWeb.PageLive do
         data: [
           %BaseDatum{
             name: "Landen",
-            fill_color: :rosy_gradient,
+            fill_color: :rose_gradient,
             values: [750.0]
           },
           %BaseDatum{
             name: "Oakley",
-            fill_color: :rosy_gradient,
+            fill_color: :rose_gradient,
             values: [1500.0]
           },
           %BaseDatum{
             name: "Downtown",
-            fill_color: :rosy_gradient,
+            fill_color: :rose_gradient,
             values: [2500.0]
           },
           %BaseDatum{
@@ -56,7 +65,7 @@ defmodule DemoWeb.PageLive do
           },
           %BaseDatum{
             name: "Erlanger",
-            fill_color: :rosy_gradient,
+            fill_color: :rose_gradient,
             values: [1750.0]
           }
         ]
@@ -105,13 +114,60 @@ defmodule DemoWeb.PageLive do
       }
     }
 
+    line_chart = %BaseChart{
+      title: "Umbrellas per Neighborhood",
+      colors: colors,
+      dataset: %ColumnChart.Dataset{
+        axes: %BaseAxes{
+          y: %YAxis{
+            max: 2500,
+            min: 0,
+            grid_lines: fn {min, max}, step ->
+              min..max
+              |> Enum.take_every(div(max - min, step))
+              |> Enum.sort_by(& &1, &>=/2)
+              |> Enum.drop(1)
+            end
+          }
+        },
+        data: [
+          %BaseDatum{
+            name: "Landen",
+            fill_color: :rose_gradient,
+            values: [750.0]
+          },
+          %BaseDatum{
+            name: "Oakley",
+            fill_color: :rose_gradient,
+            values: [1500.0]
+          },
+          %BaseDatum{
+            name: "Downtown",
+            fill_color: :rose_gradient,
+            values: [2500.0]
+          },
+          %BaseDatum{
+            name: "Florence",
+            fill_color: :blue,
+            values: [750.0]
+          },
+          %BaseDatum{
+            name: "Erlanger",
+            fill_color: :rose_gradient,
+            values: [1750.0]
+          }
+        ]
+      }
+    }
+
     progress_chart = progress_chart(from: column_chart)
 
     {:ok,
      assign(socket,
        column_chart: column_chart,
        pie_chart: pie_chart,
-       progress_chart: progress_chart
+       progress_chart: progress_chart,
+       line_chart: line_chart
      )}
   end
 
