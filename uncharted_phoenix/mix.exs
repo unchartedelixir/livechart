@@ -107,7 +107,7 @@ defmodule UnchartedPhoenix.MixProject do
   end
 
   defp package_files do
-    ~w(lib priv .formatter.exs mix.exs README.md LICENSE CHANGELOG.md VERSION)
+    ~w(lib .formatter.exs mix.exs README.md LICENSE CHANGELOG.md VERSION)
   end
 
   defp copy_assets(_) do
