@@ -1,5 +1,5 @@
 # Uncharted
-A simple Elixir charting library that generates easy to customize charts
+A simple ***Elixir*** charting library that generates easy to customize charts
 
 ## Features
 - Easily generate pie charts, column charts, bar charts, progress counters, and line charts
