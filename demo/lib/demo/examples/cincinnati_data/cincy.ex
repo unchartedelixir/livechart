@@ -5,11 +5,11 @@ defmodule Demo.Examples.Cincy do
   a timer that will send `:update_coney_consumption`
   messages to the calling process every 5 seconds.
   """
-  alias LiveChart.BaseChart
-  alias LiveChart.BaseDatum
-  alias LiveChart.ColumnChart.Dataset
+  alias Uncharted.BaseChart
+  alias Uncharted.BaseDatum
+  alias Uncharted.ColumnChart.Dataset
 
-  @behaviour LiveChart.DataHandler
+  @behaviour Uncharted.DataHandler
   defstruct [:neighborhood, :cheese_coney_consumption]
 
   @type t() :: %__MODULE__{
