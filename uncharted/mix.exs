@@ -1,13 +1,23 @@
-defmodule Demo.MixProject do
+defmodule Uncharted.MixProject do
   use Mix.Project
+
+  @github_organization "unchartedelixir"
+  @app :uncharted
+  @source_url "https://github.com/#{@github_organization}/#{@app}"
+  @version Path.join(__DIR__, "VERSION")
+           |> File.read!()
+           |> String.trim()
 
   def project do
     [
-      app: :demo,
-      version: "0.1.0",
+      app: @app,
+      version: @version,
+      description: description(),
+      package: package(),
+      docs: docs(),
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: Mix.compilers(),
       dialyzer: [
         plt_add_apps: ~w(ex_unit mix)a,
         plt_add_deps: :transitive,
@@ -20,7 +30,10 @@ defmodule Demo.MixProject do
         "coveralls.post": :test,
         "coveralls.html": :test,
         credo: :test,
-        dialyzer: :test
+        dialyzer: :test,
+        docs: :docs,
+        "hex.build": :docs,
+        "hex.publish": :docs
       ],
       test_coverage: [tool: ExCoveralls],
       start_permanent: Mix.env() == :prod,
@@ -34,8 +47,7 @@ defmodule Demo.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Demo.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger]
     ]
   end
 
@@ -50,19 +62,8 @@ defmodule Demo.MixProject do
     [
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
-      {:excoveralls, "~> 0.11", only: :test},
-      {:phoenix, "~> 1.5.4"},
-      {:phoenix_live_view, "~> 0.14.4"},
-      {:floki, ">= 0.0.0", only: :test},
-      {:phoenix_html, "~> 2.11"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_dashboard, "~> 0.2"},
-      {:telemetry_metrics, "~> 0.4"},
-      {:telemetry_poller, "~> 0.4"},
-      {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"},
-      {:uncharted_phoenix, path: "../uncharted_phoenix"}
+      {:ex_doc, "~> 0.22", only: :docs, runtime: false},
+      {:excoveralls, "~> 0.11", only: :test}
     ]
   end
 
@@ -73,8 +74,34 @@ defmodule Demo.MixProject do
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
+    []
+  end
+
+  defp description do
+    """
+    A simple Elixir charting library that generates easy-to-customize charts.
+    """
+  end
+
+  defp docs do
     [
-      setup: ["deps.get", "cmd npm install --prefix assets"]
+      extras: ["README.md", "CHANGELOG.md"],
+      main: "readme",
+      source_ref: "v#{@version}",
+      source_url: @source_url,
+      skip_undefined_reference_warnings_on: ["CHANGELOG.md"]
     ]
+  end
+
+  defp package do
+    [
+      files: package_files(),
+      licenses: ["MIT"],
+      links: %{"GitHub" => @source_url}
+    ]
+  end
+
+  defp package_files do
+    ~w(lib priv .formatter.exs mix.exs README.md LICENSE CHANGELOG.md VERSION)
   end
 end

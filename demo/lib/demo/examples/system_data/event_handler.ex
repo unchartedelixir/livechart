@@ -5,7 +5,7 @@ defmodule Demo.SystemData.EventHandler do
   data provided by each event to the Demo application's
   `DemoWeb.PageLive` LiveView process. The `DemoWeb.PageLive`
   module will respond to the data being forwarded to it to
-  update the example `LiveChart.Chart`s in real time.
+  update the example `Uncharted.Chart`s in real time.
   """
   alias Demo.SystemData.VMEvents
   @events_of_interest [[:vm, :memory]]

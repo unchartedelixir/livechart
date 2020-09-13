@@ -1,12 +1,12 @@
 defmodule Demo.SystemData.MemoryChart do
   @moduledoc """
   Fetches system data from `:erlang.memory/1`
-  and presents it for use with a `LiveChart.BarChart`.
+  and presents it for use with a `Uncharted.BarChart`.
   """
-  @behaviour LiveChart.DataHandler
-  alias LiveChart.BarChart.Dataset
-  alias LiveChart.BaseChart
-  alias LiveChart.BaseDatum
+  @behaviour Uncharted.DataHandler
+  alias Uncharted.BarChart.Dataset
+  alias Uncharted.BaseChart
+  alias Uncharted.BaseDatum
 
   @impl true
   def get do
@@ -37,7 +37,7 @@ defmodule Demo.SystemData.MemoryChart do
   ### The goal is to choose a sensible maximum value for the
   ### values being displayed in the chart. We intend to move
   ### a function that will achieve this automatically in the
-  ### `LiveChart` package.
+  ### `Uncharted` package.
   def chart_max(process_count) do
     process_count
     |> Enum.map(fn {_, bytes} ->

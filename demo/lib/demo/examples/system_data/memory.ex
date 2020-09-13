@@ -3,9 +3,9 @@ defmodule Demo.SystemData.Memory do
   Pulls memory data from :erlang.memory()
   and formats for display in a Progress Chart.
   """
-  @behaviour LiveChart.DataHandler
-  alias LiveChart.BaseChart
-  alias LiveChart.ProgressChart.Dataset
+  @behaviour Uncharted.DataHandler
+  alias Uncharted.BaseChart
+  alias Uncharted.ProgressChart.Dataset
 
   @impl true
   def get do

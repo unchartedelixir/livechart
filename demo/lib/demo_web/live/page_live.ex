@@ -4,12 +4,12 @@ defmodule DemoWeb.PageLive do
   use DemoWeb, :live_view
 
   alias Demo.SystemData.{Memory, MemoryChart, VMEvents}
-  alias LiveChart.{BaseChart, BaseDatum, Gradient}
-  alias LiveChart.Axes.{BaseAxes, MagnitudeAxis, XYAxes}
-  alias LiveChart.BarChart
-  alias LiveChart.ColumnChart
-  alias LiveChart.PieChart
-  alias LiveChart.ProgressChart
+  alias Uncharted.{BaseChart, BaseDatum, Gradient}
+  alias Uncharted.Axes.{BaseAxes, MagnitudeAxis, XYAxes}
+  alias Uncharted.BarChart
+  alias Uncharted.ColumnChart
+  alias Uncharted.PieChart
+  alias Uncharted.ProgressChart
 
   @impl true
   def mount(_params, _session, socket) do
