@@ -3,6 +3,7 @@ defmodule DemoWeb.PageLive do
 
   use DemoWeb, :live_view
 
+  alias Demo.Examples.Cincy
   alias Demo.SystemData.{Memory, MemoryChart, VMEvents}
   alias Uncharted.{BaseChart, BaseDatum, Gradient}
   alias Uncharted.Axes.{BaseAxes, MagnitudeAxis, XYAxes}
@@ -34,42 +35,16 @@ defmodule DemoWeb.PageLive do
     }
 
     column_chart = %BaseChart{
-      title: "Umbrellas per Neighborhood",
+      title: "Cheese Coney Consumption by Neighborhood",
       colors: colors,
       dataset: %ColumnChart.Dataset{
         axes: %BaseAxes{
           magnitude_axis: %MagnitudeAxis{
-            max: 2500,
+            max: 10_000,
             min: 0
           }
         },
-        data: [
-          %BaseDatum{
-            name: "Landen",
-            fill_color: :rose_gradient,
-            values: [750.0]
-          },
-          %BaseDatum{
-            name: "Oakley",
-            fill_color: :rose_gradient,
-            values: [1500.0]
-          },
-          %BaseDatum{
-            name: "Downtown",
-            fill_color: :rose_gradient,
-            values: [2500.0]
-          },
-          %BaseDatum{
-            name: "Florence",
-            fill_color: :blue,
-            values: [750.0]
-          },
-          %BaseDatum{
-            name: "Erlanger",
-            fill_color: :rose_gradient,
-            values: [1750.0]
-          }
-        ]
+        data: Cincy.get()
       }
     }
 
@@ -116,7 +91,7 @@ defmodule DemoWeb.PageLive do
     }
 
     line_chart = %BaseChart{
-      title: "Umbrellas per Neighborhood",
+      title: "Line Chart",
       colors: colors,
       dataset: %ColumnChart.Dataset{
         axes: %XYAxes{
@@ -171,6 +146,7 @@ defmodule DemoWeb.PageLive do
      )}
   end
 
+  @impl true
   def handle_info({[:vm, :memory], memory}, socket) do
     {:noreply,
      assign(socket, :progress_chart, Memory.update_chart(socket.assigns.progress_chart, memory))}
@@ -181,6 +157,11 @@ defmodule DemoWeb.PageLive do
      assign(socket, :bar_chart, MemoryChart.update_chart(socket.assigns.bar_chart, counts))}
   end
 
+  def handle_info(:update_coney_consumption, socket) do
+    {:noreply,
+     assign(socket, :column_chart, Cincy.update_chart(socket.assigns.column_chart, nil))}
+  end
+
   def handle_info(_, socket), do: {:noreply, socket}
 
   defp progress_chart(from: %BaseChart{} = chart) do
@@ -188,7 +169,8 @@ defmodule DemoWeb.PageLive do
 
     %BaseChart{
       chart
-      | colors: %{
+      | title: "Process Memory / Total",
+        colors: %{
           rose_gradient: %Gradient{
             start_color: "#642B73",
             stop_color: "#C6426E"
@@ -222,7 +204,7 @@ defmodule DemoWeb.PageLive do
     data = MemoryChart.convert_to_datum(memory_data)
 
     %BaseChart{
-      title: "Coolness Units Per Language",
+      title: "Live Beam Memory Stats",
       colors: %{
         blue: "#36D1DC",
         rosy_gradient: %Gradient{
