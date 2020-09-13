@@ -5,11 +5,11 @@ defmodule LiveChart.ColumnChartTest do
     ColumnChart
   }
 
-  alias LiveChart.Axes.{BaseAxes, YAxis}
+  alias LiveChart.Axes.{BaseAxes, MagnitudeAxis}
   use ExUnit.Case
 
-  @y_axis %YAxis{min: 0, max: 2500}
-  @axes %BaseAxes{y: @y_axis}
+  @y_axis %MagnitudeAxis{min: 0, max: 2500}
+  @axes %BaseAxes{magnitude_axis: @y_axis}
   @data [
     %BaseDatum{name: "Bar One", values: [750]},
     %BaseDatum{name: "Bar Two", values: [1500]},
