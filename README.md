@@ -9,7 +9,7 @@ A simple ***Elixir*** charting library that generates easy to customize charts.
 - Provides advanced styling like gradients and rounded corners
 - Smooth animations for updating live data to the UI
 
-## Uncharted Phoenix
+## Uncharted Phoenix library
 [Uncharted Phoenix](/uncharted_phoenix) is a Hex package that generates SVGs as live view components. It builds on the
 basic chart package Uncharted and adapts Uncharted charts for display as components in LiveView.
 
@@ -20,7 +20,7 @@ basic chart package Uncharted and adapts Uncharted charts for display as compone
 - The Live Line Chart
 - The Bar Chart
 
-## Uncharted Demo
+### Demo Application
 The [Uncharted Demo](/demo) is a working example of each of the Uncharted chart components.
 
 To start the demo Phoenix server:
