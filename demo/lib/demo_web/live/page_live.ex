@@ -163,6 +163,8 @@ defmodule DemoWeb.PageLive do
   end
 
   defp progress_chart(from: %BaseChart{} = chart) do
+    memory = Demo.SystemData.Memory.get()
+
     %BaseChart{
       chart
       | colors: %{
@@ -182,9 +184,10 @@ defmodule DemoWeb.PageLive do
         },
         dataset: %ProgressChart.Dataset{
           background_stroke_color: :gray,
-          label: "unchartedness",
-          to_value: 100,
-          current_value: 65,
+          label: "Proc Memory",
+          secondary_label: "(% Of Total)",
+          to_value: memory.total,
+          current_value: memory.process,
           percentage_text_fill_color: :blue_gradient,
           percentage_fill_color: :rose_gradient,
           label_fill_color: :rose_gradient
@@ -193,7 +196,7 @@ defmodule DemoWeb.PageLive do
   end
 
   defp bar_chart do
-    vm_allocated_areas = Demo.SystemData.allocated_areas()
+    vm_allocated_areas = Demo.SystemData.AllocatedAreas.get()
 
     datum =
       Enum.map(vm_allocated_areas, fn {name, kilobytes} ->
@@ -216,7 +219,7 @@ defmodule DemoWeb.PageLive do
       dataset: %BarChart.Dataset{
         axes: %BaseAxes{
           magnitude_axis: %MagnitudeAxis{
-            max: Demo.SystemData.chart_max(vm_allocated_areas),
+            max: Demo.SystemData.AllocatedAreas.chart_max(vm_allocated_areas),
             min: 0
           }
         },

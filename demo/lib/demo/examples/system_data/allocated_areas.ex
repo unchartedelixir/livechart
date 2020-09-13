@@ -1,10 +1,10 @@
-defmodule Demo.SystemData do
+defmodule Demo.SystemData.AllocatedAreas do
   @moduledoc """
-  Fetches system data from :erlang.system_data
+  Fetches system data from :erlang.system_data(:allocated_areas)
   and presents it for use with a LiveChart.
   """
 
-  def allocated_areas do
+  def get do
     :allocated_areas
     |> :erlang.system_info()
     |> format_data()
