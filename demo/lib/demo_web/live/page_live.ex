@@ -5,7 +5,7 @@ defmodule DemoWeb.PageLive do
 
   alias Demo.SystemData.{AllocatedAreas, Memory}
   alias LiveChart.{BaseChart, BaseDatum, Gradient}
-  alias LiveChart.Axes.{BaseAxes, MagnitudeAxis}
+  alias LiveChart.Axes.{BaseAxes, MagnitudeAxis, XYAxes}
   alias LiveChart.BarChart
   alias LiveChart.ColumnChart
   alias LiveChart.PieChart
@@ -115,8 +115,8 @@ defmodule DemoWeb.PageLive do
       title: "Umbrellas per Neighborhood",
       colors: colors,
       dataset: %ColumnChart.Dataset{
-        axes: %BaseAxes{
-          magnitude_axis: %MagnitudeAxis{
+        axes: %XYAxes{
+          y: %MagnitudeAxis{
             max: 2500,
             min: 0
           }

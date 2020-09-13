@@ -5,12 +5,12 @@ defmodule LiveChart.LineChartTest do
     LineChart
   }
 
-  alias LiveChart.Axes.{BaseAxes, YAxis}
+  alias LiveChart.Axes.{XYAxes, MagnitudeAxis}
   alias LiveChart.ColumnChart.Dataset
   use ExUnit.Case
 
-  @y_axis %YAxis{min: -500, max: 2500}
-  @axes %BaseAxes{y: @y_axis}
+  @y_axis %MagnitudeAxis{min: -500, max: 2500}
+  @axes %XYAxes{y: @y_axis}
   @data [
     %BaseDatum{name: "Point One", values: [1, 750]},
     %BaseDatum{name: "Point Two", values: [5, 1500]},
