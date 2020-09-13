@@ -1,10 +1,20 @@
 defmodule LiveChart.MixProject do
   use Mix.Project
 
+  @github_organization "unchartedelixir"
+  @app :uncharted
+  @source_url "https://github.com/#{@github_organization}/#{@app}"
+  @version Path.join(__DIR__, "VERSION")
+           |> File.read!()
+           |> String.trim()
+
   def project do
     [
-      app: :live_chart,
-      version: "0.1.0",
+      app: @app,
+      version: @version,
+      description: description(),
+      package: package(),
+      docs: docs(),
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: Mix.compilers(),
@@ -20,7 +30,10 @@ defmodule LiveChart.MixProject do
         "coveralls.post": :test,
         "coveralls.html": :test,
         credo: :test,
-        dialyzer: :test
+        dialyzer: :test,
+        docs: :docs,
+        "hex.build": :docs,
+        "hex.publish": :docs
       ],
       test_coverage: [tool: ExCoveralls],
       start_permanent: Mix.env() == :prod,
@@ -49,6 +62,7 @@ defmodule LiveChart.MixProject do
     [
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.22", only: :docs, runtime: false},
       {:excoveralls, "~> 0.11", only: :test}
     ]
   end
@@ -61,5 +75,33 @@ defmodule LiveChart.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     []
+  end
+
+  defp description do
+    """
+    A simple Elixir charting library that generates easy-to-customize charts.
+    """
+  end
+
+  defp docs do
+    [
+      extras: ["README.md", "CHANGELOG.md"],
+      main: "readme",
+      source_ref: "v#{@version}",
+      source_url: @source_url,
+      skip_undefined_reference_warnings_on: ["CHANGELOG.md"]
+    ]
+  end
+
+  defp package do
+    [
+      files: package_files(),
+      licenses: ["MIT"],
+      links: %{"GitHub" => @source_url}
+    ]
+  end
+
+  defp package_files do
+    ~w(lib priv .formatter.exs mix.exs README.md LICENSE CHANGELOG.md VERSION)
   end
 end
