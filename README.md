@@ -1,6 +1,8 @@
 # Uncharted
 A simple ***Elixir*** charting library that generates easy to customize charts.
 
+![Bar Chart](/demo/assets/static/images/uncharted.jpg?raw=true "Bar Chart")
+
 ## Features
 - Easily generate pie charts, column charts, bar charts, progress counters, and line charts
 - Generates repsonsive and accessible SVGs as LiveView components
@@ -8,7 +10,7 @@ A simple ***Elixir*** charting library that generates easy to customize charts.
 - Smooth animations for updating live data to the UI
 
 ## Uncharted Phoenix
-[Uncharted Phoenix](/) is a Hex package that genertaes svgs as live view compoents.
+[Uncharted Phoenix](/uncharted_phoenix) is a Hex package that genertaes svgs as live view compoents.
 
 ***Charts Inluded***:
 - The Pie Chart
@@ -18,6 +20,15 @@ A simple ***Elixir*** charting library that generates easy to customize charts.
 - The Bar Chart
 
 ## Uncharted Demo
+The[Uncharted Demo](/demo) is a working example of each of Uncarted apps.
+
+To start your Phoenix server:
+
+Install dependencies with `mix deps.get`
+Install Node.js dependencies with `npm install` inside the assets directory
+Start Phoenix endpoint with `mix phx.server`
+
+Now you can visit `localhost:4000` from your browser.
 
 
 ## Contributing
