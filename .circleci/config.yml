@@ -222,7 +222,7 @@ jobs:
       - <<: *install_ghr
       - run:
           name: Build release notes
-          command: grep -Pazo "(?s)(?<=## ${CIRCLE_TAG})[^#]+" ~/project/CHANGELOG.md | sed '/./,$!d' > ~/project/RELEASE_NOTES
+          command: grep -Pazo "(?s)(?<=## ${CIRCLE_TAG})[^#]+" ~/project/live_chart/CHANGELOG.md | sed '/./,$!d' > ~/project/RELEASE_NOTES
       - run:
           name: Deploy artifacts to GitHub
           command: ./ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME -b "$(cat ~/project/RELEASE_NOTES)" -replace $CIRCLE_TAG deploy
