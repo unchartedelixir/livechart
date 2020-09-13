@@ -40,7 +40,7 @@ defmodule Demo.Examples.Cincy do
     end)
   end
 
-  defp loop_updates() do
+  defp loop_updates do
     :timer.send_interval(5_000, self(), :update_coney_consumption)
   end
 
