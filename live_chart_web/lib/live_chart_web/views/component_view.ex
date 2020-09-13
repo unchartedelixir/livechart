@@ -8,7 +8,6 @@ defmodule LiveChartWeb.ComponentView do
 
   alias LiveChart.{Chart, Gradient}
   alias LiveChart.ColumnChart.Column
-  alias LiveChart.PieChart.PieSlice
 
   def color_to_fill(colors, name) do
     case Map.get(colors, name) do
@@ -16,6 +15,9 @@ defmodule LiveChartWeb.ComponentView do
       value -> value
     end
   end
+
+  def svg_pie_slices(nil), do: []
+  def svg_pie_slices([]), do: []
 
   def svg_pie_slices(pie_slices) do
     label_width = 100 / Enum.count(pie_slices)

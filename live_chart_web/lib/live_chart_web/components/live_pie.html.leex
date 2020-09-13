@@ -5,7 +5,7 @@
       <desc id="uniqueChartDeesc">watch my data come alive</desc>
       <svg id="title-pie" class="pie__data" y="0" x="0" width="100%" height="90%">
         <circle r="10" cx="10" cy="10" fill="#e2e2e2" />
-        <%= for %{label: label, remaining_percentage: remaining_percentage, fill_color: fill_color} <- svg_pie_slices(@pie_slices) do %>
+        <%= for %{remaining_percentage: remaining_percentage, fill_color: fill_color} <- svg_pie_slices(@pie_slices) do %>
           <circle class="pie__seg" r="5" cx="10" cy="10" fill="transparent"
             style="transition: all 0.5s ease"
             stroke="<%= color_to_fill(Chart.colors(@chart), fill_color) %>"
