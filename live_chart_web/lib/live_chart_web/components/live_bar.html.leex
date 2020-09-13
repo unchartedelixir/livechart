@@ -6,7 +6,7 @@
     <%= render "_color_defs.html", chart: @chart %>
     <%= render "_bar_labels.html", chart: @chart %>
     <%= render "_bar_grid_line_labels.html", chart: @chart, grid_lines: @grid_lines, offsetter: @offsetter %>
-    <svg class="" width="92%" height="92%" x="8%" y="0">
+    <svg class="" width="90%" height="92%" x="10%" y="0">
       <%= render "_bar_grid_lines.html", chart: @chart, grid_lines: @grid_lines, offsetter: @offsetter %>
       <%= render "_bars.html", chart: @chart, bars: @bars %>
     </svg>
