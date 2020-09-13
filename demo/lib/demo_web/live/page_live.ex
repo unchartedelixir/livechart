@@ -91,7 +91,7 @@ defmodule DemoWeb.PageLive do
     }
 
     line_chart = %BaseChart{
-      title: "Umbrellas per Neighborhood",
+      title: "Line Chart",
       colors: colors,
       dataset: %ColumnChart.Dataset{
         axes: %XYAxes{
@@ -169,7 +169,8 @@ defmodule DemoWeb.PageLive do
 
     %BaseChart{
       chart
-      | colors: %{
+      | title: "Process Memory / Total",
+        colors: %{
           rose_gradient: %Gradient{
             start_color: "#642B73",
             stop_color: "#C6426E"
@@ -203,7 +204,7 @@ defmodule DemoWeb.PageLive do
     data = MemoryChart.convert_to_datum(memory_data)
 
     %BaseChart{
-      title: "Coolness Units Per Language",
+      title: "Live Beam Memory Stats",
       colors: %{
         blue: "#36D1DC",
         rosy_gradient: %Gradient{
