@@ -62,7 +62,7 @@ defmodule Demo.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:live_chart_web, path: "../live_chart_web"}
+      {:uncharted_phoenix, path: "../live_chart_web"}
     ]
   end
 
