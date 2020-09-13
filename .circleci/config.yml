@@ -105,7 +105,7 @@ jobs:
         description: "project name"
         type: string
     docker:
-      - image: circle/elixir:1.10.4-node-browsers
+      - image: circleci/elixir:1.10.4-node-browsers
         environment:
           MIX_ENV: test
 
