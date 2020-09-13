@@ -35,13 +35,7 @@ defmodule DemoWeb.PageLive do
         axes: %BaseAxes{
           magnitude_axis: %MagnitudeAxis{
             max: 2500,
-            min: 0,
-            grid_lines: fn {min, max}, step ->
-              min..max
-              |> Enum.take_every(div(max - min, step))
-              |> Enum.sort_by(& &1, &>=/2)
-              |> Enum.drop(1)
-            end
+            min: 0
           }
         },
         data: [
@@ -123,12 +117,7 @@ defmodule DemoWeb.PageLive do
         axes: %BaseAxes{
           y: %YAxis{
             max: 2500,
-            min: 0,
-            grid_lines: fn {min, max}, step ->
-              min..max
-              |> Enum.take_every(div(max - min, step))
-              |> Enum.drop(1)
-            end
+            min: 0
           }
         },
         data: [
@@ -217,13 +206,7 @@ defmodule DemoWeb.PageLive do
         axes: %BaseAxes{
           magnitude_axis: %MagnitudeAxis{
             max: 2500,
-            min: 0,
-            grid_lines: fn {min, max}, step ->
-              min..max
-              |> Enum.take_every(div(max - min, step))
-              |> Enum.sort_by(& &1, &>=/2)
-              |> Enum.drop(1)
-            end
+            min: 0
           }
         },
         data: [
