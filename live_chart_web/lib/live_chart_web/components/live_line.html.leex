@@ -3,54 +3,13 @@
     <title id="chartTitle"><%= Chart.title(@chart) %></title>
     <desc id="chartDesc">watch my data come alive</desc>
 
-    <svg id="title-y-labels" class="bar__y-labels" width="8%" height="100%" y="0" x="0">
-      <svg x="0" y="16%" height="20px" width="100%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">2000</text>
-        </svg>
-      </svg>
-      <svg x="0" y="35%" height="20px" width="100%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">1500</text>
-        </svg>
-      </svg>
-      <svg x="0" y="53%" height="20px" width="100%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">1000</text>
-        </svg>
-      </svg>
-      <svg x="0" y="72%" height="20px" width="100%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">500</text>
-        </svg>
-      </svg>
-    </svg>
-
-    <svg id="title-x-labels" class="bar__x-labels" width="92%" height="8%" y="92%" x="9.5%">
-      <svg x="0%" y="0%" height="100%" width="40%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">week one</text>
-        </svg>
-      </svg>
-      <svg x="20%" y="0%" height="100%" width="40%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">week two</text>
-        </svg>
-      </svg>
-      <svg x="40%" y="0%" height="100%" width="40%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">week three</text>
-        </svg>
-      </svg>
-      <svg x="60%" y="0%" height="100%" width="40%">
-        <svg width="100%" height="100%">
-          <text x="50%" y="50%" font-size="10px" alignment-baseline="middle" text-anchor="middle">week four</text>
-        </svg>
-      </svg>
-    </svg>
+    <%= render "_y_axis.html", chart: @chart, grid_lines: @y_grid_lines, offsetter: @y_grid_line_offsetter %>
+    <%= render "_bar_grid_line_labels.html", chart: @chart, grid_lines: @x_grid_lines, offsetter: @x_grid_line_offsetter %>
 
     <svg id="title-graph" class="bar__graph" width="90%" height="92%" x="10%" y="0">
       <g id="chart-lines" class="bar__lines">
+        <%= render "_bar_grid_lines.html", chart: @chart, grid_lines: @x_grid_lines, offsetter: @x_grid_line_offsetter %>
+        <%= render "_chart_lines.html", chart: @chart, grid_lines: @x_grid_lines, offsetter: @x_grid_line_offsetter %>
         <%= for %Line{start: %{x_offset: x1, y_offset: y1}, end: %{x_offset: x2, y_offset: y2}} <- @lines do %>
           <line
             x1="<%= x1 %>%"

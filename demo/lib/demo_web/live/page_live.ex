@@ -128,7 +128,13 @@ defmodule DemoWeb.PageLive do
           },
           y: %MagnitudeAxis{
             max: 2500,
-            min: 0
+            min: 0,
+            grid_lines: fn {min, max}, step ->
+              min..max
+              |> Enum.take_every(div(max - min, step))
+              |> Enum.sort_by(& &1, &>=/2)
+              |> Enum.drop(1)
+            end
           }
         },
         data: [
