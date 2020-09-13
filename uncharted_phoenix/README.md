@@ -3,8 +3,8 @@ A simple ***Elixir*** charting library that generates easy to customize charts f
 
 ## Features
 Easily generate pie charts, column charts, bar charts, progress counters, and line charts
-Generates repsonsive and accessible SVGs as LiveView components
-Provides adavanced styling like gradients and rounded corners
+Generates responsive and accessible SVGs as LiveView components
+Provides advanced styling like gradients and rounded corners
 Smooth animations for updating live data to the UI
 
 ## HEX Installation
@@ -196,9 +196,9 @@ defp progress_chart(from: %BaseChart{} = chart) do
     }
   end
 ```
-  
-### Base Chart Colors 
-Base chart configuration allows you to define a set solid colors and gradients for any chart you will use within the applciation.
+
+### Base Chart Colors
+Base chart configuration allows you to define set solid colors and gradients for any chart you will use within the application.
 
 #### Set a Base Color
 ```
@@ -216,4 +216,3 @@ colors = %{
   }
 }
 ```
-
