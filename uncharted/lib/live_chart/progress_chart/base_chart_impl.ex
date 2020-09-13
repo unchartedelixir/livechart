@@ -1,6 +1,6 @@
-defimpl LiveChart.ProgressChart, for: LiveChart.BaseChart do
-  alias LiveChart.BaseChart
-  alias LiveChart.ProgressChart.Dataset
+defimpl Uncharted.ProgressChart, for: Uncharted.BaseChart do
+  alias Uncharted.BaseChart
+  alias Uncharted.ProgressChart.Dataset
 
   def progress(%BaseChart{dataset: nil}), do: 0
 
@@ -12,8 +12,8 @@ defimpl LiveChart.ProgressChart, for: LiveChart.BaseChart do
   def data(%BaseChart{dataset: dataset}), do: dataset
 end
 
-defimpl LiveChart.ProgressChart, for: LiveChart.ProgressChart.Dataset do
-  alias LiveChart.ProgressChart.Dataset
+defimpl Uncharted.ProgressChart, for: Uncharted.ProgressChart.Dataset do
+  alias Uncharted.ProgressChart.Dataset
   def data(%Dataset{} = data), do: data
 
   def progress(%Dataset{to_value: to_value, current_value: current_value}) do

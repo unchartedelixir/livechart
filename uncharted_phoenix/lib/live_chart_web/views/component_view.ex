@@ -6,9 +6,9 @@ defmodule LiveChartWeb.ComponentView do
 
   use Phoenix.HTML
 
-  alias LiveChart.{Chart, Gradient}
-  alias LiveChart.ColumnChart.Column
-  alias LiveChart.LineChart.{Line, Point}
+  alias Uncharted.{Chart, Gradient}
+  alias Uncharted.ColumnChart.Column
+  alias Uncharted.LineChart.{Line, Point}
 
   def color_to_fill(colors, name) do
     case Map.get(colors, name) do

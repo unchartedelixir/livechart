@@ -1,6 +1,6 @@
-defmodule LiveChart.BarChartTest do
-  alias LiveChart.{BarChart, BaseChart, BaseDatum}
-  alias LiveChart.Axes.{BaseAxes, MagnitudeAxis}
+defmodule Uncharted.BarChartTest do
+  alias Uncharted.{BarChart, BaseChart, BaseDatum}
+  alias Uncharted.Axes.{BaseAxes, MagnitudeAxis}
 
   use ExUnit.Case
 

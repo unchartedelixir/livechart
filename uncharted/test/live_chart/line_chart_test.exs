@@ -1,8 +1,8 @@
-defmodule LiveChart.LineChartTest do
-  alias LiveChart.{BaseChart, BaseDatum, LineChart}
-  alias LiveChart.Axes.{MagnitudeAxis, XYAxes}
-  alias LiveChart.ColumnChart.Dataset
-  alias LiveChart.LineChart.Line
+defmodule Uncharted.LineChartTest do
+  alias Uncharted.{BaseChart, BaseDatum, LineChart}
+  alias Uncharted.Axes.{MagnitudeAxis, XYAxes}
+  alias Uncharted.ColumnChart.Dataset
+  alias Uncharted.LineChart.Line
   use ExUnit.Case
 
   @x_axis %MagnitudeAxis{min: 0, max: 10}

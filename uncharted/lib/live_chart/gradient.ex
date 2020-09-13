@@ -1,4 +1,4 @@
-defmodule LiveChart.Gradient do
+defmodule Uncharted.Gradient do
   @moduledoc """
   Definition of a gradient between colors
   """

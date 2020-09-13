@@ -1,3 +1,3 @@
-defprotocol LiveChart.PieChart do
+defprotocol Uncharted.PieChart do
   def pie_slices(chart)
 end

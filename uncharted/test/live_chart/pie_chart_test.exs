@@ -1,5 +1,5 @@
-defmodule LiveChart.PieChartTest do
-  alias LiveChart.{
+defmodule Uncharted.PieChartTest do
+  alias Uncharted.{
     BaseChart,
     BaseDatum,
     PieChart

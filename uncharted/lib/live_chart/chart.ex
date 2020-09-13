@@ -1,4 +1,4 @@
-defprotocol LiveChart.Chart do
+defprotocol Uncharted.Chart do
   def title(chart)
   def colors(chart)
   def gradient_colors(chart)

@@ -1,4 +1,4 @@
-defmodule LiveChart.BaseChart do
+defmodule Uncharted.BaseChart do
   @moduledoc """
   Base camp for all of your LiveChart needs.
   """
@@ -11,11 +11,11 @@ defmodule LiveChart.BaseChart do
   @type t() :: %__MODULE__{
           title: String.t(),
           colors: %{color_name() => String.t() | Gradient.t()},
-          dataset: LiveChart.dataset()
+          dataset: Uncharted.dataset()
         }
 
-  defimpl LiveChart.Chart, for: __MODULE__ do
-    alias LiveChart.{BaseChart, Gradient}
+  defimpl Uncharted.Chart, for: __MODULE__ do
+    alias Uncharted.{BaseChart, Gradient}
     def title(%BaseChart{title: nil}), do: ""
     def title(%BaseChart{title: title}), do: title
 

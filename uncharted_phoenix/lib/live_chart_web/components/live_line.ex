@@ -18,8 +18,8 @@ defmodule LiveChartWeb.LiveLineComponent do
     socket =
       socket
       |> assign(:chart, assigns.chart)
-      |> assign(:points, LiveChart.LineChart.points(assigns.chart))
-      |> assign(:lines, LiveChart.LineChart.lines(assigns.chart))
+      |> assign(:points, Uncharted.LineChart.points(assigns.chart))
+      |> assign(:lines, Uncharted.LineChart.lines(assigns.chart))
       |> assign(:x_grid_lines, x_grid_lines)
       |> assign(:x_grid_line_offsetter, x_grid_line_offsetter)
       |> assign(:y_grid_lines, y_grid_lines)

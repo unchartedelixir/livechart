@@ -1,7 +1,7 @@
-defmodule LiveChart.ProgressChart.Dataset do
+defmodule Uncharted.ProgressChart.Dataset do
   @moduledoc """
   Exposes a struct representing a data set that drives
-  a LiveChart Progress Chart.
+  a Uncharted Progress Chart.
   """
   defstruct [
     :background_stroke_color,

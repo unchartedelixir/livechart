@@ -1,7 +1,7 @@
-defmodule LiveChart.ProgressChartTest do
-  alias LiveChart.BaseChart
-  alias LiveChart.ProgressChart
-  alias LiveChart.ProgressChart.Dataset
+defmodule Uncharted.ProgressChartTest do
+  alias Uncharted.BaseChart
+  alias Uncharted.ProgressChart
+  alias Uncharted.ProgressChart.Dataset
   use ExUnit.Case
   @chart %BaseChart{dataset: %Dataset{to_value: 100, current_value: 25}}
 

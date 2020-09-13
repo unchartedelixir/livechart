@@ -1,9 +1,9 @@
-defmodule LiveChart.LineChart.Line do
+defmodule Uncharted.LineChart.Line do
   @moduledoc """
-  A struct representing a Line on a cartesian plane betwen two `LiveChart.LineChart.Point` structs
+  A struct representing a Line on a cartesian plane betwen two `Uncharted.LineChart.Point` structs
   """
 
-  alias LiveChart.LineChart.Point
+  alias Uncharted.LineChart.Point
 
   defstruct [:start, :end]
 

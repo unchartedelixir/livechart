@@ -1,9 +1,9 @@
-defprotocol LiveChart.LineChart do
-  @spec points(LiveChart.chart() | LiveChart.ColumnChart.Dataset.t()) ::
-          list(LiveChart.LineChart.Point.t())
+defprotocol Uncharted.LineChart do
+  @spec points(Uncharted.chart() | Uncharted.ColumnChart.Dataset.t()) ::
+          list(Uncharted.LineChart.Point.t())
   def points(chart)
 
-  @spec lines(LiveChart.chart() | LiveChart.ColumnChart.Dataset.t()) ::
-          list(LiveChart.LineChart.Line.t())
+  @spec lines(Uncharted.chart() | Uncharted.ColumnChart.Dataset.t()) ::
+          list(Uncharted.LineChart.Line.t())
   def lines(chart)
 end

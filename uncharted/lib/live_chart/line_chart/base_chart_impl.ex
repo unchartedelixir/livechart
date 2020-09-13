@@ -1,7 +1,7 @@
-defimpl LiveChart.LineChart, for: LiveChart.BaseChart do
-  alias LiveChart.BaseChart
-  alias LiveChart.ColumnChart.Dataset
-  alias LiveChart.LineChart.{Line, Point}
+defimpl Uncharted.LineChart, for: Uncharted.BaseChart do
+  alias Uncharted.BaseChart
+  alias Uncharted.ColumnChart.Dataset
+  alias Uncharted.LineChart.{Line, Point}
 
   def points(%BaseChart{dataset: nil}), do: []
   def points(%BaseChart{dataset: dataset}), do: points(dataset)

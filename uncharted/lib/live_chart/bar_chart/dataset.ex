@@ -1,11 +1,11 @@
-defmodule LiveChart.BarChart.Dataset do
+defmodule Uncharted.BarChart.Dataset do
   @moduledoc """
-  Struct representing a dataset for a LiveChart basic bar chart.
+  Struct representing a dataset for a Uncharted basic bar chart.
   """
   defstruct [:axes, :data]
 
   @type t() :: %__MODULE__{
-          axes: LiveChart.BaseAxes.t(),
-          data: list(LiveChart.BaseDatum.t())
+          axes: Uncharted.BaseAxes.t(),
+          data: list(Uncharted.BaseDatum.t())
         }
 end

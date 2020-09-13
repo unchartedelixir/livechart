@@ -1,7 +1,7 @@
 defmodule LiveChartWeb.LiveProgressComponentTest do
-  alias LiveChart.BaseChart
-  alias LiveChart.ProgressChart
-  alias LiveChart.ProgressChart.Dataset
+  alias Uncharted.BaseChart
+  alias Uncharted.ProgressChart
+  alias Uncharted.ProgressChart.Dataset
   alias LiveChartWeb.LiveProgressComponent
   import Phoenix.LiveViewTest
   use ExUnit.Case

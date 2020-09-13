@@ -1,4 +1,4 @@
-defmodule LiveChart.Axes.XYAxes do
+defmodule Uncharted.Axes.XYAxes do
   @moduledoc """
   A struct for representing a cartesian plane
   """
@@ -6,8 +6,8 @@ defmodule LiveChart.Axes.XYAxes do
   defstruct [:x, :y, show_gridlines: true]
 
   @type t() :: %__MODULE__{
-          x: LiveChart.Axes.MagnitudeAxis.t(),
-          y: LiveChart.Axes.MagnitudeAxis.t(),
+          x: Uncharted.Axes.MagnitudeAxis.t(),
+          y: Uncharted.Axes.MagnitudeAxis.t(),
           show_gridlines: boolean()
         }
 end

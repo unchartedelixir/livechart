@@ -1,4 +1,4 @@
-defmodule LiveChart.ColumnChart.Column do
+defmodule Uncharted.ColumnChart.Column do
   @moduledoc """
   A struct representing column-level display properties.
   """

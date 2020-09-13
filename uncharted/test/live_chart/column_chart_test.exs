@@ -1,11 +1,11 @@
-defmodule LiveChart.ColumnChartTest do
-  alias LiveChart.{
+defmodule Uncharted.ColumnChartTest do
+  alias Uncharted.{
     BaseChart,
     BaseDatum,
     ColumnChart
   }
 
-  alias LiveChart.Axes.{BaseAxes, MagnitudeAxis}
+  alias Uncharted.Axes.{BaseAxes, MagnitudeAxis}
   use ExUnit.Case
 
   @y_axis %MagnitudeAxis{min: 0, max: 2500}

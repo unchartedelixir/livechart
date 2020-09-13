@@ -14,7 +14,7 @@ defmodule LiveChartWeb.LiveColumnComponent do
     socket =
       socket
       |> assign(:chart, assigns.chart)
-      |> assign(:columns, LiveChart.ColumnChart.columns(assigns.chart))
+      |> assign(:columns, Uncharted.ColumnChart.columns(assigns.chart))
       |> assign(:grid_lines, grid_lines)
       |> assign(:grid_line_offsetter, grid_line_offsetter)
 

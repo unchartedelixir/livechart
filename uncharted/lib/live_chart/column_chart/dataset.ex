@@ -1,11 +1,11 @@
-defmodule LiveChart.ColumnChart.Dataset do
+defmodule Uncharted.ColumnChart.Dataset do
   @moduledoc """
   Struct representing a dataset for a LiveChart basic column chart.
   """
   defstruct [:axes, :data]
 
   @type t() :: %__MODULE__{
-          axes: LiveChart.BaseAxes.t(),
-          data: list(LiveChart.BaseDatum.t())
+          axes: Uncharted.BaseAxes.t(),
+          data: list(Uncharted.BaseDatum.t())
         }
 end

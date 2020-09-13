@@ -1,6 +1,6 @@
-defimpl LiveChart.BarChart, for: LiveChart.BaseChart do
-  alias LiveChart.BaseChart
-  alias LiveChart.BarChart.{Bar, Dataset}
+defimpl Uncharted.BarChart, for: Uncharted.BaseChart do
+  alias Uncharted.BaseChart
+  alias Uncharted.BarChart.{Bar, Dataset}
 
   def bars(%BaseChart{dataset: nil}), do: []
   def bars(%BaseChart{dataset: dataset}), do: bars(dataset)

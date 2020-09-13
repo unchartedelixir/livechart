@@ -18,7 +18,7 @@ defmodule LiveChartWeb.LiveBarComponent do
     socket =
       socket
       |> assign(:chart, assigns.chart)
-      |> assign(:bars, LiveChart.BarChart.bars(assigns.chart))
+      |> assign(:bars, Uncharted.BarChart.bars(assigns.chart))
       |> assign(:grid_lines, grid_lines)
       |> assign(:offsetter, grid_line_offsetter)
 

@@ -1,6 +1,6 @@
-defimpl LiveChart.PieChart, for: LiveChart.BaseChart do
-  alias LiveChart.BaseChart
-  alias LiveChart.PieChart.PieSlice
+defimpl Uncharted.PieChart, for: Uncharted.BaseChart do
+  alias Uncharted.BaseChart
+  alias Uncharted.PieChart.PieSlice
 
   def pie_slices(%BaseChart{dataset: nil}), do: []
 

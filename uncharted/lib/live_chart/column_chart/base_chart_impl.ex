@@ -1,6 +1,6 @@
-defimpl LiveChart.ColumnChart, for: LiveChart.BaseChart do
-  alias LiveChart.BaseChart
-  alias LiveChart.ColumnChart.{Column, Dataset}
+defimpl Uncharted.ColumnChart, for: Uncharted.BaseChart do
+  alias Uncharted.BaseChart
+  alias Uncharted.ColumnChart.{Column, Dataset}
 
   def columns(%BaseChart{dataset: nil}), do: []
   def columns(%BaseChart{dataset: dataset}), do: columns(dataset)

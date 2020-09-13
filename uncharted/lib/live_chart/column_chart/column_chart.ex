@@ -1,5 +1,5 @@
-defprotocol LiveChart.ColumnChart do
-  @spec columns(LiveChart.chart() | LiveChart.ColumnChart.Dataset.t()) ::
-          list(LiveChart.ColumnChart.Column.t())
+defprotocol Uncharted.ColumnChart do
+  @spec columns(Uncharted.chart() | Uncharted.ColumnChart.Dataset.t()) ::
+          list(Uncharted.ColumnChart.Column.t())
   def columns(chart)
 end

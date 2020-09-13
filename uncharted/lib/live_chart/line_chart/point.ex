@@ -1,4 +1,4 @@
-defmodule LiveChart.LineChart.Point do
+defmodule Uncharted.LineChart.Point do
   @moduledoc """
   A struct representing a Point on an x, y coordinate chart
   """

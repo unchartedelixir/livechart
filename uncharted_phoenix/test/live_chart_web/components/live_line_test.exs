@@ -1,7 +1,7 @@
 defmodule LiveChartWeb.LiveLineComponentTest do
-  alias LiveChart.BaseChart
-  alias LiveChart.Axes.{MagnitudeAxis, XYAxes}
-  alias LiveChart.ColumnChart.Dataset
+  alias Uncharted.BaseChart
+  alias Uncharted.Axes.{MagnitudeAxis, XYAxes}
+  alias Uncharted.ColumnChart.Dataset
   alias LiveChartWeb.LiveLineComponent
   import Phoenix.LiveViewTest
   use ExUnit.Case

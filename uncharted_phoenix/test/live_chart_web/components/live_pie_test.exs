@@ -3,7 +3,7 @@ defmodule LiveChartWeb.LivePieComponentTest do
   import Phoenix.LiveViewTest
   use ExUnit.Case
   @endpoint Endpoint
-  @base_chart %LiveChart.BaseChart{title: "this title"}
+  @base_chart %Uncharted.BaseChart{title: "this title"}
 
   describe "LivePie" do
     test "renders pie" do

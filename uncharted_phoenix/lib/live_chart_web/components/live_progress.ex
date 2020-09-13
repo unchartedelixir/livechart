@@ -3,7 +3,7 @@ defmodule LiveChartWeb.LiveProgressComponent do
   Bar Progress Component
   """
 
-  alias LiveChart.ProgressChart
+  alias Uncharted.ProgressChart
   use Phoenix.LiveComponent
 
   def update(assigns, socket) do

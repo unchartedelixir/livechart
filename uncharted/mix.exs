@@ -1,4 +1,4 @@
-defmodule LiveChart.MixProject do
+defmodule Uncharted.MixProject do
   use Mix.Project
 
   @github_organization "unchartedelixir"

@@ -1,4 +1,4 @@
-defmodule LiveChart.BarChart.Bar do
+defmodule Uncharted.BarChart.Bar do
   @moduledoc """
   A struct representing bar-level display properties.
   """

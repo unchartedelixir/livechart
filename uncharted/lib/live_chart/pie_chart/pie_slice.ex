@@ -1,4 +1,4 @@
-defmodule LiveChart.PieChart.PieSlice do
+defmodule Uncharted.PieChart.PieSlice do
   @moduledoc """
   A struct representing pie chart slice display properties.
   """

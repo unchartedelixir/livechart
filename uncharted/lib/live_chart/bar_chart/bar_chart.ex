@@ -1,5 +1,5 @@
-defprotocol LiveChart.BarChart do
-  @spec bars(LiveChart.chart() | LiveChart.BarChart.Dataset.t()) ::
-          list(LiveChart.BarChart.Bar.t())
+defprotocol Uncharted.BarChart do
+  @spec bars(Uncharted.chart() | Uncharted.BarChart.Dataset.t()) ::
+          list(Uncharted.BarChart.Bar.t())
   def bars(chart)
 end

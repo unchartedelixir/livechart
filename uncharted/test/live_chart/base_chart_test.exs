@@ -1,5 +1,5 @@
-defmodule LiveChart.BaseChartTest do
-  alias LiveChart.{
+defmodule Uncharted.BaseChartTest do
+  alias Uncharted.{
     BaseChart,
     BaseDatum,
     Chart,
@@ -7,7 +7,7 @@ defmodule LiveChart.BaseChartTest do
     Gradient
   }
 
-  alias LiveChart.Axes.{BaseAxes, MagnitudeAxis}
+  alias Uncharted.Axes.{BaseAxes, MagnitudeAxis}
   use ExUnit.Case
 
   @y_axis %MagnitudeAxis{min: 0, max: 2500}
