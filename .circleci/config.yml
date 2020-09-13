@@ -6,6 +6,13 @@ install_hex_rebar: &install_hex_rebar
     command: |
       mix local.hex --force
       mix local.rebar --force
+install_ghr: &install_ghr
+  run:
+    name: Install ghr (Github Releases)
+    command: |
+      wget https://github.com/tcnksm/ghr/releases/download/v0.9.0/ghr_v0.9.0_linux_amd64.tar.gz
+      tar xf ghr_v0.9.0_linux_amd64.tar.gz
+      ln -sf ghr_v0.9.0_linux_amd64/ghr .
 
 jobs:
   build:
@@ -204,27 +211,55 @@ jobs:
           command: mix format --check-formatted
           working_directory: ~/project/<< parameters.project_name >>
 
+  deploy_artifacts:
+    docker:
+      - image: circleci/elixir:1.10.4-node-browsers
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - <<: *install_ghr
+      - run:
+          name: Build release notes
+          command: grep -Pazo "(?s)(?<=## ${CIRCLE_TAG})[^#]+" ~/project/CHANGELOG.md | sed '/./,$!d' > ~/project/RELEASE_NOTES
+      - run:
+          name: Deploy artifacts to GitHub
+          command: ./ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME -b "$(cat ~/project/RELEASE_NOTES)" -replace $CIRCLE_TAG deploy
 
 workflows:
   version: 2
   primary:
     jobs:
-      - build
+      - build:
+         filters:
+            tags:
+              only: /v.*/
+
       - check-formatted:
           project_name: live_chart
           name: live_chart_check_formatted
           requires:
             - build
+          filters:
+            tags:
+              only: /v.*/
       - test:
           project_name: live_chart
           name: live_chart_test
           requires:
             - build
+          filters:
+            tags:
+              only: /v.*/
       - credo:
           project_name: live_chart
           name: live_chart_credo
           requires:
             - build
+          filters:
+            tags:
+              only: /v.*/
       # - dialyzer:
       #     project_name: live_chart
       #     name: live_chart_dialyzer
@@ -238,16 +273,25 @@ workflows:
           name: live_chart_web_check_formatted
           requires:
             - build
+          filters:
+            tags:
+              only: /v.*/
       - test:
           project_name: live_chart_web
           name: live_chart_web_test
           requires:
             - build
+          filters:
+            tags:
+              only: /v.*/
       - credo:
           project_name: live_chart_web
           name: live_chart_web_credo
           requires:
             - build
+          filters:
+            tags:
+              only: /v.*/
       # - dialyzer:
       #     project_name: live_chart_web
       #     name: live_chart_web_dialyzer
@@ -261,16 +305,25 @@ workflows:
           name: demo_check_formatted
           requires:
             - build
+          filters:
+            tags:
+              only: /v.*/
       - test:
           project_name: demo
           name: demo_test
           requires:
             - build
+          filters:
+            tags:
+              only: /v.*/
       - credo:
           project_name: demo
           name: demo_credo
           requires:
             - build
+          filters:
+            tags:
+              only: /v.*/
       # - dialyzer:
       #     project_name: demo
       #     name: demo_dialyzer
@@ -278,3 +331,16 @@ workflows:
       #       - demo_credo
       #       - demo_test
       #       - demo_check_formatted
+      - deploy_artifacts:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /v.*/
+          requires:
+            - live_chart_check_formatted
+            - live_chart_test
+            - live_chart_credo
+            - live_chart_web_check_formatted
+            - live_chart_web_test
+            - live_chart_web_credo
