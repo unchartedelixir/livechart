@@ -5,7 +5,7 @@ defimpl LiveChart.ProgressChart, for: LiveChart.BaseChart do
   def progress(%BaseChart{dataset: nil}), do: 0
 
   def progress(%BaseChart{dataset: %Dataset{} = dataset}) do
-    100 * round(dataset.current_value / dataset.to_value)
+    round(100 * dataset.current_value / dataset.to_value)
   end
 
   def data(%BaseChart{dataset: nil}), do: %{}
@@ -17,6 +17,6 @@ defimpl LiveChart.ProgressChart, for: LiveChart.ProgressChart.Dataset do
   def data(%Dataset{} = data), do: data
 
   def progress(%Dataset{to_value: to_value, current_value: current_value}) do
-    100 * round(current_value / to_value)
+    round(100 * current_value / to_value)
   end
 end
