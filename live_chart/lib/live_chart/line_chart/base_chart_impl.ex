@@ -10,7 +10,7 @@ defimpl LiveChart.LineChart, for: LiveChart.BaseChart do
   def points(%Dataset{data: data, axes: %{y: %{min: min, max: max}}}) do
     data
     |> Enum.map(fn datum ->
-      y_offset = Enum.at(datum.values, 1) / max * 100
+      y_offset = Enum.at(datum.values, 1) / (max - min) * 100
 
       %Point{
         label: datum.name,
