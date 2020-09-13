@@ -9,7 +9,7 @@ defmodule Demo.Examples.Cincy do
   alias Uncharted.BaseDatum
   alias Uncharted.ColumnChart.Dataset
 
-  @behaviour Uncharted.DataHandler
+  @behaviour Uncharted.DataProvider
   defstruct [:neighborhood, :cheese_coney_consumption]
 
   @type t() :: %__MODULE__{

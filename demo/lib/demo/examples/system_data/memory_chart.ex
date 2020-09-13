@@ -3,7 +3,7 @@ defmodule Demo.SystemData.MemoryChart do
   Fetches system data from `:erlang.memory/1`
   and presents it for use with a `Uncharted.BarChart`.
   """
-  @behaviour Uncharted.DataHandler
+  @behaviour Uncharted.DataProvider
   alias Uncharted.BarChart.Dataset
   alias Uncharted.BaseChart
   alias Uncharted.BaseDatum
