@@ -203,12 +203,12 @@ workflows:
           name: live_chart_credo
           requires:
             - build
-      - dialyzer:
-          project_name: live_chart
-          name: live_chart_dialyzer
-          requires:
-            - live_chart_credo
-            - live_chart_test
+      # - dialyzer:
+      #     project_name: live_chart
+      #     name: live_chart_dialyzer
+      #     requires:
+      #       - live_chart_credo
+      #       - live_chart_test
 
       - test:
           project_name: live_chart_web
@@ -220,12 +220,12 @@ workflows:
           name: live_chart_web_credo
           requires:
             - build
-      - dialyzer:
-          project_name: live_chart_web
-          name: live_chart_web_dialyzer
-          requires:
-            - live_chart_web_credo
-            - live_chart_web_test
+      # - dialyzer:
+      #     project_name: live_chart_web
+      #     name: live_chart_web_dialyzer
+      #     requires:
+      #       - live_chart_web_credo
+      #       - live_chart_web_test
 
       - test:
           project_name: demo
@@ -237,9 +237,9 @@ workflows:
           name: demo_credo
           requires:
             - build
-      - dialyzer:
-          project_name: demo
-          name: demo_dialyzer
-          requires:
-            - demo_credo
-            - demo_test
+      # - dialyzer:
+      #     project_name: demo
+      #     name: demo_dialyzer
+      #     requires:
+      #       - demo_credo
+      #       - demo_test

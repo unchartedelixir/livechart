@@ -5,6 +5,6 @@ defmodule LiveChart.PieChart.Dataset do
   defstruct [:data]
 
   @type t() :: %__MODULE__{
-    data: LiveChart.PieChart.Dataset.t()
-  }
+          data: LiveChart.PieChart.Dataset.t()
+        }
 end

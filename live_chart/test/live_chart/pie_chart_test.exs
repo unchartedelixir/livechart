@@ -1,8 +1,8 @@
 defmodule LiveChart.PieChartTest do
   alias LiveChart.{
-    PieChart,
     BaseChart,
-    BaseDatum
+    BaseDatum,
+    PieChart
   }
 
   use ExUnit.Case

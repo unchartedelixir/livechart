@@ -1,4 +1,8 @@
 defmodule LiveChartWeb.LiveBarComponent do
+  @moduledoc """
+  Bar Chart Component
+  """
+
   use Phoenix.LiveComponent
 
   # def update(assigns, socket) do

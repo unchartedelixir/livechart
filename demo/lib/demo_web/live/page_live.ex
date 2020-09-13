@@ -1,4 +1,6 @@
 defmodule DemoWeb.PageLive do
+  @moduledoc false
+
   use DemoWeb, :live_view
 
   alias LiveChart.{BaseChart, BaseDatum, Gradient}
