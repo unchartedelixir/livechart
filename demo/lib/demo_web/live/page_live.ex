@@ -135,7 +135,7 @@ defmodule DemoWeb.PageLive do
         },
         dataset: %ProgressChart.Dataset{
           background_stroke_color: :gray,
-          label: "Unchartedness",
+          label: "unchartedness",
           to_value: 100,
           current_value: 65,
           percentage_text_fill_color: :blue_gradient,
