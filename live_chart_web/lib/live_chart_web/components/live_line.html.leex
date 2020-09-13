@@ -1,7 +1,6 @@
 <figure data-testid="lc-live-line-component">
-  <svg id="<%= svg_id(@chart, "chart") %>" class="line__chart" aria-labelledby="chartTitle chartDesc" role="group" width="100%" height="100%" viewBox="0 0 700 400" style="overflow: visible;">
+  <svg id="<%= svg_id(@chart, "chart") %>" class="line__chart" aria-labelledby="chartTitle" role="group" width="100%" height="100%" viewBox="0 0 700 400" style="overflow: visible;">
     <title id="chartTitle"><%= Chart.title(@chart) %></title>
-    <desc id="chartDesc">watch my data come alive</desc>
 
     <%= render "_y_axis.html", chart: @chart, grid_lines: @y_grid_lines, offsetter: @y_grid_line_offsetter %>
     <%= render "_bar_grid_line_labels.html", chart: @chart, grid_lines: @x_grid_lines, offsetter: @x_grid_line_offsetter %>
@@ -22,6 +21,7 @@
           />
         <% end %>
       </g>
+
       <svg id="<%= svg_id(@chart, "results") %>" class="line__results" width="100%" height="100%" x="0%" y="0%">
         <svg width='100%' height='100%' viewBox="0 0 1000 1000" preserveAspectRatio="none">
           <g id="<%= svg_id(@chart, "lines") %>">
@@ -41,6 +41,7 @@
           <% end %>
         </g>
       </svg>
+      
       <defs>
         <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" style="stop-color:rgba(54, 209, 220, .5);stop-opacity:1"></stop>

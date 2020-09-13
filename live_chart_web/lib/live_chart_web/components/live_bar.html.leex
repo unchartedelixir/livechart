@@ -1,7 +1,6 @@
 <figure>
-  <svg class="chart--hor-bar" aria-labelledby="title desc" role="group" width="100%" height="100%" viewBox="0 0 600 400" style="overflow: visible;">
+  <svg class="chart--hor-bar" aria-labelledby="chartTitle" role="group" width="100%" height="100%" viewBox="0 0 600 400" style="overflow: visible;">
     <title id="chartTitle"><%= Chart.title(@chart) %></title>
-    <desc id="chartDesc">watch my data come alive</desc>
 
     <%= render "_color_defs.html", chart: @chart %>
     <%= render "_bar_labels.html", chart: @chart %>

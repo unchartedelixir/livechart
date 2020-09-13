@@ -1,10 +1,11 @@
 <figure data-testid="lc-live-progress-component">
-  <svg id="<%= svg_id(@chart, "chart") %>" class="counter" aria-labelledby="chartTitle chartDesc" role="group" width="100%" height="100%" viewBox="0 0 42 42">
+  <svg id="<%= svg_id(@chart, "chart") %>" class="counter" aria-labelledby="chartTitle" role="group" width="100%" height="100%" viewBox="0 0 42 42">
       <title id="chartTitle"><%= @chart.title %></title>
-      <desc id="chartDesc">watch my data come alive</desc>
+
     <g id="<%= svg_id(@chart, "circle") %>">
       <circle class="counter__center" cx="21" cy="21" r="16" fill="transparent"></circle>
       <circle class="counter__ring" cx="21" cy="21" r="16" fill="transparent" stroke="<%= color_to_fill(Chart.colors(@chart), @data.background_stroke_color)  %>" stroke-width="5"></circle>
+
       <svg class="counter__label" width="100%" height="100%" y="0" x="0">
         <text x="50%" y="50%" fill="<%= color_to_fill(Chart.colors(@chart), @data.percentage_text_fill_color) %>" font-size="10px" font-weight="100" font-family="sans-serif" alignment-baseline="middle" text-anchor="middle"><%= @progress %>%</text>
         <%= if @data.label do %>
@@ -15,6 +16,7 @@
         <% end %>
 
       </svg>
+
       <circle
           class="counter__value"
           cx="21"
@@ -30,6 +32,7 @@
           <animate attributeName="stroke-dasharray" values=" 0 100;<%= @progress %> <%= 100 - @progress %>" dur="1s" repeatCount="freeze" />
         </circle>
     </g>
+
     <%= render "_color_defs.html", chart: @chart %>
   </svg>
 </figure>
